@@ -4,8 +4,6 @@ import app.te.protein_chef.domain.account.entity.request.SendFirebaseTokenReques
 import app.te.protein_chef.domain.auth.entity.model.UserResponse
 import app.te.protein_chef.domain.utils.BaseResponse
 import app.te.protein_chef.domain.utils.Resource
-import app.te.protein_chef.presentation.my_locations.ui_state.MyLocationsDataUiState
-import com.structure.base_mvvm.DefaultLocation
 import com.structure.base_mvvm.User
 import kotlinx.coroutines.flow.Flow
 
@@ -34,10 +32,6 @@ interface AccountRepository {
   suspend fun saveUserToken(userToken: String)
 
   suspend fun getUserToken(): Flow<String>
-
-  suspend fun saveDefaultLocation(locationsUiState: MyLocationsDataUiState)
-
-  suspend fun getDefaultLocation(): Flow<DefaultLocation>
 
   suspend fun setLang(lang: String)
 

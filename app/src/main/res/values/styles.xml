@@ -38,25 +38,7 @@
     <item name="fontFamily">@font/tajawal_bold</item>
   </style>
 
-  <style name="TextMediumFont">
-    <item name="fontFamily">@font/tajawal_medium</item>
-  </style>
-
-  <style name="TextRegularFont">
-    <item name="fontFamily">@font/tajawal_regular</item>
-  </style>
-
-  <style name="TutorialTitleFont">
-    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
-    <item name="fontFamily">@font/tajawal_bold</item>
-  </style>
-
-  <style name="TutorialContentFont">
-    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
-    <item name="fontFamily">@font/tajawal_regular</item>
-  </style>
-
-  <style name="CustomDialogAnimation" parent="Theme.MaterialComponents.DayNight.Dialog.Bridge">
+    <style name="CustomDialogAnimation" parent="Theme.MaterialComponents.DayNight.Dialog.Bridge">
     <item name="android:windowNoTitle">true</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorPrimary">@color/colorPrimary</item>
@@ -88,4 +70,15 @@
   <style name="bottomSheetBackground" parent="ShapeAppearance.MaterialComponents.LargeComponent">
     <item name="android:background">@drawable/rounded_dialog</item>
   </style>
+  <style name="TutorialTitleFont">
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+    <item name="fontFamily">@font/tajawal_bold</item>
+  </style>
+
+  <style name="TutorialContentFont">
+    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+    <item name="fontFamily">@font/tajawal_regular</item>
+  </style>
+
+
 </resources>

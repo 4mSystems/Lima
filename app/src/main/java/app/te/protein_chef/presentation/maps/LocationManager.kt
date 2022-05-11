@@ -63,22 +63,25 @@ class LocationManager @Inject constructor(
 
   }
 
-  fun getAddress(lat: Double?, lng: Double?, context: Context): String? {
+  fun getAddress(lat: Double?, lng: Double?, context: Context): MapExtractedData {
     val geocoder = Geocoder(context)
     return try {
       val addressList =
         geocoder.getFromLocation(lat ?: 0.0, lng ?: 0.0, 1)
-      var address = ""
+      var mapExtractedData = MapExtractedData()
       Log.e("getAddress", "getAddress: " + addressList)
       if (addressList != null && addressList.size > 0) {
         val addressObj = addressList[0]
-        address = addressObj.getAddressLine(0)
+        mapExtractedData.address = addressObj.getAddressLine(0)
+        mapExtractedData.city = addressObj.locality
+        mapExtractedData.latitude = addressObj.latitude
+        mapExtractedData.longitude = addressObj.longitude
         Log.e("getAddress", "getAddress: " + addressObj.locality)
       }
-      address
+      mapExtractedData
     } catch (e: IOException) {
       e.printStackTrace()
-      null
+      MapExtractedData()
     }
   }
 

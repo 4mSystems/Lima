@@ -7,9 +7,6 @@ import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import app.te.protein_chef.domain.auth.entity.model.UserResponse
 import app.te.protein_chef.domain.auth.entity.model.UserSerializer
-import app.te.protein_chef.domain.my_locations.entity.DefaultLocationSerializer
-import app.te.protein_chef.presentation.my_locations.ui_state.MyLocationsDataUiState
-import com.structure.base_mvvm.DefaultLocation
 import com.structure.base_mvvm.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -20,7 +17,6 @@ class AppPreferences @Inject constructor(private val context: Context) {
   private val STORE_NAME = "app_data_store"
   private val STORE_NAME_FIRST_TIME = "app_data_store_first_time"
   private val USER_DATA_STORE_FILE_NAME = "user_store.pb"
-  private val DEFAULTLOCATIONFILE = "location_store.pb"
 
   private val FIREBASE_TOKEN = stringPreferencesKey("FIREBASE_TOKEN")
   private val USER_TOKEN = stringPreferencesKey("USER_TOKEN")
@@ -37,10 +33,6 @@ class AppPreferences @Inject constructor(private val context: Context) {
   private val Context.userDataStore: DataStore<User> by dataStore(
     fileName = USER_DATA_STORE_FILE_NAME,
     serializer = UserSerializer
-  )
-  private val Context.defaultLocationDataStore: DataStore<DefaultLocation> by dataStore(
-    fileName = DEFAULTLOCATIONFILE,
-    serializer = DefaultLocationSerializer
   )
 
   suspend fun saveFireBaseToken(token: String) {
@@ -83,17 +75,6 @@ class AppPreferences @Inject constructor(private val context: Context) {
     it[USER_TOKEN] ?: ""
   }
 
-  suspend fun saveDefaultLocation(locationsUiState: MyLocationsDataUiState) {
-    context.defaultLocationDataStore.updateData { location ->
-      location.toBuilder()
-        .setId(locationsUiState.getId())
-        .setTitle(locationsUiState.getTitle())
-        .setBody(locationsUiState.getAddress())
-        .build()
-    }
-  }
-
-  fun getDefaultLocation(): Flow<DefaultLocation> = context.defaultLocationDataStore.data
 
   suspend fun setLang(lang: String) {
     context.dataStore.edit {

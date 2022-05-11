@@ -5,15 +5,6 @@ import app.te.protein_chef.data.auth.data_source.remote.AuthServices
 import app.te.protein_chef.data.general.data_source.remote.GeneralServices
 import app.te.protein_chef.data.home.data_source.remote.HomeServices
 import app.te.protein_chef.data.intro.data_source.IntroServices
-import app.te.protein_chef.data.make_order.data_source.MakeOrderServices
-import app.te.protein_chef.data.meals.data_source.MealsServices
-import app.te.protein_chef.data.my_coupons.data_source.MyCouponsServices
-import app.te.protein_chef.data.my_locations.data_source.MyLocationsServices
-import app.te.protein_chef.data.my_order.data_source.MyOrdersServices
-import app.te.protein_chef.data.notifications.data_source.NotificationsServices
-import app.te.protein_chef.data.package_categories.data_source.PackageCategoriesServices
-import app.te.protein_chef.data.profile.data_source.ProfileServices
-import app.te.protein_chef.data.settings.data_source.remote.SettingsServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,10 +31,6 @@ object NetworkServicesModule {
   fun provideGeneralServices(retrofit: Retrofit): GeneralServices =
     retrofit.create(GeneralServices::class.java)
 
-  @Provides
-  @Singleton
-  fun provideSearchServices(retrofit: Retrofit): SettingsServices =
-    retrofit.create(SettingsServices::class.java)
 
   @Provides
   @Singleton
@@ -55,46 +42,6 @@ object NetworkServicesModule {
   fun provideIntroServices(retrofit: Retrofit): IntroServices =
     retrofit.create(IntroServices::class.java)
 
-
-  @Provides
-  @Singleton
-  fun provideUpdateProfileServices(retrofit: Retrofit): ProfileServices =
-    retrofit.create(ProfileServices::class.java)
-
-  @Provides
-  @Singleton
-  fun provideMyCouponsServices(retrofit: Retrofit): MyCouponsServices =
-    retrofit.create(MyCouponsServices::class.java)
-
-  @Provides
-  @Singleton
-  fun provideMyLocationsServices(retrofit: Retrofit): MyLocationsServices =
-    retrofit.create(MyLocationsServices::class.java)
-
-  @Provides
-  @Singleton
-  fun providePackageCategoriesServices(retrofit: Retrofit): PackageCategoriesServices =
-    retrofit.create(PackageCategoriesServices::class.java)
-
-  @Provides
-  @Singleton
-  fun provideMealsServices(retrofit: Retrofit): MealsServices =
-    retrofit.create(MealsServices::class.java)
-
-  @Provides
-  @Singleton
-  fun provideMakeOrderServices(retrofit: Retrofit): MakeOrderServices =
-    retrofit.create(MakeOrderServices::class.java)
-
-  @Provides
-  @Singleton
-  fun provideMyOrdersServices(retrofit: Retrofit): MyOrdersServices =
-    retrofit.create(MyOrdersServices::class.java)
-
-  @Provides
-  @Singleton
-  fun provideNotificationsServices(retrofit: Retrofit): NotificationsServices =
-    retrofit.create(NotificationsServices::class.java)
 
 
 }

@@ -2,7 +2,6 @@
   <string name="app_name" translatable="false">بروتين شيف </string>
 
   <!-- General Strings -->
-  <string name="empty_warning">This field is required</string>
   <string name="connection_error">Connection Error</string>
   <string name="no_internet">No internet connection please try again later</string>
   <string name="retry">Retry</string>
@@ -20,158 +19,42 @@
 
   <!-- Log In -->
   <string name="log_in">Log In</string>
-  <string name="password">Password</string>
-  <string name="forgot_your_password">Forgot your password?</string>
-  <string name="not_have_account">Don\'t have an account?</string>
-  <string name="empty_email">Please enter your email address</string>
-  <string name="invalid_email">Please enter valid email address</string>
-  <string name="empty_password">Please enter your password</string>
 
   <!-- Sign Up -->
   <string name="sign_up">Sign Up</string>
 
   <!-- Account -->
   <string name="log_out">Log Out</string>
-  <string name="log_out_hint">Are you sure you want to log out?</string>
   <string name="skip">Skip</string>
   <!--  <string name="google_api_key">Continue as Guest</string>-->
-  <string name="send">Send</string>
   <string name="contact_us">Contact us</string>
-  <string name="ar">اللغة العربية</string>
-  <string name="en">english</string>
 
-  <string name="or">Or</string>
-  <string name="register_name">Name</string>
-  <string name="register_phone"> Phone </string>
-  <string name="email_hint">Email</string>
-  <string name="password_hint_confirm">Password</string>
-  <string name="have_account">Have account </string>
   <string name="privacy">Freeze and Cancellation Policy</string>
   <string name="confirm_header_text">Confirm account</string>
-  <string name="confirm_resend">Resend</string>
-  <string name="confirm_header">Enter the activation code sent to you on your phone</string>
-  <string name="change_title">Change Password</string>
-  <string name="change_body">New password </string>
-  <string name="old_password">Old password</string>
-  <string name="confirm">Confirm</string>
   <string name="packages">Packages</string>
-  <string name="offers">Offers</string>
   <string name="profile">Profile</string>
   <string name="my_meals">My meals</string>
   <string name="menu_more">More</string>
   <string name="terms">Terms and Conditions</string>
   <string name="about">About us </string>
-  <string name="share_app">Share app</string>
-  <string name="rate_app">Rate app</string>
-  <string name="message">Message</string>
   <string name="notifications">Notifications</string>
   <string name="change_password">Change password</string>
-  <string name="save">Save</string>
-  <string name="age">Age</string>
   <string name="not_match_password">The two passwords do not match</string>
   <string name="yes">Yes</string>
   <string name="active">Activate the account</string>
-  <string name="male_gender">Male</string>
-  <string name="gender_type">Female</string>
   <string name="open_app">Start app</string>
-  <string name="choose_lang">Choose the language that suits you</string>
   <string name="choose_lang_toolbar">Select Language</string>
-  <string name="forgot_header">Enter a phone number where you can receive messages</string>
-  <string name="remember_password">I remembered the password</string>
-  <string name="weight">Add your weight in kilograms</string>
-  <string name="height">  Add height</string>
-  <string name="out_area_title_msg">Sorry, we can\'t deliver to this area right now</string>
-  <string name="out_area_body_msg">We are working hard to reach your area as soon as possible.. We are waiting for you soon</string>
   <string name="my_locations">My addresses</string>
   <string name="promo_codes">My coupons</string>
-  <string name="support">Support</string>
-  <string name="lang">Language</string>
-  <string name="no_coupon_avail">There are no discount coupons yet</string>
-  <string name="copied">Code copied successfully</string>
-  <string name="no_locations_avail">No addresses yet</string>
-  <string name="location_name">Address name :</string>
-  <string name="location_address">Address</string>
   <string name="add_location">Add address</string>
-  <string name="building_number">Building number</string>
-  <string name="flat_number">Floor number</string>
-  <string name="location_note">Special marque</string>
-  <string name="coin">SAR</string>
-  <string name="menu_dialog_title">This program includes</string>
-  <string name="show_menu">Show menu</string>
-  <string name="start_date">Choose the starting date of the package</string>
   <string name="not_all_permission_accepted">Please accept the permissions</string>
   <string name="location_is_off">Location off</string>
   <string name="location_off_body_message">please open your location</string>
-  <string name="your_location">Current location</string>
   <string name="detect_location">locate me</string>
-  <string name="additions_dialog_title">Add snacks on the package?</string>
-  <string name="additions_dialog_body">Add Snacks to your order basket to make your diet complete</string>
-  <string name="continue_order">NO</string>
-  <string name="add_additions">Add snacks</string>
   <string name="snaks">Snacks</string>
-  <string name="policy_prozen">Please read the terms and conditions and the cancellation and freezing policy before applying to book an order</string>
-  <string name="approve">Agree to the terms and conditions</string>
-  <string name="choose_payment">Choose your payment method</string>
-  <string name="from_market">Receipt of orders daily from the branch</string>
-  <string name="delivery_location">Delivery Address</string>
-  <string name="choose_location">Choose another location</string>
-  <string name="delivery_period">فترة التوصيل المتاحه الان من 7 صباحا الي 9 صباحا</string>
   <string name="order_location">Select the address</string>
-  <string name="have_promo">Do you have a discount coupon?</string>
-  <string name="apply">Activate</string>
-  <string name="add_promo">Add Coupon</string>
-  <string name="meals_cost">Cost</string>
-  <string name="delivery_cost">Delivery fees</string>
-  <string name="additions_cost">Snacks cost</string>
-  <string name="promo_cost">Discount value</string>
-  <string name="total_cost">Total price</string>
   <string name="confirm_order">Confirm and pay</string>
-  <string name="order_confirmed">Your reservation has been confirmed successfully. The package will be activated within the next 48 hours</string>
-  <string name="continue_shopping">Continue browsing</string>
-  <string name="current_orders">Current meals</string>
-  <string name="previous_orders">Previous meals</string>
-  <string name="order_number"> Order num : %1$s</string>
-  <string name="order_package_type"> Type : %1$s</string>
-  <string name="order_show_details"><u> Show details </u></string>
-  <string name="no_order_avail">No Meals yet</string>
-  <string name="remain_days">Number of days left in the package</string>
-  <string name="package_type">Package type</string>
-  <string name="today_meals">Meals reserved daily</string>
-  <string name="delivery_way">Receiving method</string>
-  <string name="delivery_time">Delivery time</string>
-  <string name="selected_payment">Selected payment method</string>
-  <string name="invoice_details">Cost details</string>
-  <string name="freeze">Package freeze</string>
-  <string name="cancel_package">Cancel</string>
-  <string name="day">Days</string>
   <string name="order_details">Order details</string>
-  <string name="cancel_order_dialog_title">Are you sure to unsubscribe? </string>
-  <string name="cancel_order_dialog_body">The cost of the days you received meals will not be refunded, in addition to a 30% discount from the subscription value as administrative expenses</string>
-  <string name="back">Back</string>
-  <string name="confirm_cancel">Confirm cancellation</string>
-  <string name="cancel_order_dialog_payment_title">Add your account information to send the rest of the amount to you</string>
-  <string name="cancel_order_dialog_payment_body">The amount will be refunded within 14 working days</string>
-  <string name="payment_cancel_iban">IBAN number</string>
-  <string name="payment_cancel_bank_name">Back name</string>
-  <string name="payment_cancel_bank_account_name">Your name</string>
-  <string name="order_pending">The request is being reviewed</string>
-  <string name="order_accepted">Your request has been accepted</string>
-  <string name="order_canceled">The request has been canceled</string>
-  <string name="order_in_cancel">A cancellation request has been sent</string>
-  <string name="order_finished">Request finished</string>
-  <string name="order_status">Order status</string>
-  <string name="freeze_title">Select the day you want to freeze the package </string>
-  <string name="from_to">compensation day</string>
-  <string name="my_codes">My coupons </string>
-  <string name="freeze_limit">You have reached the maximum freeze attempts</string>
-  <string name="confirm_freeze">Freeze confirmation</string>
-  <string name="re_order">Reorder</string>
-  <string name="no_notifications_avail">There are no notifications</string>
-  <string name="frozen_title">The freezing days you set</string>
-  <string-array name="gender">
-    <item>Male</item>
-    <item>Female</item>
-  </string-array>
   <string name="facebook_app_id" translatable="false">1027486111200196</string>
   <string name="fb_login_protocol_scheme" translatable="false">fb1234</string>
   <string name="facebook_client_token" translatable="false">21f5f6133b920f45f10e6e6aa82b87b3</string>

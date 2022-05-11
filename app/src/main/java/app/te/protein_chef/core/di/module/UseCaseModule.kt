@@ -16,25 +16,6 @@ import app.te.protein_chef.domain.home.repository.HomeRepository
 import app.te.protein_chef.domain.home.use_case.HomeUseCase
 import app.te.protein_chef.domain.intro.repository.IntroRepository
 import app.te.protein_chef.domain.intro.use_case.IntroUseCase
-import app.te.protein_chef.domain.make_order.repository.MakeOrderRepository
-import app.te.protein_chef.domain.make_order.use_case.ApplyCouponUseCase
-import app.te.protein_chef.domain.meals.repository.MealsRepository
-import app.te.protein_chef.domain.meals.use_case.MealsUseCase
-import app.te.protein_chef.domain.my_coupons.repository.MyCouponsRepository
-import app.te.protein_chef.domain.my_coupons.use_case.MyCouponsUseCase
-import app.te.protein_chef.domain.my_locations.repository.MyLocationsRepository
-import app.te.protein_chef.domain.my_locations.use_case.MyLocationsUseCase
-import app.te.protein_chef.domain.my_orders.repository.MyOrdersRepository
-import app.te.protein_chef.domain.my_orders.use_case.*
-import app.te.protein_chef.domain.notifications.repository.NotificationsRepository
-import app.te.protein_chef.domain.notifications.use_case.NotificationsUseCase
-import app.te.protein_chef.domain.packages_categories.repository.PackageCategoriesRepository
-import app.te.protein_chef.domain.packages_categories.use_case.PackageCategoriesUseCase
-import app.te.protein_chef.domain.profile.repository.ProfileRepository
-import app.te.protein_chef.domain.profile.use_case.ProfileUseCase
-import app.te.protein_chef.domain.settings.repository.SettingsRepository
-import app.te.protein_chef.domain.settings.use_case.OrderMainSettingsUseCase
-import app.te.protein_chef.domain.settings.use_case.SettingsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -92,99 +73,6 @@ class UseCaseModule {
     introRepository: IntroRepository
   ): IntroUseCase = IntroUseCase(introRepository)
 
-  @Provides
-  @Singleton
-  fun provideSettingsUseCase(
-    settingsRepository: SettingsRepository
-  ): SettingsUseCase = SettingsUseCase(settingsRepository)
-
-
-  @Provides
-  @Singleton
-  fun provideUpdateProfileUseCase(
-    profileRepository: ProfileRepository,
-    userLocalUseCase: UserLocalUseCase
-  ): ProfileUseCase = ProfileUseCase(profileRepository, userLocalUseCase)
-
-  @Provides
-  @Singleton
-  fun provideMyCouponsUseCase(
-    myCouponsRepository: MyCouponsRepository
-  ): MyCouponsUseCase = MyCouponsUseCase(myCouponsRepository)
-
-  @Provides
-  @Singleton
-  fun provideMyLocationsUseCase(
-    myLocationsRepository: MyLocationsRepository,
-    userLocalUseCase: UserLocalUseCase
-  ): MyLocationsUseCase = MyLocationsUseCase(myLocationsRepository, userLocalUseCase)
-
-  @Provides
-  @Singleton
-  fun providePackageCategoriesUseCase(
-    packageCategoriesRepository: PackageCategoriesRepository
-  ): PackageCategoriesUseCase = PackageCategoriesUseCase(packageCategoriesRepository)
-
-  @Provides
-  @Singleton
-  fun provideMealsUseCase(
-    mealsRepository: MealsRepository
-  ): MealsUseCase = MealsUseCase(mealsRepository)
-
-  @Provides
-  @Singleton
-  fun provideApplyCouponUseCase(
-    makeOrderRepository: MakeOrderRepository
-  ): ApplyCouponUseCase = ApplyCouponUseCase(makeOrderRepository)
-
-  @Provides
-  @Singleton
-  fun provideCurrentOrdersUseCase(
-    myOrdersRepository: MyOrdersRepository
-  ): CurrentOrdersUseCase = CurrentOrdersUseCase(myOrdersRepository)
-
-  @Provides
-  @Singleton
-  fun providePreviousOrdersUseCase(
-    myOrdersRepository: MyOrdersRepository
-  ): PreviousOrdersUseCase = PreviousOrdersUseCase(myOrdersRepository)
-
-  @Provides
-  @Singleton
-  fun provideCancelOrderUseCase(
-    myOrdersRepository: MyOrdersRepository
-  ): CancelOrderUseCase = CancelOrderUseCase(myOrdersRepository)
-
-  @Provides
-  @Singleton
-  fun provideOrderDetailsUseCase(
-    myOrdersRepository: MyOrdersRepository
-  ): OrderDetailsUseCase = OrderDetailsUseCase(myOrdersRepository)
-
-  @Provides
-  @Singleton
-  fun provideOrderMainSettingsUseCase(
-    settingsRepository: SettingsRepository,
-    userLocalUseCase: UserLocalUseCase
-  ): OrderMainSettingsUseCase = OrderMainSettingsUseCase(settingsRepository, userLocalUseCase)
-
-  @Provides
-  @Singleton
-  fun provideOrderDaysUseCase(
-    myOrdersRepository: MyOrdersRepository
-  ): OrderDaysUseCase = OrderDaysUseCase(myOrdersRepository)
-
-  @Provides
-  @Singleton
-  fun provideFreezeOrderUseCase(
-    myOrdersRepository: MyOrdersRepository
-  ): FreezeOrderUseCase = FreezeOrderUseCase(myOrdersRepository)
-
-  @Provides
-  @Singleton
-  fun provideNotificationsUseCase(
-    notificationsRepository: NotificationsRepository
-  ): NotificationsUseCase = NotificationsUseCase(notificationsRepository)
 
 
   //public use cases

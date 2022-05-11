@@ -1,4 +1,4 @@
-rootProject.name = "Protein-chef"
+rootProject.name = "Osman-New"
 
 // Include all the existent modules in the project
 rootDir
