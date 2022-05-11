@@ -48,9 +48,9 @@ android {
 
   buildTypes {
     getByName("debug") {
-      manifestPlaceholders["appName"] = "@string/app_name_debug"
-      manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher_debug"
-      manifestPlaceholders["appRoundIcon"] = "@mipmap/ic_launcher_debug_round"
+      manifestPlaceholders["appName"] = "@string/app_name"
+      manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher_release"
+      manifestPlaceholders["appRoundIcon"] = "@mipmap/ic_launcher_release_round"
       buildConfigField("String", "API_BASE_URL", Config.Environments.debugBaseUrl)
       buildConfigField("String", "ROOM_DB", Config.Environments.roomDb)
     }
@@ -170,7 +170,6 @@ dependencies {
   implementation(Libraries.loadingAnimations)
   implementation(Libraries.alerter)
   implementation(Libraries.coil)
-  implementation(Libraries.splash_screen)
 
   // Map
   implementation(Libraries.map)

@@ -25,9 +25,9 @@
     <!--    android:theme="@style/Theme.App.Starting"-->
 
     <!-- Start Google Services -->
-    <meta-data
-      android:name="com.google.android.geo.API_KEY"
-      android:value="${MAPS_API_KEY}" />
+<!--    <meta-data-->
+<!--      android:name="com.google.android.geo.API_KEY"-->
+<!--      android:value="${MAPS_API_KEY}" />-->
 
     <!-- End Google Services -->
 
