@@ -19,6 +19,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), SplashEventListene
 
   override
   fun setUpViews() {
+    viewModel.eventListener = this
     binding.viewModel = viewModel
     viewModel.eventListener = this
   }
@@ -26,16 +27,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), SplashEventListene
 
   override fun openHome() {
     openActivityAndClearStack(HomeActivity::class.java)
-  }
-
-  override fun openLogin() {
-//    view?.post {
-//      navigateSafe(SplashFragmentDirections.actionSplashFragmentToLogInFragment())
-//    }
-  }
-
-  override fun openProfile() {
-//    navigateSafe(SplashFragmentDirections.actionSplashFragmentToNavProfile())
   }
 
   override fun openOnBoarding() {

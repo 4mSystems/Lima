@@ -2,7 +2,7 @@ package app.te.protein_chef.presentation.intro.tutorial
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import app.te.protein_chef.domain.intro.entity.AppTutorial
+import app.te.protein_chef.domain.intro.entity.AppTutorialModel
 import app.te.protein_chef.appTutorial.AppTutorialHelper
 import app.te.protein_chef.domain.utils.Resource
 import app.te.protein_chef.R
@@ -12,7 +12,6 @@ import app.te.protein_chef.presentation.base.extensions.hideKeyboard
 import app.te.protein_chef.presentation.base.extensions.navigateSafe
 import app.te.protein_chef.databinding.FragmentTutorialBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class TutorialFragment : BaseFragment<FragmentTutorialBinding>() {
@@ -27,18 +26,18 @@ class TutorialFragment : BaseFragment<FragmentTutorialBinding>() {
     binding.viewModel = viewModel
   }
 
-  private fun setUpAppTutorial(tutorialData: List<AppTutorial> = ArrayList()) {
+  private fun setUpAppTutorial(tutorialModelData: List<AppTutorialModel> = ArrayList()) {
     AppTutorialHelper.Builder(requireActivity(), lifecycle)
-      .setTutorialData(tutorialData)
-      .setTitleColor(R.color.colorPrimaryDark)
-      .setContentColor(R.color.white)
+      .setTutorialData(tutorialModelData)
+      .setTitleColor(R.color.black)
+      .setContentColor(R.color.black_light)
       .setSliderContainerResourceID(R.id.tutorial_container)
       .setActiveIndicatorColor(R.color.colorPrimaryDark)
-      .setInActiveIndicatorColor(R.color.gray)
+      .setInActiveIndicatorColor(R.color.black_light)
       .setAutoScrolling(false)
       .setNextButtonTextColor(R.color.white)
       .setNextButtonBackground(R.color.colorPrimaryDark)
-      .setBtnPreviousTextBackground(R.color.black_op)
+      .setBtnPreviousTextBackground(R.color.colorBlack)
       .setPreviousTextColor(R.color.white)
       .setOpenAppTextColor(R.color.white)
       .setSkipTutorialClick { openIntro() }

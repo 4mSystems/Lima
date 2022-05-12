@@ -17,7 +17,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import app.te.protein_chef.domain.intro.entity.AppTutorial
+import app.te.protein_chef.domain.intro.entity.AppTutorialModel
 import com.google.android.material.button.MaterialButton
 import app.te.protein_chef.R
 import kotlinx.coroutines.delay
@@ -31,7 +31,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
   private var activity: Activity = builder.activity
   private var lifecycle: Lifecycle = builder.lifecycle
 
-  private var tutorialData: List<AppTutorial>
+  private var tutorialModelData: List<AppTutorialModel>
   private var sliderContainer: FrameLayout? = null
 
   @IdRes
@@ -82,8 +82,8 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
   private var skipTutorialClick: (() -> Unit)? = null
 
   init {
-    tutorialData = builder.tutorialData
-    viewPagerIndicators = ArrayList(tutorialData.size)
+    tutorialModelData = builder.tutorialModelData
+    viewPagerIndicators = ArrayList(tutorialModelData.size)
     sliderContainer = builder.sliderContainer
     sliderContainerResourceID = builder.sliderContainerResourceID
     titleColor = builder.titleColor
@@ -251,7 +251,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
     }
     indicatorsContainer.removeAllViews()
 
-    for (i in tutorialData.indices) {
+    for (i in tutorialModelData.indices) {
       val tv = TextView(activity)
       tv.apply {
         val lp = FrameLayout.LayoutParams(
@@ -319,7 +319,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
       ContextCompat.getColor(activity, contentColor)
     )
 
-    viewPager.adapter = tutorialAdapter.apply { submitList(tutorialData) }
+    viewPager.adapter = tutorialAdapter.apply { submitList(tutorialModelData) }
   }
 
   private fun setUpViewPagerListener() {
@@ -334,7 +334,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
         }
         setViewPagerIndicator()
 
-        if (position == tutorialData.size - 1) {
+        if (position == tutorialModelData.size - 1) {
           btnPrevious.visibility = View.GONE
           btnNext.visibility = View.GONE
           btnOpenApp.visibility = View.VISIBLE
@@ -354,7 +354,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
         while (true) {
           delay(SLIDER_DELAY)
 
-          if (tutorialData.size - 1 == currentItem) {
+          if (tutorialModelData.size - 1 == currentItem) {
             currentItem = 0
           } else {
             currentItem++
@@ -372,7 +372,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
 
   private fun handleNextButtonClickListener() {
     btnNext.setOnClickListener {
-      if (tutorialData.size - 1 == currentItem) {
+      if (tutorialModelData.size - 1 == currentItem) {
         skipTutorialClick?.invoke()
       } else {
         currentItem++
@@ -396,7 +396,7 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
 
   class Builder(internal var activity: Activity, internal var lifecycle: Lifecycle) {
 
-    internal lateinit var tutorialData: List<AppTutorial>
+    internal lateinit var tutorialModelData: List<AppTutorialModel>
     internal var sliderContainer: FrameLayout? = null
 
     @IdRes
@@ -431,8 +431,8 @@ class AppTutorialHelper private constructor(builder: Builder) : LifecycleObserve
 
     internal var skipTutorialClick: (() -> Unit)? = null
 
-    fun setTutorialData(tutorialData: List<AppTutorial>): Builder {
-      this.tutorialData = tutorialData
+    fun setTutorialData(tutorialModelData: List<AppTutorialModel>): Builder {
+      this.tutorialModelData = tutorialModelData
       return this
     }
 

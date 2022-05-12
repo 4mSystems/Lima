@@ -1,13 +1,7 @@
 package app.te.protein_chef.core.di.module
 
 import app.te.protein_chef.domain.account.repository.AccountRepository
-import app.te.protein_chef.domain.account.use_case.AccountUseCases
-import app.te.protein_chef.domain.account.use_case.CheckFirstTimeUseCase
-import app.te.protein_chef.domain.account.use_case.CheckLoggedInUserUseCase
-import app.te.protein_chef.domain.account.use_case.LogOutUseCase
-import app.te.protein_chef.domain.account.use_case.UserLocalUseCase
-import app.te.protein_chef.domain.account.use_case.SendFirebaseTokenUseCase
-import app.te.protein_chef.domain.account.use_case.SetFirstTimeUseCase
+import app.te.protein_chef.domain.account.use_case.*
 import app.te.protein_chef.domain.auth.repository.AuthRepository
 import app.te.protein_chef.domain.auth.use_case.*
 import app.te.protein_chef.domain.general.use_case.LanguageUseCase
@@ -74,7 +68,6 @@ class UseCaseModule {
   ): IntroUseCase = IntroUseCase(introRepository)
 
 
-
   //public use cases
   @Provides
   @Singleton
@@ -96,16 +89,24 @@ class UseCaseModule {
 
   @Provides
   @Singleton
+  fun provideConfigUseCase(
+    accountRepository: AccountRepository
+  ): ConfigUseCase = ConfigUseCase(accountRepository)
+
+  @Provides
+  @Singleton
   fun provideGeneralUseCases(
     checkFirstTimeUseCase: CheckFirstTimeUseCase,
     checkLoggedInUserUseCase: CheckLoggedInUserUseCase,
     setFirstTimeUseCase: SetFirstTimeUseCase,
+    configUseCase: ConfigUseCase,
     languageUseCase: LanguageUseCase
   ): GeneralUseCases =
     GeneralUseCases(
       checkFirstTimeUseCase,
       checkLoggedInUserUseCase,
       setFirstTimeUseCase,
+      configUseCase,
       languageUseCase
     )
 

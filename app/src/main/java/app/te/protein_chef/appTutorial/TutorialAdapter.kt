@@ -9,24 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import app.te.protein_chef.appTutorial.TutorialAdapter.ImagesSliderViewHolder
 import coil.ImageLoader
 import coil.request.ImageRequest
-import app.te.protein_chef.domain.intro.entity.AppTutorial
+import app.te.protein_chef.domain.intro.entity.AppTutorialModel
 import app.te.protein_chef.R
 import app.te.protein_chef.databinding.ItemTutorialBinding
 
 internal class TutorialAdapter(
   private var titleColor: Int,
   private var contentColor: Int
-) : ListAdapter<AppTutorial, ImagesSliderViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<AppTutorialModel, ImagesSliderViewHolder>(DIFF_CALLBACK) {
   private lateinit var context: Context
 
   companion object {
-    private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AppTutorial>() {
+    private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AppTutorialModel>() {
       override
-      fun areItemsTheSame(oldItem: AppTutorial, newItem: AppTutorial): Boolean =
+      fun areItemsTheSame(oldItem: AppTutorialModel, newItem: AppTutorialModel): Boolean =
         oldItem.hashCode() == newItem.hashCode()
 
       override
-      fun areContentsTheSame(oldItem: AppTutorial, newItem: AppTutorial): Boolean =
+      fun areContentsTheSame(oldItem: AppTutorialModel, newItem: AppTutorialModel): Boolean =
         oldItem == newItem
     }
   }
@@ -49,14 +49,14 @@ internal class TutorialAdapter(
   inner class ImagesSliderViewHolder(private val itemBinding: ItemTutorialBinding) :
     RecyclerView.ViewHolder(itemBinding.root) {
 
-    private lateinit var currentItem: AppTutorial
+    private lateinit var currentItem: AppTutorialModel
 
     init {
       itemBinding.tvTitle.setTextColor(titleColor)
       itemBinding.tvContent.setTextColor(contentColor)
     }
 
-    fun bind(item: AppTutorial) {
+    fun bind(item: AppTutorialModel) {
       currentItem = item
 
       itemBinding.tvTitle.text = item.title

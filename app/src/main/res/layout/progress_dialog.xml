@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="@dimen/dimen200"
-  android:layout_height="@dimen/dimen200"
+  android:layout_width="@dimen/_200sdp"
+  android:layout_height="@dimen/_200sdp"
   android:layout_gravity="center"
+  android:background="@drawable/bg_rounded_white"
   android:elevation="4dp"
   android:gravity="center"
-  android:background="@drawable/bg_rounded_white"
   android:orientation="vertical"
   tools:targetApi="lollipop">
 

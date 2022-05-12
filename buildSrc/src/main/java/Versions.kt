@@ -38,6 +38,7 @@ object Versions {
   const val loadingAnimations = "3.6.0"
   const val alerter = "7.2.4"
   const val coil = "1.4.0"
+  const val ssp = "1.0.6"
 
   // Utils
   const val playServices = "19.2.0"

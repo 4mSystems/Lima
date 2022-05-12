@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <data>
 
@@ -8,13 +9,52 @@
       type="app.te.protein_chef.presentation.splash.SplashViewModel" />
   </data>
 
-  <LinearLayout
+  <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccentDark"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
-  </LinearLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+      android:layout_width="@dimen/_120sdp"
+      android:layout_height="@dimen/_120sdp"
+      android:layout_centerInParent="true"
+      android:src="@drawable/logo"
+      android:visibility="@{viewModel.logoVisibility}" />
+
+
+    <ProgressBar
+      android:id="@+id/progress"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      android:visibility="@{viewModel.adImageVisibility}"
+      app:loadImage="@{viewModel.adImage}"
+      app:progressBar="@{progress}" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:layout_width="@dimen/_120sdp"
+      android:layout_height="@dimen/_20sdp"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="@dimen/_8sdp"
+      android:src="@drawable/tes" />
+
+    <com.google.android.material.button.MaterialButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_14sdp"
+      android:onClick="@{()-> viewModel.eventListener.openHome()}"
+      android:text="@string/skip"
+      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/colorPrimaryDark"
+      android:visibility="@{viewModel.adImageVisibility}"
+      app:backgroundTint="@color/line_color" />
+
+  </RelativeLayout>
 
 </layout>

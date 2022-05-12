@@ -52,6 +52,8 @@ object Libraries {
   const val loadingAnimations = "com.airbnb.android:lottie:${Versions.loadingAnimations}"
   const val alerter = "com.github.tapadoo:alerter:${Versions.alerter}"
   const val coil = "io.coil-kt:coil:${Versions.coil}"
+  const val ssp = "com.intuit.ssp:ssp-android:${Versions.ssp}"
+  const val ssdp = "com.intuit.sdp:sdp-android:${Versions.ssp}"
 
   // Utils
   const val playServices = "com.google.android.gms:play-services-auth:${Versions.playServices}"

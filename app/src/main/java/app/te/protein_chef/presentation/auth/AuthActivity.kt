@@ -19,9 +19,6 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     val navHostFragment =
       supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
     nav = navHostFragment.findNavController()
-    setSupportActionBar(binding.toolbar)
-    setupActionBarWithNavController(nav)
-    binding.toolbar.navigationIcon = null
   }
 
   override fun onSupportNavigateUp(): Boolean {

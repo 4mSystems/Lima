@@ -24,8 +24,8 @@ class AppPreferences @Inject constructor(private val context: Context) {
   private val FIRST_TIME = booleanPreferencesKey("FIRST_TIME")
   private val IS_LOGGED_IN = booleanPreferencesKey("isLoggedIn")
   private val LANG = stringPreferencesKey("LANG")
-  private val SHIPPING_VALUE = stringPreferencesKey("SHIPPING_VALUE")
-  private val WORKING_HOURS = stringPreferencesKey("WORKING_HOURS")
+  private val WHATSAPP_VALUE = stringPreferencesKey("WHATSAPP_VALUE")
+  private val SPLASH_SCREEN = stringPreferencesKey("SPLASH_SCREEN")
 
 
   private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = STORE_NAME)
@@ -107,24 +107,24 @@ class AppPreferences @Inject constructor(private val context: Context) {
   }
 
   fun getUser(): Flow<User> = context.userDataStore.data
-  suspend fun saveShippingValue(shippingValue: String) {
+  suspend fun saveWhatsAppValue(whatsAppValue: String) {
     context.dataStore.edit {
-      it[SHIPPING_VALUE] = shippingValue
+      it[WHATSAPP_VALUE] = whatsAppValue
     }
   }
 
-  fun getShippingValue() = context.dataStore.data.map {
-    it[SHIPPING_VALUE] ?: ""
+  fun getWhatsAppValue() = context.dataStore.data.map {
+    it[WHATSAPP_VALUE] ?: ""
   }
 
-  suspend fun workingHours(shippingValue: String) {
+  suspend fun saveSplash(splashScreen: String) {
     context.dataStore.edit {
-      it[WORKING_HOURS] = shippingValue
+      it[SPLASH_SCREEN] = splashScreen
     }
   }
 
-  fun getWorkingHours() = context.dataStore.data.map {
-    it[WORKING_HOURS] ?: ""
+  fun getSplash() = context.dataStore.data.map {
+    it[SPLASH_SCREEN] ?: ""
   }
 
 

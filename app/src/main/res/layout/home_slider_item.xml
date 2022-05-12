@@ -15,8 +15,8 @@
   <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/dimen8"
-    app:cardCornerRadius="@dimen/dimen8"
+    android:layout_margin="@dimen/_6sdp"
+    app:cardCornerRadius="@dimen/_6sdp"
     app:cardUseCompatPadding="true"
     app:cardElevation="2dp">
 

@@ -170,6 +170,8 @@ dependencies {
   implementation(Libraries.loadingAnimations)
   implementation(Libraries.alerter)
   implementation(Libraries.coil)
+  implementation(Libraries.ssp)
+  implementation(Libraries.ssdp)
 
   // Map
   implementation(Libraries.map)

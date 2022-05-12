@@ -17,8 +17,7 @@
 
   <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroundGray">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
@@ -28,7 +27,7 @@
         android:id="@+id/imageSlider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen150"
-        android:layout_margin="@dimen/dimen10"
+        android:layout_margin="@dimen/_8sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:sliderAnimationDuration="600"
         app:sliderAutoCycleDirection="back_and_forth"
@@ -50,14 +49,12 @@
         style="@style/TextBoldFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen10"
+        android:layout_margin="@dimen/_8sdp"
         android:text="@string/packages"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@id/imageSlider"
         app:layout_constraintTop_toBottomOf="@id/imageSlider" />
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

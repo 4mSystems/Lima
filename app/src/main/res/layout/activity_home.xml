@@ -12,7 +12,7 @@
       style="@style/Widget.MaterialComponents.Toolbar.Primary"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@color/colorAccentDark"
+      android:background="@color/colorPrimaryDark"
       app:layout_constraintTop_toTopOf="parent"
       app:titleCentered="true"
       app:titleTextAppearance="@style/TextAppearance.AppCompat.Small"
@@ -31,7 +31,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
           android:id="@+id/bottom_navigation_view"
           android:layout_width="match_parent"
-          android:layout_height="@dimen/dimen56"
+          android:layout_height="@dimen/_50sdp"
           android:background="@drawable/white_top_corner"
           app:itemIconTint="@drawable/bottom_navigation_selector"
           app:labelVisibilityMode="labeled"

@@ -2,7 +2,7 @@ package app.te.protein_chef.presentation.intro.tutorial
 
 import androidx.lifecycle.viewModelScope
 import app.te.protein_chef.domain.general.use_case.GeneralUseCases
-import app.te.protein_chef.domain.intro.entity.AppTutorial
+import app.te.protein_chef.domain.intro.entity.AppTutorialModel
 import app.te.protein_chef.domain.intro.use_case.IntroUseCase
 import app.te.protein_chef.domain.utils.BaseResponse
 import app.te.protein_chef.domain.utils.Resource
@@ -20,7 +20,7 @@ class TutorialViewModel @Inject constructor(
   introUseCase: IntroUseCase
 ) : BaseViewModel() {
   private val _appTutorialResponse =
-    MutableStateFlow<Resource<BaseResponse<List<AppTutorial>>>>(Resource.Default)
+    MutableStateFlow<Resource<BaseResponse<List<AppTutorialModel>>>>(Resource.Default)
   val appTutorialResponse = _appTutorialResponse
 
   init {

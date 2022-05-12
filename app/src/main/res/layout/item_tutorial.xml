@@ -10,9 +10,9 @@
 
     <ImageView
       android:id="@+id/iv_image"
-      android:layout_width="@dimen/dimen250"
-      android:layout_height="@dimen/dimen250"
-      android:layout_marginTop="@dimen/dimen30"
+      android:layout_width="@dimen/_250sdp"
+      android:layout_height="@dimen/_250sdp"
+      android:layout_marginTop="@dimen/_25sdp"
       tools:ignore="ContentDescription" />
 
     <TextView
@@ -20,10 +20,10 @@
       style="@style/TutorialTitleFont"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/dimen6"
-      android:layout_marginTop="@dimen/dimen10"
-      android:layout_marginEnd="@dimen/dimen6"
-      android:layout_marginBottom="@dimen/dimen2"
+      android:layout_marginStart="@dimen/_4sdp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:layout_marginEnd="@dimen/_4sdp"
+      android:layout_marginBottom="@dimen/_1sdp"
       android:gravity="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Medium"
       android:textColor="@color/white" />
@@ -33,10 +33,10 @@
       style="@style/TutorialContentFont"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/dimen6"
-      android:layout_marginTop="@dimen/dimen2"
-      android:layout_marginEnd="@dimen/dimen6"
-      android:layout_marginBottom="@dimen/dimen10"
+      android:layout_marginStart="@dimen/_4sdp"
+      android:layout_marginTop="@dimen/_1sdp"
+      android:layout_marginEnd="@dimen/_4sdp"
+      android:layout_marginBottom="@dimen/_8sdp"
       android:gravity="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Small"
       android:textColor="@color/white" />

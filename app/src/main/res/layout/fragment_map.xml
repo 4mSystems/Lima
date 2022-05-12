@@ -33,12 +33,12 @@
       android:layout_height="wrap_content"
       android:layout_margin="@dimen/dimen16"
       android:onClick="@{()-> mapEventListener.detectLocation()}"
-      android:padding="@dimen/dimen10"
+      android:padding="@dimen/_8sdp"
       android:text="@string/detect_location"
       android:id="@+id/confirm_button"
       android:textAppearance="@style/TextAppearance.AppCompat.Medium"
       android:textColor="@color/white"
-      map:backgroundTint="@color/colorAccentDark"
+      map:backgroundTint="@color/colorPrimaryDark"
       map:layout_constraintBottom_toBottomOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

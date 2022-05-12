@@ -5,7 +5,6 @@ import app.te.protein_chef.data.local.preferences.AppPreferences
 import app.te.protein_chef.domain.account.entity.request.SendFirebaseTokenRequest
 import app.te.protein_chef.domain.account.repository.AccountRepository
 import app.te.protein_chef.domain.auth.entity.model.UserResponse
-import com.structure.base_mvvm.DefaultLocation
 import com.structure.base_mvvm.User
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -70,20 +69,20 @@ class AccountRepositoryImpl @Inject constructor(
     return appPreferences.getLang()
   }
 
-  override suspend fun saveShippingValue(value: String) {
-    appPreferences.saveShippingValue(value)
+  override suspend fun saveWhatsAppValue(value: String) {
+    appPreferences.saveWhatsAppValue(value)
   }
 
-  override suspend fun getShippingValue(): Flow<String> {
-    return appPreferences.getShippingValue()
+  override suspend fun getWhatsAppValue(): Flow<String> {
+    return appPreferences.getWhatsAppValue()
   }
 
-  override suspend fun saveWorkingHours(value: String) {
-    appPreferences.workingHours(value)
+  override suspend fun saveSplash(value: String) {
+    appPreferences.saveSplash(value)
   }
 
-  override suspend fun getWorkingHours(): Flow<String> {
-    return appPreferences.getWorkingHours()
+  override suspend fun getSplash(): Flow<String> {
+    return appPreferences.getSplash()
   }
 
   override

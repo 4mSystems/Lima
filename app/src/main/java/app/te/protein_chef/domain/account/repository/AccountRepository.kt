@@ -37,13 +37,13 @@ interface AccountRepository {
 
   suspend fun getLang(): Flow<String>
 
-  suspend fun saveShippingValue(value: String)
+  suspend fun saveWhatsAppValue(value: String)
 
-  suspend fun getShippingValue(): Flow<String>
+  suspend fun getWhatsAppValue(): Flow<String>
 
-  suspend fun saveWorkingHours(value: String)
+  suspend fun saveSplash(value: String)
 
-  suspend fun getWorkingHours(): Flow<String>
+  suspend fun getSplash(): Flow<String>
 
   suspend fun clearPreferences()
 

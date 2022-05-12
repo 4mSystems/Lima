@@ -17,6 +17,7 @@ import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.Group
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -60,6 +61,7 @@ fun View.invisible() {
   }
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
 @BindingAdapter("app:fromHtml")
 fun TextView.fromHtml(text: String?) {
   if (text != null)
@@ -183,7 +185,7 @@ fun ImageView.loadCircleImage(imageUrl: String?, progressBar: ProgressBar?) {
       .data(imageUrl)
       .crossfade(true)
       .crossfade(400)
-      .placeholder(R.color.backgroundGray)
+      .placeholder(R.color.colorLight)
       .error(R.drawable.bg_no_image)
       .transformations(
         CircleCropTransformation()
@@ -224,7 +226,7 @@ fun ImageView.loadRoundImage(imageUrl: String?, progressBar: ProgressBar?) {
       .data(imageUrl)
       .crossfade(true)
       .crossfade(400)
-      .placeholder(R.color.backgroundGray)
+      .placeholder(R.color.colorLight)
       .error(R.drawable.bg_no_image)
       .transformations(
         RoundedCornersTransformation(
@@ -265,14 +267,6 @@ fun ImageView.loadRoundImage(imageUrl: String?, progressBar: ProgressBar?) {
 @BindingAdapter("load_drawable")
 fun loadDrawable(imageView: ImageView, drawable: Drawable?) {
   imageView.setImageDrawable(drawable)
-}
-
-@BindingAdapter("app:changeStroke")
-fun MaterialCardView.changeStroke(stroke_color: Int) {
-  this.strokeColor = stroke_color
-  this.strokeWidth = 3
-  if (stroke_color == R.color.white)
-    setCardBackgroundColor(ColorStateList.valueOf(R.color.colorAccentDark))
 }
 
 @BindingAdapter("app:changeBackground")
