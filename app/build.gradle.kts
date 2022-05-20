@@ -8,7 +8,7 @@ plugins {
   id(Config.Plugins.kotlin_extensions)
   id(Config.Plugins.navigationSafeArgs)
   id(Config.Plugins.hilt)
-  id(Config.Plugins.google_services)
+//  id(Config.Plugins.google_services)
   id(Config.Plugins.proto_buf)
   id(Config.Plugins.google_secrets)
 }

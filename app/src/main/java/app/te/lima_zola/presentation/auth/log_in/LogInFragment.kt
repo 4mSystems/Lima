@@ -1,7 +1,5 @@
 package app.te.lima_zola.presentation.auth.log_in
 
-import android.graphics.Color
-import android.os.Build
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.viewModels

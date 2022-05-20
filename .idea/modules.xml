@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Protein-chef.iml" filepath="$PROJECT_DIR$/.idea/modules/Protein-chef.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Protein-chef.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Protein-chef.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Protein-chef.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Protein-chef.buildSrc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/prettyPopUp/Protein-chef.prettyPopUp.iml" filepath="$PROJECT_DIR$/.idea/modules/prettyPopUp/Protein-chef.prettyPopUp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/protein-chef/Protein-chef.protein-chef.iml" filepath="$PROJECT_DIR$/.idea/modules/protein-chef/Protein-chef.protein-chef.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Osman-New.iml" filepath="$PROJECT_DIR$/.idea/modules/Osman-New.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Lima/Osman-New.Lima.iml" filepath="$PROJECT_DIR$/.idea/modules/Lima/Osman-New.Lima.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Osman-New.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Osman-New.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Osman-New.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Osman-New.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Osman-New.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Osman-New.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Osman-New.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Osman-New.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Osman-New.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Osman-New.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Osman-New.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Osman-New.buildSrc.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/prettyPopUp/Osman-New.prettyPopUp.iml" filepath="$PROJECT_DIR$/.idea/modules/prettyPopUp/Osman-New.prettyPopUp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/prettyPopUp/Osman-New.prettyPopUp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/prettyPopUp/Osman-New.prettyPopUp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/prettyPopUp/Osman-New.prettyPopUp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/prettyPopUp/Osman-New.prettyPopUp.unitTest.iml" />
     </modules>
   </component>
 </project>
