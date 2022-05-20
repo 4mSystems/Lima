@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="ui"
+      type="app.te.lima_zola.presentation.home.ui_state.navigation_uiState.HeaderUiState" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/vv_navigation_drawer_image"
+      android:layout_width="@dimen/_60sdp"
+      android:layout_height="@dimen/_60sdp"
+      android:layout_gravity="center"
+      android:layout_marginTop="@dimen/_23sdp"
+      android:padding="@dimen/_4sdp"
+      android:src="@drawable/logo"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+      app:strokeColor="@color/colorPrimaryDark"
+      app:strokeWidth="1dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_user_login"
+      style="@style/TextMediumFont"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:text="@{ui.username}"
+      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/colorPrimaryDark"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/vv_navigation_drawer_image"
+      tools:text="Mostafa Elnagar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_subscription_expire"
+      style="@style/TextRegularFont"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_8sdp"
+      android:textAlignment="center"
+      android:textAppearance="@style/TextAppearance.AppCompat.Small"
+      android:textColor="@color/warningColor"
+      android:visibility="gone"
+      app:layout_constraintTop_toBottomOf="@+id/tv_user_login"
+      tools:layout_editor_absoluteX="10dp"
+      tools:text="@string/confirm_header_text"
+      tools:visibility="visible" />
+
+    <View
+      android:id="@+id/view"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_marginTop="@dimen/_10sdp"
+      android:background="@color/line_color"
+      app:layout_constraintTop_toBottomOf="@id/tv_subscription_expire" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

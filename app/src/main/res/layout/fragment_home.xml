@@ -7,11 +7,11 @@
 
     <variable
       name="uiState"
-      type="app.te.protein_chef.presentation.home.ui_state.HomeUiState" />
+      type="app.te.lima_zola.presentation.home.ui_state.HomeUiState" />
 
     <variable
       name="eventListener"
-      type="app.te.protein_chef.presentation.home.eventListener.HomeEventListener" />
+      type="app.te.lima_zola.presentation.home.eventListener.HomeEventListener" />
   </data>
 
 
@@ -44,18 +44,15 @@
         app:sliderStartAutoCycle="true"
         tools:layout_editor_absoluteX="10dp" />
 
-      <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_packages"
-        style="@style/TextBoldFont"
-        android:layout_width="wrap_content"
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_offers"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
-        android:text="@string/packages"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@id/imageSlider"
-        app:layout_constraintTop_toBottomOf="@id/imageSlider" />
-
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/imageSlider"
+        tools:listitem="@layout/item_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.core.widget.NestedScrollView>

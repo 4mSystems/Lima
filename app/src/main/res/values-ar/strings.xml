@@ -1,6 +1,7 @@
 <resources>
+  <string name="empty_warning">هذا الحقل مطلوب </string>
   <!-- General Strings -->
-    <string name="connection_error">خطأ فى الاتصال</string>
+  <string name="connection_error">خطأ فى الاتصال</string>
   <string name="no_internet">لا يوجد اتصال بالانترنت، برجاء المحاولة فى وقت لاحق</string>
   <string name="retry">إعادة المحاولة</string>
   <string name="cancel">إلغاء</string>
@@ -15,40 +16,69 @@
   <!-- Intro -->
 
   <!-- Log In -->
-  <string name="log_in">تسجيل الدخول</string>
+  <string name="login">تسجيل الدخول </string>
+  <string name="login_body">يرجى تسجيل الدخول إلى حسابك</string>
+  <string name="phone_hint">رقم الهاتف</string>
+  <string name="password">كلمة المرور</string>
+  <string name="login_as_guest">تسجيل كزائر؟</string>
 
-    <!-- Sign Up -->
+  <!-- Sign Up -->
   <string name="sign_up">إنشاء حساب</string>
 
   <!-- Account -->
   <string name="log_out">تسجيل الخروج</string>
-    <string name="skip">تخطى</string>
-    <string name="contact_us">اتصل بنا</string>
+  <string name="skip">تخطى</string>
 
-    <string name="privacy">سياسة التجميد والالغاء</string>
-  <string name="confirm_header_text">تأكيد حسابك</string>
-    <string name="packages">الباقات</string>
-    <string name="profile">بياناتي الشخصية</string>
+  <string name="privacy">سياسة التجميد والالغاء</string>
+  <string name="confirm_header_text">تأكيد رقم الهاتف</string>
+  <string name="packages">الباقات</string>
+  <string name="profile">بياناتي الشخصية</string>
   <string name="my_meals">وجباتي</string>
   <string name="menu_more">المزيد</string>
-  <string name="terms">الشروط والاحكام</string>
-  <string name="about">من نحن</string>
-    <string name="notifications">الاشعارات</string>
-  <string name="change_password">تغير كلمة المرور</string>
-    <string name="not_match_password">كلمتا المرور غير متطابقتان</string>
+  <string name="notifications">الاشعارات</string>
+  <string name="change_password">الاعدادات</string>
+  <string name="not_match_password">كلمتا المرور غير متطابقتان</string>
   <string name="yes">نعم</string>
   <string name="active">تفعيل الحساب</string>
-    <string name="open_app">بدأ التطبيق</string>
-    <string name="choose_lang_toolbar">اختيار اللغة</string>
-    <string name="my_locations">عناويني</string>
+  <string name="open_app">ابدأ التطبيق</string>
+  <string name="choose_lang_toolbar">اختيار اللغة</string>
+  <string name="my_locations">عناويني</string>
   <string name="promo_codes">كوبونات الخصم المكتسبة</string>
-    <string name="add_location">أضافة عنوان</string>
-    <string name="not_all_permission_accepted">يرجى قبول التصريحات</string>
+  <string name="add_location">أضافة عنوان</string>
+  <string name="not_all_permission_accepted">يرجى قبول التصريحات</string>
   <string name="location_is_off">Location off</string>
   <string name="location_off_body_message">please open your location</string>
-    <string name="detect_location">تحديد موقعي</string>
-    <string name="snaks">الاضافات</string>
-    <string name="order_location">حدد العنوان</string>
-    <string name="confirm_order">تاكيد الدفع والحجز</string>
-    <string name="order_details">تفاصيل الطلب</string>
+  <string name="detect_location">تحديد موقعي</string>
+  <string name="snaks">الاضافات</string>
+  <string name="order_location">حدد العنوان</string>
+  <string name="confirm">تاكيد</string>
+  <string name="order_details">تفاصيل الطلب</string>
+  <!--  Side Menu-->
+  <string name="about">عن التطبيق</string>
+  <string name="suggest">الشكاوى والمقترحات</string>
+  <string name="share">مشاركة التطبيق</string>
+  <string name="rate">تقييم التطبيق</string>
+  <string name="members">العملاء</string>
+  <string name="agents">الوكلاء</string>
+  <string name="terms">الشروط والاحكام</string>
+  <string name="customer_service">الدعم الفنى</string>
+  <string name="center_data_update">تعديل بيانات مركز الصيانة</string>
+  <string name="contact_us">تواصل معنا</string>
+  <string name="language">تغيير اللغة</string>
+  <!--  Suggestions-->
+  <string name="suggest_title">يسعدنا تلقى اقتراحاتكم وشكواكم ونسعى جاهدا لحلها</string>
+  <string name="client_name">الاسم</string>
+  <string name="client_phone">الموبايل</string>
+  <string name="client_address">عنوانك بالتفصيل</string>
+  <string name="client_notes">ملاحظاتك</string>
+  <string name="send">إرسال</string>
+  <!--Contact Us-->
+  <string name="contact_title">تواصل معنا للرد على استفسارتك</string>
+  <!--Countries-->
+  <string name="country_hint">اختر الدولة</string>
+  <string name="city_hint">اختار المدينة</string>
+  <string name="gov_hint">اختار المحافظه</string>
+  <string name="login_btn">تسجيل</string>
+  <string name="new_account">إنشاء حساب جديد</string>
+
 </resources>

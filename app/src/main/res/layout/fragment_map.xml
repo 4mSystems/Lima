@@ -6,7 +6,7 @@
 
     <variable
       name="mapEventListener"
-      type="app.te.protein_chef.presentation.maps.MapEventListener" />
+      type="app.te.lima_zola.presentation.maps.MapEventListener" />
   </data>
 
   <androidx.constraintlayout.widget.ConstraintLayout

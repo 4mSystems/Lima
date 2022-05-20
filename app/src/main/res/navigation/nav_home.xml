@@ -6,12 +6,31 @@
 
   <fragment
     android:id="@+id/home_fragment"
-    android:name="app.te.protein_chef.presentation.home.HomeFragment"
+    android:name="app.te.lima_zola.presentation.home.HomeFragment"
     android:label="@string/home"
     tools:layout="@layout/fragment_home">
 
-
   </fragment>
+  <fragment
+    android:id="@+id/about_fragment"
+    android:name="app.te.lima_zola.presentation.about.AboutFragment"
+    android:label="@string/about"
+    tools:layout="@layout/fragment_about" />
+  <fragment
+    android:id="@+id/suggestions_fragment"
+    android:name="app.te.lima_zola.presentation.suggestions.SuggestionsFragment"
+    android:label="@string/suggest"
+    tools:layout="@layout/fragment_suggestions" />
+  <fragment
+    android:id="@+id/contact_fragment"
+    android:name="app.te.lima_zola.presentation.contactus.ContactUsFragment"
+    android:label="@string/contact_us"
+    tools:layout="@layout/fragment_contact_us" />
+  <fragment
+    android:id="@+id/agents_fragment"
+    android:name="app.te.lima_zola.presentation.agents.AgentsFragment"
+    android:label="@string/agents"
+    tools:layout="@layout/fragment_agents" />
 
 
 </navigation>

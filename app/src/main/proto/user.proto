@@ -6,14 +6,8 @@ message User{
   int32 id = 1;
   string email = 2;
   string image = 3;
-  int32 isCompleted = 4;
-  string gender = 5;
-  string name = 6;
-  string phone = 7;
-  float weight = 8;
-  float height = 9;
-  string token = 10;
-  string age = 11;
-  string social_token = 12;
+  string jwt = 4;
+  string name = 5;
+  string phone = 6;
 
 }

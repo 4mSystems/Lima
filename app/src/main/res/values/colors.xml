@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimaryDark">#0076BC</color>
-  <color name="colorPrimary">#1397D7</color>
+  <color name="colorPrimaryDark">#8BDED6</color>
+  <color name="colorPrimary">#FDD72C</color>
   <color name="colorPrimaryHolo">#72A6CB</color>
   <color name="colorAccent">#f17303</color>
   <color name="colorLight">#F2F2F2</color>
@@ -28,5 +28,6 @@
   <color name="header_data_table">#797979</color>
   <color name="red">#AE0E0E</color>
   <color name="green">#158119</color>
+  <color name="warningColor">#FFA900</color>
 
 </resources>

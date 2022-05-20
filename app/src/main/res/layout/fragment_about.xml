@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="uiState"
+      type="app.te.lima_zola.presentation.about.AboutDataUiState" />
+  </data>
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_10sdp"
+      app:cardCornerRadius="@dimen/_4sdp"
+      app:cardUseCompatPadding="true">
+
+      <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextRegularFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@{uiState.body}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black" />
+    </androidx.cardview.widget.CardView>
+  </androidx.core.widget.NestedScrollView>
+</layout>

@@ -10,7 +10,7 @@
     <item name="colorSecondaryVariant">@color/colorAccent</item>
     <item name="colorOnSecondary">@color/black</item>
     <!-- Status bar color. -->
-    <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimaryDark</item>
+    <item name="android:statusBarColor">@color/colorPrimary</item>
 
     <!-- App Font -->
     <item name="fontFamily">@font/tajawal_medium</item>
@@ -38,7 +38,15 @@
     <item name="fontFamily">@font/tajawal_bold</item>
   </style>
 
-    <style name="CustomDialogAnimation" parent="Theme.MaterialComponents.DayNight.Dialog.Bridge">
+  <style name="TextMediumFont">
+    <item name="fontFamily">@font/tajawal_medium</item>
+  </style>
+
+  <style name="TextRegularFont">
+    <item name="fontFamily">@font/tajawal_regular</item>
+  </style>
+
+  <style name="CustomDialogAnimation" parent="Theme.MaterialComponents.DayNight.Dialog.Bridge">
     <item name="android:windowNoTitle">true</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorPrimary">@color/colorPrimary</item>
@@ -70,6 +78,7 @@
   <style name="bottomSheetBackground" parent="ShapeAppearance.MaterialComponents.LargeComponent">
     <item name="android:background">@drawable/rounded_dialog</item>
   </style>
+
   <style name="TutorialTitleFont">
     <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
     <item name="fontFamily">@font/tajawal_bold</item>
@@ -80,5 +89,20 @@
     <item name="fontFamily">@font/tajawal_regular</item>
   </style>
 
+  <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
+    <item name="cornerSize">10%</item>
+  </style>
+
+  <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+    <item name="cornerSize">50%</item>
+  </style>
+
+  <style name="ThemeOverlay.App.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorSurface">@color/transparent</item>
+    <item name="colorOnSurface">@color/colordark</item>
+    <item name="lineColor">@color/medium_color</item>
+    <item name="listPreferredItemHeightSmall">@dimen/_40sdp</item>
+  </style>
 
 </resources>

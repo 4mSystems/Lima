@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/about_fragment"
+    android:contentDescription="@string/notifications"
+    android:icon="@drawable/logo"
+    android:menuCategory="secondary"
+    android:title="@string/notifications"
+    app:showAsAction="ifRoom" />
+
+  <item
+    android:id="@+id/cart_fragment"
+    android:contentDescription="@string/notifications"
+    android:icon="@drawable/ic_shopping_cart"
+    android:menuCategory="secondary"
+    android:title="@string/notifications"
+    app:showAsAction="ifRoom" />
+
+</menu>

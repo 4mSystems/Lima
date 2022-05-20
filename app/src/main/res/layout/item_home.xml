@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="uiState"
+      type="app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState" />
+
+  </data>
+
+  <com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    app:cardCornerRadius="@dimen/_6sdp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/cat_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_145sdp"
+        android:scaleType="centerCrop"
+        android:src="@color/overlayBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:loadImage="@{uiState.categoryImage()}" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_3sdp"
+        android:text="@{uiState.categoryName()}"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/cat_image"
+        app:layout_constraintStart_toStartOf="@+id/cat_image"
+        app:layout_constraintTop_toBottomOf="@id/cat_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </com.google.android.material.card.MaterialCardView>
+</layout>
