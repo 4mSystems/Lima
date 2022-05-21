@@ -1,0 +1,92 @@
+<resources>
+  <string name="app_name" translatable="false">Lima&amp;Zola</string>
+  <string name="empty_warning">This field is required</string>
+
+  <!-- General Strings -->
+  <string name="connection_error">Connection Error</string>
+  <string name="no_internet">No internet connection please try again later</string>
+  <string name="retry">Retry</string>
+  <string name="cancel">Cancel</string>
+  <string name="some_error">Some error occurred, try again later</string>
+
+  <!-- Home -->
+  <string name="home">Home</string>
+  <string name="account">Account</string>
+
+  <!-- Tutorial -->
+  <string name="dot" translatable="false">•</string>
+  <string name="next">Next</string>
+  <!-- Intro -->
+
+  <!-- Log In -->
+  <string name="login">Login</string>
+  <string name="login_body">Please login to your account</string>
+  <string name="phone_hint">Phone</string>
+  <string name="password">Password</string>
+  <string name="login_as_guest">Visitor</string>
+
+  <!-- Sign Up -->
+  <string name="sign_up">Sign Up</string>
+
+  <!-- Account -->
+  <string name="log_out">Log Out</string>
+  <string name="skip">Skip</string>
+  <!--  <string name="google_api_key">Continue as Guest</string>-->
+
+  <string name="privacy">Freeze and Cancellation Policy</string>
+  <string name="confirm_header_text">Confirm account</string>
+  <string name="packages">Packages</string>
+  <string name="profile">Profile</string>
+  <string name="my_meals">My meals</string>
+  <string name="menu_more">More</string>
+  <string name="notifications">Notifications</string>
+  <string name="change_password">Change password</string>
+  <string name="not_match_password">The two passwords do not match</string>
+  <string name="yes">Yes</string>
+  <string name="active">Activate the account</string>
+  <string name="open_app">Start app</string>
+  <string name="choose_lang_toolbar">Select Language</string>
+  <string name="my_locations">My addresses</string>
+  <string name="promo_codes">My coupons</string>
+  <string name="add_location">Add address</string>
+  <string name="not_all_permission_accepted">Please accept the permissions</string>
+  <string name="location_is_off">Location off</string>
+  <string name="location_off_body_message">please open your location</string>
+  <string name="detect_location">locate me</string>
+  <string name="snaks">Snacks</string>
+  <string name="order_location">Select the address</string>
+  <string name="confirm">Confirm</string>
+  <string name="order_details">Order details</string>
+  <string name="facebook_app_id" translatable="false">1027486111200196</string>
+  <string name="fb_login_protocol_scheme" translatable="false">fb1234</string>
+  <string name="facebook_client_token" translatable="false">21f5f6133b920f45f10e6e6aa82b87b3</string>
+  <!--  Side Menu-->
+  <string name="about">About the app</string>
+  <string name="suggest">Complaints and suggestions</string>
+  <string name="share">Share the app</string>
+  <string name="rate">Rate app</string>
+  <string name="members">Clients</string>
+  <string name="agents">Agents</string>
+  <string name="terms">Terms and Conditions</string>
+  <string name="customer_service">Customer support</string>
+  <string name="center_data_update">Edit my center</string>
+  <string name="contact_us">Contact us</string>
+  <string name="language">Change language</string>
+  <!--  Suggestions-->
+  <string name="suggest_title">We are pleased to receive your suggestions and complaints and we strive to resolve them</string>
+  <string name="client_name">Name</string>
+  <string name="client_phone">Phone number</string>
+  <string name="client_address">Write your address in details</string>
+  <string name="client_notes">"Write your notes "</string>
+  <string name="send">Send</string>
+  <!--Contact Us-->
+  <string name="contact_title">Contact us to answer your questions</string>
+  <!--Countries-->
+  <string name="country_hint">Choose the country</string>
+  <string name="city_hint">Choose the city</string>
+  <string name="gov_hint">Choose the governorate</string>
+  <string name="login_btn">تسجيل</string>
+  <string name="new_account">إنشاء حساب جديد</string>
+
+
+</resources>
