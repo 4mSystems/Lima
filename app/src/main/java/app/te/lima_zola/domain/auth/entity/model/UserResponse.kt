@@ -17,7 +17,7 @@ data class UserResponse(
   @SerializedName("subscriber")
   val subscriber: Int = 0,
   @SerializedName("subscription_ended_at")
-  val subscription_ended_at: String? = null,
+  val subscription_ended_at: String = "",
 
   @SerializedName("city_id")
   val city_id: Int = 0,

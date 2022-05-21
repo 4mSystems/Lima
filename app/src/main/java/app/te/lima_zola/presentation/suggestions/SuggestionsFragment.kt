@@ -10,6 +10,7 @@ import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentSuggestionsBinding
 import app.te.lima_zola.presentation.base.utils.showSuccessAlert
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class SuggestionsFragment : BaseFragment<FragmentSuggestionsBinding>(), EventListeners {

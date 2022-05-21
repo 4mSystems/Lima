@@ -9,5 +9,6 @@ message User{
   string jwt = 4;
   string name = 5;
   string phone = 6;
+  int32 subscriber = 7;
 
 }

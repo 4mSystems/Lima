@@ -8,7 +8,7 @@
   <string name="some_error">حدث خطأ ما، برجاء المحاولة فى وقت لاحق</string>
 
   <!-- Home -->
-  <string name="home">الرئيسية</string>
+  <string name="childern">أطفال</string>
   <string name="account">حسابى</string>
 
   <!-- Tutorial -->
@@ -29,11 +29,11 @@
   <string name="log_out">تسجيل الخروج</string>
   <string name="skip">تخطى</string>
 
-  <string name="privacy">سياسة التجميد والالغاء</string>
+  <string name="privacy">سياسة الخصوصية</string>
   <string name="confirm_header_text">تأكيد رقم الهاتف</string>
   <string name="packages">الباقات</string>
   <string name="profile">بياناتي الشخصية</string>
-  <string name="my_meals">وجباتي</string>
+  <string name="mom">أمهات</string>
   <string name="menu_more">المزيد</string>
   <string name="notifications">الاشعارات</string>
   <string name="change_password">الاعدادات</string>
@@ -63,7 +63,7 @@
   <string name="terms">الشروط والاحكام</string>
   <string name="customer_service">الدعم الفنى</string>
   <string name="center_data_update">تعديل بيانات مركز الصيانة</string>
-  <string name="contact_us">تواصل معنا</string>
+  <string name="contact_us">إتصل بنا</string>
   <string name="language">تغيير اللغة</string>
   <!--  Suggestions-->
   <string name="suggest_title">يسعدنا تلقى اقتراحاتكم وشكواكم ونسعى جاهدا لحلها</string>
@@ -80,5 +80,17 @@
   <string name="gov_hint">اختار المحافظه</string>
   <string name="login_btn">تسجيل</string>
   <string name="new_account">إنشاء حساب جديد</string>
+  <string name="subscribe_header_text">اختر نوع الاشتراك</string>
+  <string name="annual">سنوي</string>
+  <string name="half_annual">نصف سنوي</string>
+  <string name="subscribe_payment_header_text">اختر نوع الدفع</string>
+  <string name="paymob">paymob</string>
+  <string name="pay_by_delegate">مندوب عن طريق منزلك</string>
+  <string name="log_out_hint">هل انت متأكد من انك تريد تسجيل الخروج؟</string>
+  <string name="favorite">المفضلة</string>
+  <string name="subscribe_account">اشترك الآن</string>
+  <string name="change_language">تغيير اللغة</string>
+  <string name="about_80">عن 80 فكرة</string>
+  <string name="team">فريق العمل</string>
 
 </resources>

@@ -6,7 +6,6 @@ import app.te.lima_zola.data.agents.data_source.remote.AgentsRemoteDataSource
 import app.te.lima_zola.data.agents.repository.AgentsRepositoryImpl
 import app.te.lima_zola.data.auth.data_source.remote.AuthRemoteDataSource
 import app.te.lima_zola.data.auth.repository.AuthRepositoryImpl
-import app.te.lima_zola.data.general.data_source.local.CountriesLocalDataSource
 import app.te.lima_zola.data.general.data_source.remote.GeneralRemoteDataSource
 import app.te.lima_zola.data.general.repository.GeneralRepositoryImpl
 import app.te.lima_zola.data.home.data_source.local.HomeLocalRemoteDataSource
@@ -39,11 +38,9 @@ class RepositoryModule {
   @Provides
   @Singleton
   fun provideGeneralRepository(
-    remoteDataSource: GeneralRemoteDataSource,
-    countriesLocalDataSource: CountriesLocalDataSource,
-    appPreferences: AppPreferences
+    remoteDataSource: GeneralRemoteDataSource
   ): GeneralRepository =
-    GeneralRepositoryImpl(remoteDataSource, countriesLocalDataSource, appPreferences)
+    GeneralRepositoryImpl(remoteDataSource)
 
   @Provides
   @Singleton

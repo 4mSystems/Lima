@@ -11,6 +11,7 @@ import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
 import app.te.lima_zola.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint

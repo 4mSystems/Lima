@@ -1,13 +1,10 @@
 package app.te.lima_zola.domain.general.entity.countries
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
-@Entity
+@Keep
 data class CityModel(
-  @PrimaryKey(autoGenerate = true)
-  val roomId: Int? = null,
 
   @SerializedName("image")
   var image: String = "",

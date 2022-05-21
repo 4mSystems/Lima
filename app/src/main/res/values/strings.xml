@@ -10,7 +10,7 @@
   <string name="some_error">Some error occurred, try again later</string>
 
   <!-- Home -->
-  <string name="home">Home</string>
+  <string name="childern">Home</string>
   <string name="account">Account</string>
 
   <!-- Tutorial -->
@@ -37,7 +37,7 @@
   <string name="confirm_header_text">Confirm account</string>
   <string name="packages">Packages</string>
   <string name="profile">Profile</string>
-  <string name="my_meals">My meals</string>
+  <string name="mom">My meals</string>
   <string name="menu_more">More</string>
   <string name="notifications">Notifications</string>
   <string name="change_password">Change password</string>
@@ -87,6 +87,18 @@
   <string name="gov_hint">Choose the governorate</string>
   <string name="login_btn">تسجيل</string>
   <string name="new_account">إنشاء حساب جديد</string>
+  <string name="subscribe_header_text">اختر نوع الاشتراك</string>
+  <string name="annual">سنوي</string>
+  <string name="half_annual">نصف سنوي</string>
+  <string name="subscribe_payment_header_text">اختر نوع الدفع</string>
+  <string name="paymob">paymob</string>
+  <string name="pay_by_delegate">مندوب عن طريق منزلك</string>
 
+  <string name="log_out_hint">Are you sure you want to log out?</string>
+  <string name="favorite">المفضلة</string>
+  <string name="subscribe_account">اشترك الآن</string>
+  <string name="change_language">تغيير اللغة</string>
+  <string name="about_80">عن 80 فكرة</string>
+  <string name="team">فريق العمل</string>
 
 </resources>

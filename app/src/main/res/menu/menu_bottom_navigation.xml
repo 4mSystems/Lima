@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/home_fragment"
+    android:icon="@drawable/ic_child"
+    android:title="@string/childern" />
+
+  <item
+    android:id="@+id/mother_fragment"
+    android:icon="@drawable/ic_mom"
+    android:title="@string/mom" />
+  <item
+    android:id="@+id/accountFragment"
+    android:icon="@drawable/ic_user"
+    android:title="@string/account" />
+
+  <item
+    android:id="@+id/moreFragment"
+    android:icon="@drawable/ic_nav_more"
+    android:title="@string/menu_more" />
+
+
+</menu>

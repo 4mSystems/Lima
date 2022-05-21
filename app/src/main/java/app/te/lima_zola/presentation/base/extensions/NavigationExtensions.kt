@@ -1,5 +1,4 @@
 package app.te.lima_zola.presentation.base.extensions
-
 import android.content.Intent
 import android.util.SparseArray
 import androidx.core.util.forEach
@@ -8,15 +7,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import app.te.lima_zola.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
  * Manages the various graphs needed for a [BottomNavigationView].
  *
  * This sample is a workaround until the Navigation Component supports multiple back stacks.
  */
-fun BottomNavigationView.setupWithNavController(
+fun BottomNavigationView.setupWithNavsController(
   navGraphIds: List<Int>,
   fragmentManager: FragmentManager,
   containerId: Int,
@@ -176,9 +175,7 @@ private fun BottomNavigationView.setupItemReselected(
       as NavHostFragment
     val navController = selectedFragment.navController
     // Pop the back stack to the start destination of the current navController graph
-    navController.popBackStack(
-      navController.graph.startDestinationId, false
-    )
+
   }
 }
 

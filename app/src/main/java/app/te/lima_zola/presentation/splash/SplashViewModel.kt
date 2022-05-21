@@ -8,6 +8,7 @@ import app.te.lima_zola.domain.general.use_case.GeneralUseCases
 import app.te.lima_zola.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject

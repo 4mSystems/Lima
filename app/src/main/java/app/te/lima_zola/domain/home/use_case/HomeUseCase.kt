@@ -9,10 +9,11 @@ import javax.inject.Inject
 
 
 class HomeUseCase @Inject constructor(
-  private val homeRepository: HomeRepository) {
-  fun homeService() = flow {
+  private val homeRepository: HomeRepository
+) {
+  fun homeService(cat_id: Int) = flow {
     emit(Resource.Loading)
-    val result = homeRepository.getHome()
+    val result = homeRepository.getHome(cat_id)
     emit(result)
   }.flowOn(Dispatchers.IO)
 

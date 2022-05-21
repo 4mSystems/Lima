@@ -48,6 +48,7 @@ android {
 
   buildTypes {
     getByName("debug") {
+      isDebuggable = true
       manifestPlaceholders["appName"] = "@string/app_name"
       manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher_release"
       manifestPlaceholders["appRoundIcon"] = "@mipmap/ic_launcher_release_round"
@@ -69,7 +70,6 @@ android {
 
       isMinifyEnabled = true
       isShrinkResources = true
-      isDebuggable = true
       manifestPlaceholders["appName"] = "@string/app_name"
       manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher_release"
       manifestPlaceholders["appRoundIcon"] = "@mipmap/ic_launcher_release_round"

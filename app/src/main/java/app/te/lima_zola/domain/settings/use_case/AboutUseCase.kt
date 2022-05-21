@@ -1,6 +1,6 @@
 package app.te.lima_zola.domain.settings.use_case
 
-import app.te.lima_zola.domain.settings.models.AboutMain
+import app.te.lima_zola.domain.settings.models.AboutData
 import app.te.lima_zola.domain.settings.repository.SettingsRepository
 import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
@@ -15,10 +15,10 @@ class AboutUseCase @Inject constructor(
   private val settingsRepository: SettingsRepository
 ) {
 
-  fun aboutData(): Flow<Resource<BaseResponse<AboutMain>>> =
+  fun aboutData(page:String): Flow<Resource<BaseResponse<AboutData>>> =
     flow {
       emit(Resource.Loading)
-      val result = settingsRepository.about()
+      val result = settingsRepository.about(page)
       emit(result)
     }.flowOn(Dispatchers.IO)
 }

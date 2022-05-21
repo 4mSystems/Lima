@@ -90,11 +90,12 @@ class AppPreferences @Inject constructor(private val context: Context) {
     context.userDataStore.updateData { store ->
       store.toBuilder()
         .setId(user.id)
-        .setEmail(user.email)
+        .setEmail(user.email ?: "")
         .setName(user.name)
         .setImage(user.image)
         .setPhone(user.phone)
         .setJwt(user.jwt)
+        .setSubscriber(user.subscriber)
         .build()
 
     }

@@ -17,41 +17,25 @@
 
   <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-      <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/imageSlider"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen150"
-        android:layout_margin="@dimen/_8sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:sliderAnimationDuration="600"
-        app:sliderAutoCycleDirection="back_and_forth"
-        app:sliderAutoCycleEnabled="true"
-        app:sliderIndicatorAnimationDuration="600"
-        app:sliderIndicatorGravity="center_horizontal|bottom"
-        app:sliderIndicatorMargin="15dp"
-        app:sliderIndicatorOrientation="horizontal"
-        app:sliderIndicatorPadding="3dp"
-        app:sliderIndicatorRadius="2dp"
-        app:sliderIndicatorSelectedColor="@color/colorPrimary"
-        app:sliderIndicatorUnselectedColor="@color/white"
-        app:sliderScrollTimeInSec="10"
-        app:sliderStartAutoCycle="true"
-        tools:layout_editor_absoluteX="10dp" />
 
       <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_offers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_200sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/imageSlider"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
+        app:spanCount="2"
         tools:listitem="@layout/item_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

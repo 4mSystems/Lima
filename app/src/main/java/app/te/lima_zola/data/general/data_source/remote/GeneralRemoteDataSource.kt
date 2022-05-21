@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class GeneralRemoteDataSource @Inject constructor(private val apiService: GeneralServices) :
   BaseRemoteDataSource() {
-  suspend fun getCountries() = safeApiCall {
-    apiService.getCountries()
+  suspend fun getCities() = safeApiCall {
+    apiService.getCities()
   }
 }

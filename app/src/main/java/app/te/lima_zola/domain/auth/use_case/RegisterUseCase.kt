@@ -35,8 +35,8 @@ class RegisterUseCase @Inject constructor(
       isValid = false
     }
 
-    if (request.password.isEmpty()) {
-      request.validation.passwordError.set(Constants.EMPTY)
+    if (request.city_id.isEmpty()) {
+      request.validation.cityError.set(Constants.EMPTY)
       isValid = false
     }
     if (request.password.isEmpty()) {

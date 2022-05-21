@@ -9,8 +9,8 @@ import app.te.lima_zola.databinding.FragmentConfirmCodeBinding
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
-import app.te.lima_zola.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ConfirmCodeFragment : BaseFragment<FragmentConfirmCodeBinding>(), ConfirmCodeEventListener {
@@ -52,7 +52,7 @@ class ConfirmCodeFragment : BaseFragment<FragmentConfirmCodeBinding>(), ConfirmC
   }
 
   private fun openHome() {
-    openActivityAndClearStack(HomeActivity::class.java)
+    navigateSafe(ConfirmCodeFragmentDirections.actionConfirmCodeFragmentToNavSubscribe())
   }
 
 

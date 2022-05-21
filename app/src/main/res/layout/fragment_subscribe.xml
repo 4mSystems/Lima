@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context="amrk.app.moon.views.fragments.SplashFragment">
+
+  <data>
+
+
+    <variable
+      name="uiState"
+      type="app.te.lima_zola.presentation.auth.subscribe.SubscribeUiState" />
+
+    <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.auth.subscribe.SubscribeEventListener" />
+  </data>
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/subscribe_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:onClick="@{()-> eventListener.back()}"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/register"
+        style="@style/TextBoldFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/subscribe_header_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
+
+      <RadioGroup
+        android:id="@+id/subscribe_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_26sdp"
+        android:checkedButton="@id/radio_annual"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/register">
+
+        <RadioButton
+          android:id="@+id/radio_annual"
+          style="@style/TextRegularFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:buttonTint="@color/colorPrimaryDark"
+          android:text="@string/annual"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="@color/black" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginTop="@dimen/_12sdp"
+          android:background="@color/line_color" />
+
+        <RadioButton
+          android:id="@+id/radio_half_annual"
+          style="@style/TextRegularFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:buttonTint="@color/colorPrimaryDark"
+          android:text="@string/half_annual"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="@color/black" />
+
+      </RadioGroup>
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_subscribe_payment"
+        style="@style/TextBoldFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/subscribe_payment_header_text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subscribe_period" />
+
+      <RadioGroup
+        android:id="@+id/subscribe_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_26sdp"
+        android:checkedButton="@id/radio_pay"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment">
+
+        <RadioButton
+          android:id="@+id/radio_pay"
+          style="@style/TextRegularFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:buttonTint="@color/colorPrimaryDark"
+          android:text="@string/paymob"
+          android:textAlignment="viewStart"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="@color/black" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginTop="@dimen/_12sdp"
+          android:background="@color/line_color" />
+
+        <RadioButton
+          android:id="@+id/radio_delegate"
+          style="@style/TextRegularFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:buttonTint="@color/colorPrimaryDark"
+          android:text="@string/pay_by_delegate"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="@color/black" />
+
+      </RadioGroup>
+
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/appCompatButtonNext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_80sdp"
+        android:onClick="@{()->eventListener.subscribe()}"
+        android:text="@string/confirm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:cornerRadius="@dimen/_25sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subscribe_payment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.core.widget.NestedScrollView>
+</layout>

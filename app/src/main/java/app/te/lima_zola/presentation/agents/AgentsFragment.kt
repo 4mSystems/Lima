@@ -10,6 +10,7 @@ import app.te.lima_zola.presentation.agents.viewModel.AgentsViewModel
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint
@@ -26,23 +27,6 @@ class AgentsFragment : BaseFragment<FragmentAgentsBinding>() {
 
   override
   fun setupObservers() {
-    lifecycleScope.launchWhenResumed {
-      viewModel.countryResponse.collect {
-        when (it) {
-          Resource.Loading -> {
-            hideKeyboard()
-            showLoading()
-          }
-          is Resource.Success -> {
-            Log.e("setupObservers", "setupObservers: " + it.value.size)
-            hideLoading()
-          }
-          is Resource.Failure -> {
-            hideLoading()
-            handleApiError(it)
-          }
-        }
-      }
-    }
+
   }
 }

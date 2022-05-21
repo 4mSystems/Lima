@@ -10,38 +10,35 @@
 
   </data>
 
-  <com.google.android.material.card.MaterialCardView
+
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_4sdp"
-    app:cardCornerRadius="@dimen/_6sdp"
-    app:cardElevation="4dp">
+    android:layout_margin="@dimen/_4sdp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/cat_image"
+      android:layout_width="@dimen/_100sdp"
+      android:layout_height="@dimen/_100sdp"
+      android:scaleType="centerCrop"
+      android:src="@color/overlayBackground"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:loadImage="@{uiState.categoryImage()}" />
 
-      <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/cat_image"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_145sdp"
-        android:scaleType="centerCrop"
-        android:src="@color/overlayBackground"
-        app:layout_constraintTop_toTopOf="parent"
-        app:loadImage="@{uiState.categoryImage()}" />
-
-      <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_3sdp"
-        android:text="@{uiState.categoryName()}"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/cat_image"
-        app:layout_constraintStart_toStartOf="@+id/cat_image"
-        app:layout_constraintTop_toBottomOf="@id/cat_image" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-  </com.google.android.material.card.MaterialCardView>
+    <androidx.appcompat.widget.AppCompatTextView
+      style="@style/TextMediumFont"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_3sdp"
+      android:text="@{uiState.categoryName()}"
+      android:textAlignment="center"
+      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@id/cat_image"
+      app:layout_constraintStart_toStartOf="@+id/cat_image"
+      app:layout_constraintTop_toBottomOf="@id/cat_image" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

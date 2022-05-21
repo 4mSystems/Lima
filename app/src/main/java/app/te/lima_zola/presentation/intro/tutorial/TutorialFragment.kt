@@ -14,6 +14,7 @@ import app.te.lima_zola.presentation.base.extensions.navigateSafe
 import app.te.lima_zola.presentation.base.extensions.openActivityAndClearStack
 import app.te.lima_zola.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class TutorialFragment : BaseFragment<FragmentTutorialBinding>() {

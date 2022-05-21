@@ -17,8 +17,7 @@
 
   <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/register_background">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
@@ -30,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_100sdp"
+        android:background="?selectableItemBackground"
         android:onClick="@{()-> eventListener.back()}"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -79,7 +79,7 @@
           android:inputType="text"
           android:text="@={request.name}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          android:textColor="@color/colorPrimaryDark"
+          android:textColor="@color/black"
           android:textColorHint="@color/colorGray" />
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,12 +114,12 @@
           android:inputType="phone"
           android:text="@={request.phone}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          android:textColor="@color/colorPrimaryDark"
+          android:textColor="@color/black"
           android:textColorHint="@color/colorGray" />
       </com.google.android.material.textfield.TextInputLayout>
 
       <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_job"
+        android:id="@+id/input_city"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -135,6 +135,8 @@
         app:boxCornerRadiusTopEnd="@dimen/_30sdp"
         app:boxCornerRadiusTopStart="@dimen/_30sdp"
         app:boxStrokeColor="@color/colorLight"
+        app:endIconDrawable="@drawable/ic_arrow_down"
+        app:endIconMode="custom"
         app:error="@{request.validation.cityError.equals(Constants.EMPTY)?@string/empty_warning:``}"
         app:errorEnabled="@{request.validation.cityError==null?false:true}"
         app:helperTextTextColor="@color/black"
@@ -145,13 +147,15 @@
         app:startIconTint="@color/colorGray">
 
         <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/city"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:focusable="false"
           android:inputType="text"
+          android:onClick="@{()-> eventListener.showCities()}"
           android:text="@={request.city_id}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          android:textColor="@color/colorPrimaryDark"
+          android:textColor="@color/black"
           android:textColorHint="@color/colorGray" />
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,7 +180,7 @@
         app:helperTextTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_job"
+        app:layout_constraintTop_toBottomOf="@+id/input_city"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_password"
         app:startIconTint="@color/colorGray">
@@ -187,7 +191,7 @@
           android:inputType="textPassword"
           android:text="@={request.password}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          android:textColor="@color/colorPrimaryDark"
+          android:textColor="@color/black"
           android:textColorHint="@color/colorGray" />
       </com.google.android.material.textfield.TextInputLayout>
 

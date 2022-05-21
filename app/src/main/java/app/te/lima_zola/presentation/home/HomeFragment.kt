@@ -1,27 +1,26 @@
 package app.te.lima_zola.presentation.home
 
+import android.view.Window
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentHomeBinding
-import app.te.lima_zola.domain.home.models.HomeMainData
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
-import app.te.lima_zola.presentation.base.utils.openBrowser
 import app.te.lima_zola.presentation.home.adapters.CategoriesAdapter
-import app.te.lima_zola.presentation.home.adapters.HomeSliderAdapter
 import app.te.lima_zola.presentation.home.eventListener.HomeEventListener
-import app.te.lima_zola.presentation.home.ui_state.HomeUiState
+import app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState
 import app.te.lima_zola.presentation.home.viewModels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
   private val viewModel: HomeViewModel by viewModels()
   private val categoriesAdapter = CategoriesAdapter()
-  private val sliderAdapter = HomeSliderAdapter(this)
 
   override
   fun getLayoutId() = R.layout.fragment_home
@@ -29,6 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
   override
   fun setBindingVariables() {
     binding.eventListener = this
+    viewModel.getHomeData(1)
   }
 
   override
@@ -42,7 +42,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
           }
           is Resource.Success -> {
             hideLoading()
-            setupUiState(it.value.data)
+            categoriesAdapter.differ.submitList(it.value.data.map { catItem ->
+              CategoriesUiItemState(
+                catItem
+              )
+            })
+            binding.rcOffers.setUpAdapter(categoriesAdapter, "2", "1")
           }
           is Resource.Failure -> {
             hideLoading()
@@ -54,38 +59,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
 
   }
 
-  private fun setupUiState(homeMainData: HomeMainData) {
-    val homeUiState = HomeUiState(homeMainData)
-    binding.uiState = homeUiState
-    //setupSlider
-    sliderAdapter.update(homeUiState.setUpSlider())
-    binding.imageSlider.setSliderAdapter(sliderAdapter)
-    // setCategories
-    categoriesAdapter.differ.submitList(homeUiState.setUpCategories())
-    binding.rcOffers.setUpAdapter(categoriesAdapter, "2", "1")
+  override fun setupStatusBar() {
+    val window: Window = requireActivity().window
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = getMyColor(R.color.home_status_bar)
   }
 
-  override fun openNotifications() {
-//    navigateSafe(HomeFragmentDirections.actionHomeFragmentToNotificationsFragment())
+  override fun openVideos() {
   }
 
-  override fun openMap() {
-//    navigateSafe(HomeFragmentDirections.actionHomeFragmentToNavMap())
+  override fun openDocs() {
   }
-
-
-  override fun openSliderUrl(url: String) {
-    openBrowser(requireContext(), url)
-  }
-
-  override fun openPackageDetails(packageId: Int, title: String) {
-//    navigateSafe(
-//      HomeFragmentDirections.actionHomeFragmentToPackageCategoriesFragment(
-//        title,
-//        packageId
-//      )
-//    )
-  }
-
 
 }

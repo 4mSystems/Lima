@@ -7,8 +7,8 @@ import javax.inject.Inject
 class SettingsRemoteDataSource @Inject constructor(private val apiService: SettingsServices) :
   BaseRemoteDataSource() {
 
-  suspend fun about() = safeApiCall {
-    apiService.about()
+  suspend fun about(page:String) = safeApiCall {
+    apiService.about(page)
   }
    suspend fun sendSuggestions(suggestionsRequest: SuggestionsRequest) = safeApiCall {
     apiService.suggestions(suggestionsRequest)

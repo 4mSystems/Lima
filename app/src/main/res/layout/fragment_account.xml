@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.account.AccountEventListener" />
+  </data>
+
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/account_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_profile"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_26sdp"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:text="@string/profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+      <View
+        android:id="@+id/v_profile"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_profile" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_favorite"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_favorite"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:text="@string/favorite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_profile" />
+
+      <View
+        android:id="@+id/v_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_favorite" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_subscribe_payment"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_arrow_outward"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:text="@string/subscribe_account"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_favorite" />
+
+      <View
+        android:id="@+id/v_subscribe_payment"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_change_language"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_language"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:text="@string/change_language"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_subscribe_payment" />
+
+      <View
+        android:id="@+id/v_change_language"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_change_language" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_logout"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_logout"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:text="@string/log_out"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_change_language" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.core.widget.NestedScrollView>
+
+
+</layout>

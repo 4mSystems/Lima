@@ -25,6 +25,7 @@ object Config {
 
   object Plugins {
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinKapt = "kotlin-kapt"
     const val navigationSafeArgs = "androidx.navigation.safeargs"
@@ -45,7 +46,7 @@ object Config {
     const val roomDb = "\"protein_db\""
     const val server_client_id =
       "\"654641907466-q9fljq7lumaci6cf0nilsp3d03m23osq.apps.googleusercontent.com\""
-    const val debugBaseUrl = "\"http://el3med.com/api/\""
-    const val releaseBaseUrl = "\"http://test.el3amd.com/api/\""
+    const val debugBaseUrl = "\"http://lima.tesolutionspro.com/api/\""
+    const val releaseBaseUrl = "\"http://lima.tesolutionspro.com/api/\""
   }
 }

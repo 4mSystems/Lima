@@ -81,7 +81,7 @@
           android:inputType="phone"
           android:text="@={request.phone}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          android:textColor="@color/colorPrimaryDark"
+          android:textColor="@color/black"
           android:textColorHint="@color/overlayBackground"
           android:textDirection="ltr" />
       </com.google.android.material.textfield.TextInputLayout>
@@ -119,7 +119,7 @@
           android:inputType="textPassword"
           android:text="@={request.password}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
-          android:textColor="@color/colorPrimaryDark"
+          android:textColor="@color/black"
           android:textColorHint="@color/overlayBackground" />
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,6 +157,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_23sdp"
+        android:background="?selectableItemBackground"
         android:text="@string/login_as_guest"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
@@ -166,11 +167,12 @@
 
       <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/whats"
+        style="@style/TextBoldFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextBoldFont"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
+        android:background="?selectableItemBackground"
         android:onClick="@{()-> eventListener.toRegister()}"
         android:text="@string/new_account"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"

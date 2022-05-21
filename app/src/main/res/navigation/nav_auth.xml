@@ -77,6 +77,14 @@
     <argument
       android:name="user_request"
       app:argType="app.te.lima_zola.domain.auth.entity.request.RegisterRequest" />
+    <action
+      android:id="@+id/action_confirmCodeFragment_to_nav_subscribe"
+      app:destination="@id/nav_subscribe"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
   </fragment>
+  <include app:graph="@navigation/nav_subscribe" />
 
 </navigation>

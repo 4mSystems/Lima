@@ -34,8 +34,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), SplashEventListene
 
   override fun openOnBoarding() {
     setLanguage("ar")
-    navigateSafe(SplashFragmentDirections.actionSplashFragmentToLogInFragment())
-//    navigateSafe(SplashFragmentDirections.actionSplashFragmentToTutorialFragment())
+    navigateSafe(SplashFragmentDirections.actionSplashFragmentToTutorialFragment())
   }
 
   override fun setupStatusBar() {

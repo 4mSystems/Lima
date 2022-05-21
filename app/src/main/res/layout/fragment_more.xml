@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.more.MoreEventListener" />
+  </data>
+
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/account_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_about_80"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_26sdp"
+        android:drawableStart="@drawable/ic_document"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openAbout80Fekra()}"
+        android:text="@string/about_80"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+      <View
+        android:id="@+id/v_about_80"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_about_80" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_about"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_about"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openAbout()}"
+        android:text="@string/about"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_about_80" />
+
+      <View
+        android:id="@+id/v_about"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_about" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_team"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_team"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openTeam()}"
+        android:text="@string/team"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_about" />
+
+      <View
+        android:id="@+id/v_team"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_team" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_contact"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_team"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openContact()}"
+        android:text="@string/contact_us"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_team" />
+
+      <View
+        android:id="@+id/v_contact"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_contact" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_terms"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_document"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openTerms()}"
+        android:text="@string/terms"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_contact" />
+
+      <View
+        android:id="@+id/v_terms"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/line_color_op"
+        app:layout_constraintTop_toBottomOf="@id/tv_terms" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_privacy"
+        style="@style/TextMediumFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:drawableStart="@drawable/ic_privacy"
+        android:drawablePadding="@dimen/_6sdp"
+        android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openPrivacyPolicy()}"
+        android:text="@string/privacy"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_terms" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextRegularFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:text="نسخة 1.1.1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_privacy" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.core.widget.NestedScrollView>
+
+
+</layout>

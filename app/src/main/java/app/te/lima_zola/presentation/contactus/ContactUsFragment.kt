@@ -8,14 +8,15 @@ import app.te.lima_zola.presentation.base.extensions.*
 import app.te.lima_zola.R
 import app.te.lima_zola.data.settings.mapToUiState
 import app.te.lima_zola.databinding.FragmentContactUsBinding
-import app.te.lima_zola.presentation.about.viewModels.AboutViewModel
+import app.te.lima_zola.presentation.settings.viewModels.SettingsViewModel
 import app.te.lima_zola.presentation.base.utils.openBrowser
 import dagger.hilt.android.AndroidEntryPoint
 import app.te.lima_zola.presentation.base.utils.openWhatsApp
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ContactUsFragment : BaseFragment<FragmentContactUsBinding>(), ContactUsEventListeners {
-  private val viewModel: AboutViewModel by viewModels()
+  private val viewModel: SettingsViewModel by viewModels()
 
   override
   fun getLayoutId() = R.layout.fragment_contact_us
@@ -33,7 +34,7 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>(), ContactUsEve
           }
           is Resource.Success -> {
             hideLoading()
-            binding.uiState = it.value.data.aboutData.mapToUiState()
+            binding.uiState = it.value.data.mapToUiState()
           }
           is Resource.Failure -> {
             hideLoading()
