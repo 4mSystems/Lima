@@ -85,33 +85,6 @@ fun RatingBar.rateApp(value: String) {
     rating = value.toFloat()
 }
 
-fun ImageView.drawCircle(backgroundColor: String, borderColor: String? = null) {
-  val shape = GradientDrawable()
-  shape.shape = GradientDrawable.OVAL
-  shape.cornerRadii = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
-
-  shape.setColor(Color.parseColor(backgroundColor))
-
-  borderColor?.let {
-    shape.setStroke(10, Color.parseColor(it))
-  }
-
-  background = shape
-}
-
-fun ImageView.setTint(@ColorRes id: Int) =
-  setColorFilter(ContextCompat.getColor(context, id), PorterDuff.Mode.SRC_IN)
-
-fun View.enable() {
-  isEnabled = true
-  alpha = 1f
-}
-
-fun View.disable() {
-  isEnabled = false
-  alpha = 0.5f
-}
-
 fun View.showSnackBar(
   message: String,
   retryActionName: String? = null,

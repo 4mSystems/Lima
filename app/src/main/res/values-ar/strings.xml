@@ -64,7 +64,7 @@
   <string name="customer_service">الدعم الفنى</string>
   <string name="center_data_update">تعديل بيانات مركز الصيانة</string>
   <string name="contact_us">إتصل بنا</string>
-  <string name="language">تغيير اللغة</string>
+  <string name="language">اختر اللغة</string>
   <!--  Suggestions-->
   <string name="suggest_title">يسعدنا تلقى اقتراحاتكم وشكواكم ونسعى جاهدا لحلها</string>
   <string name="client_name">الاسم</string>
@@ -92,5 +92,8 @@
   <string name="change_language">تغيير اللغة</string>
   <string name="about_80">عن 80 فكرة</string>
   <string name="team">فريق العمل</string>
+    <string name="version_name">النسخه</string>
+  <string name="ar">اللغة العربية</string>
+  <string name="en">اللغة الإنجليزية</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package app.te.lima_zola.presentation.account
 
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventListener {
   private val accountViewModel: AccountViewModel by viewModels()
+  lateinit var uiState: AccountUiState
 
   override
   fun getLayoutId() = R.layout.fragment_account
@@ -46,16 +48,24 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventList
         }
       }
     }
+    lifecycleScope.launchWhenResumed {
+      accountViewModel.userData.collect {
+        Log.e("setupObservers", "setupObservers: " + it.subscriber)
+        uiState = AccountUiState(it)
+        binding.uiState=uiState
+        uiState.updateUi()
+      }
+    }
   }
 
   private fun showLogOutPopUp() {
     PrettyPopUpHelper.Builder(childFragmentManager)
       .setStyle(PrettyPopUpHelper.Style.STYLE_1_HORIZONTAL_BUTTONS)
       .setTitle(R.string.log_out)
-      .setTitleColor(getMyColor(R.color.colorPrimaryDark))
+      .setTitleColor(getMyColor(R.color.black))
       .setContent(R.string.log_out_hint)
-      .setContentColor(getMyColor(R.color.colorGray))
-      .setPositiveButtonBackground(R.color.colorPrimaryDark)
+      .setContentColor(getMyColor(R.color.black))
+      .setPositiveButtonBackground(R.drawable.corner_view_primary_dark)
       .setPositiveButtonTextColor(getMyColor(R.color.white))
       .setImage(R.drawable.ic_logout)
       .setPositiveButton(R.string.log_out) {
@@ -63,7 +73,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventList
         accountViewModel.logOut()
       }
       .setNegativeButtonBackground(R.drawable.corner_view_gray_border)
-      .setNegativeButtonTextColor(getMyColor(R.color.white))
+      .setNegativeButtonTextColor(getMyColor(R.color.black))
       .setNegativeButton(getMyString(R.string.cancel), null)
       .create()
   }
@@ -87,14 +97,14 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventList
   }
 
   override fun openSubscribe() {
-    TODO("Not yet implemented")
+    navigateSafe(AccountFragmentDirections.actionAccountFragmentToNavSubscribe())
   }
 
   override fun openChangeLanguage() {
-    TODO("Not yet implemented")
+    navigateSafe(AccountFragmentDirections.actionAccountFragmentToLanguageFragment())
   }
 
   override fun logout() {
-    TODO("Not yet implemented")
+    showLogOutPopUp()
   }
 }

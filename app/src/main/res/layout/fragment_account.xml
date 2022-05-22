@@ -5,6 +5,10 @@
   <data>
 
     <variable
+      name="uiState"
+      type="app.te.lima_zola.presentation.account.AccountUiState" />
+
+    <variable
       name="eventListener"
       type="app.te.lima_zola.presentation.account.AccountEventListener" />
   </data>
@@ -43,6 +47,7 @@
         android:text="@string/profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
+        android:visibility="@{uiState.updateProfileVisibility}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
@@ -52,6 +57,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@color/line_color_op"
+        android:visibility="@{uiState.updateProfileVisibility}"
         app:layout_constraintTop_toBottomOf="@id/tv_profile" />
 
       <androidx.appcompat.widget.AppCompatTextView
@@ -67,6 +73,7 @@
         android:text="@string/favorite"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
+        android:visibility="@{uiState.updateProfileVisibility}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_profile" />
 
@@ -76,6 +83,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@color/line_color_op"
+        android:visibility="@{uiState.updateProfileVisibility}"
         app:layout_constraintTop_toBottomOf="@id/tv_favorite" />
 
       <androidx.appcompat.widget.AppCompatTextView
@@ -87,7 +95,9 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:drawableStart="@drawable/ic_arrow_outward"
         android:drawablePadding="@dimen/_6sdp"
+        android:visibility="@{uiState.updateSubscribeVisibility}"
         android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openSubscribe()}"
         android:text="@string/subscribe_account"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
@@ -98,6 +108,7 @@
         android:id="@+id/v_subscribe_payment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:visibility="@{uiState.updateSubscribeVisibility}"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@color/line_color_op"
         app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment" />
@@ -112,6 +123,7 @@
         android:drawableStart="@drawable/ic_language"
         android:drawablePadding="@dimen/_6sdp"
         android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()->eventListener.openChangeLanguage()}"
         android:text="@string/change_language"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
@@ -136,6 +148,7 @@
         android:drawableStart="@drawable/ic_logout"
         android:drawablePadding="@dimen/_6sdp"
         android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.logout()}"
         android:text="@string/log_out"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"

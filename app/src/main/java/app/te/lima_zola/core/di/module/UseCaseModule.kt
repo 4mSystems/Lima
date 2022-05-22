@@ -14,7 +14,7 @@ import app.te.lima_zola.domain.intro.repository.IntroRepository
 import app.te.lima_zola.domain.intro.use_case.IntroUseCase
 import app.te.lima_zola.domain.settings.repository.SettingsRepository
 import app.te.lima_zola.domain.settings.use_case.AboutUseCase
-import app.te.lima_zola.domain.settings.use_case.SuggestionsUseCase
+import app.te.lima_zola.domain.settings.use_case.TeamUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -82,7 +82,7 @@ class UseCaseModule {
   @Singleton
   fun provideSuggestionsUseCase(
     settingsRepository: SettingsRepository
-  ): SuggestionsUseCase = SuggestionsUseCase(settingsRepository)
+  ): TeamUseCase = TeamUseCase(settingsRepository)
 
 @Provides
   @Singleton

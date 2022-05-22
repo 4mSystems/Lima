@@ -173,11 +173,11 @@
         app:layout_constraintTop_toBottomOf="@id/v_terms" />
 
       <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/version_name"
         style="@style/TextRegularFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_25sdp"
-        android:text="نسخة 1.1.1"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"

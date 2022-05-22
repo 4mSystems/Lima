@@ -100,5 +100,8 @@
   <string name="change_language">تغيير اللغة</string>
   <string name="about_80">عن 80 فكرة</string>
   <string name="team">فريق العمل</string>
+    <string name="version_name">النسخه</string>
+  <string name="ar">اللغة العربية</string>
+  <string name="en">اللغة الإنجليزية</string>
 
 </resources>

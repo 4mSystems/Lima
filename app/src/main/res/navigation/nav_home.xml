@@ -20,17 +20,6 @@
 
   </fragment>
 
-
-  <fragment
-    android:id="@+id/suggestions_fragment"
-    android:name="app.te.lima_zola.presentation.suggestions.SuggestionsFragment"
-    android:label="@string/suggest"
-    tools:layout="@layout/fragment_suggestions" />
-  <fragment
-    android:id="@+id/contact_fragment"
-    android:name="app.te.lima_zola.presentation.contactus.ContactUsFragment"
-    android:label="@string/contact_us"
-    tools:layout="@layout/fragment_contact_us" />
   <fragment
     android:id="@+id/agents_fragment"
     android:name="app.te.lima_zola.presentation.agents.AgentsFragment"
@@ -39,7 +28,22 @@
   <fragment
     android:id="@+id/accountFragment"
     android:name="app.te.lima_zola.presentation.account.AccountFragment"
-    tools:layout="@layout/fragment_account" />
+    tools:layout="@layout/fragment_account">
+    <action
+      android:id="@+id/action_accountFragment_to_languageFragment"
+      app:destination="@id/languageFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+    <action
+      android:id="@+id/action_accountFragment_to_nav_subscribe"
+      app:destination="@id/nav_subscribe"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right"/>
+  </fragment>
 
   <fragment
     android:id="@+id/moreFragment"
@@ -73,6 +77,22 @@
       app:exitAnim="@anim/anim_slide_out_left"
       app:popEnterAnim="@anim/anim_slide_in_left"
       app:popExitAnim="@anim/anim_slide_out_right" />
+
+    <action
+      android:id="@+id/action_moreFragment_to_teamFragment"
+      app:destination="@id/teamFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+    <action
+      android:id="@+id/action_moreFragment_to_contactFragment"
+      app:destination="@id/contact_fragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+
   </fragment>
 
   <fragment
@@ -92,5 +112,19 @@
     android:id="@+id/privacyFragment"
     android:name="app.te.lima_zola.presentation.settings.PrivacyFragment"
     tools:layout="@layout/fragment_privacy" />
+  <fragment
+    android:id="@+id/teamFragment"
+    android:name="app.te.lima_zola.presentation.settings.TeamFragment"
+    tools:layout="@layout/fragment_team" />
 
+  <fragment
+    android:id="@+id/contact_fragment"
+    android:name="app.te.lima_zola.presentation.contactus.ContactUsFragment"
+    android:label="@string/contact_us"
+    tools:layout="@layout/fragment_contact_us" />
+  <fragment
+    android:id="@+id/languageFragment"
+    android:name="app.te.lima_zola.presentation.account.LanguageFragment"
+    tools:layout="@layout/fragment_language" />
+  <include app:graph="@navigation/nav_subscribe" />
 </navigation>

@@ -117,9 +117,3 @@ fun openWhatsApp(context: Context, number: String) {
   val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(urlIntent))
   context.startActivity(browserIntent)
 }
-
-fun copyText(text: String, context: Context) {
-  val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-  val clipData = ClipData.newPlainText("text", text)
-  clipboardManager.setPrimaryClip(clipData)
-}

@@ -1,4 +1,4 @@
-package app.te.lima_zola.presentation.contactus
+package app.te.lima_zola.presentation.settings
 
 import android.view.Window
 import android.view.WindowManager
@@ -9,27 +9,29 @@ import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
 import app.te.lima_zola.R
 import app.te.lima_zola.data.settings.mapToUiState
-import app.te.lima_zola.databinding.FragmentContactUsBinding
+import app.te.lima_zola.databinding.FragmentTeamBinding
+import app.te.lima_zola.domain.settings.models.Teams
 import app.te.lima_zola.presentation.base.events.BaseEventListener
+import app.te.lima_zola.presentation.settings.adapters.TeamAdapter
 import app.te.lima_zola.presentation.settings.viewModels.SettingsViewModel
-import app.te.lima_zola.presentation.base.utils.openBrowser
 import dagger.hilt.android.AndroidEntryPoint
-import app.te.lima_zola.presentation.base.utils.openWhatsApp
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class ContactUsFragment : BaseFragment<FragmentContactUsBinding>(), BaseEventListener {
+class TeamFragment : BaseFragment<FragmentTeamBinding>(), BaseEventListener {
   private val viewModel: SettingsViewModel by viewModels()
+  private val teamAdapter = TeamAdapter()
 
   override
-  fun getLayoutId() = R.layout.fragment_contact_us
+  fun getLayoutId() = R.layout.fragment_team
   override fun setBindingVariables() {
     binding.eventListener = this
+    viewModel.getTeam()
   }
 
   override fun setupObservers() {
     lifecycleScope.launchWhenResumed {
-      viewModel.aboutResponse.collect {
+      viewModel.team.collect {
         when (it) {
           Resource.Loading -> {
             hideKeyboard()
@@ -37,7 +39,7 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>(), BaseEventLis
           }
           is Resource.Success -> {
             hideLoading()
-            binding.uiState = it.value.data.mapToUiState()
+            updateUi(it.value.data)
           }
           is Resource.Failure -> {
             hideLoading()
@@ -46,7 +48,11 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>(), BaseEventLis
         }
       }
     }
+  }
 
+  private fun updateUi(team: List<Teams>) {
+    teamAdapter.differ.submitList(team)
+    binding.rcTeam.setUpAdapter(teamAdapter, "2", "1")
   }
 
   override fun setupStatusBar() {

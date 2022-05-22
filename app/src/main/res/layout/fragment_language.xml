@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context="amrk.app.moon.views.fragments.SplashFragment">
+
+  <data>
+
+    <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.base.events.BaseEventListener" />
+  </data>
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/subscribe_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:onClick="@{()-> eventListener.back()}"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/register"
+        style="@style/TextRegularFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/language"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
+
+      <RadioGroup
+        android:id="@+id/lang_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_26sdp"
+        android:checkedButton="@id/radio_annual"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/register">
+
+        <RadioButton
+          android:id="@+id/radio_annual"
+          style="@style/TextRegularFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:buttonTint="@color/colorPrimaryDark"
+          android:text="@string/ar"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="@color/black" />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:layout_marginTop="@dimen/_12sdp"
+          android:background="@color/line_color" />
+
+        <RadioButton
+          android:id="@+id/radio_half_annual"
+          style="@style/TextRegularFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:buttonTint="@color/colorPrimaryDark"
+          android:text="@string/en"
+          android:textAppearance="@style/TextAppearance.AppCompat.Large"
+          android:textColor="@color/black" />
+
+      </RadioGroup>
+
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/appCompatButtonNext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_80sdp"
+        android:text="@string/confirm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:cornerRadius="@dimen/_25sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lang_group" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.core.widget.NestedScrollView>
+</layout>
