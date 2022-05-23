@@ -42,8 +42,25 @@
       app:enterAnim="@anim/anim_slide_in_right"
       app:exitAnim="@anim/anim_slide_out_left"
       app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right"/>
+      app:popExitAnim="@anim/anim_slide_out_right" />
+
+    <action
+      android:id="@+id/action_accountFragment_to_profileFragment"
+      app:destination="@id/profileFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+    <action
+      android:id="@+id/action_accountFragment_to_nav_auth"
+      app:destination="@id/nav_auth"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+
   </fragment>
+  <include app:graph="@navigation/nav_auth" />
 
   <fragment
     android:id="@+id/moreFragment"
@@ -127,4 +144,23 @@
     android:name="app.te.lima_zola.presentation.account.LanguageFragment"
     tools:layout="@layout/fragment_language" />
   <include app:graph="@navigation/nav_subscribe" />
+
+  <fragment
+    android:id="@+id/profileFragment"
+    android:name="app.te.lima_zola.presentation.profile.ProfileFragment"
+    tools:layout="@layout/fragment_profile">
+    <action
+      android:id="@+id/action_profileFragment_to_changePasswordFragment"
+      app:destination="@id/changePasswordFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/changePasswordFragment"
+    android:name="app.te.lima_zola.presentation.profile.changePassword.ChangePasswordFragment"
+    tools:layout="@layout/fragment_change_password" />
+
 </navigation>

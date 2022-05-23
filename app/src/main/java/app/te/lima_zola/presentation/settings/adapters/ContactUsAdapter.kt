@@ -9,16 +9,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.ItemContactBinding
+import app.te.lima_zola.presentation.contactus.ContactUsEventListeners
 import app.te.lima_zola.presentation.contactus.ContactUsUiState
 
-class ContactUsAdapter() :
+class ContactUsAdapter(val contactUsEventListeners: ContactUsEventListeners) :
   RecyclerView.Adapter<ContactUsAdapter.ViewHolder>() {
   private val differCallback = object : DiffUtil.ItemCallback<ContactUsUiState>() {
     override fun areItemsTheSame(
       oldItem: ContactUsUiState,
       newItem: ContactUsUiState
     ): Boolean {
-      return oldItem.id== newItem.id
+      return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
@@ -71,6 +72,7 @@ class ContactUsAdapter() :
 
     fun setModel(item: ContactUsUiState) {
       itemLayoutBinding.uiState = item
+      itemLayoutBinding.eventListener = contactUsEventListeners
     }
   }
 

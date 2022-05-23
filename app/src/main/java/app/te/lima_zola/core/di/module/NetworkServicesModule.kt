@@ -6,6 +6,7 @@ import app.te.lima_zola.data.auth.data_source.remote.AuthServices
 import app.te.lima_zola.data.general.data_source.remote.GeneralServices
 import app.te.lima_zola.data.home.data_source.remote.HomeServices
 import app.te.lima_zola.data.intro.data_source.IntroServices
+import app.te.lima_zola.data.profile.data_source.ProfileServices
 import app.te.lima_zola.data.settings.data_source.remote.SettingsServices
 import dagger.Module
 import dagger.Provides
@@ -53,6 +54,11 @@ object NetworkServicesModule {
   @Singleton
   fun provideAgentsServices(retrofit: Retrofit): AgentsServices =
     retrofit.create(AgentsServices::class.java)
+
+  @Provides
+  @Singleton
+  fun provideUpdateProfileServices(retrofit: Retrofit): ProfileServices =
+    retrofit.create(ProfileServices::class.java)
 
 
 }

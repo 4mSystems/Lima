@@ -95,5 +95,9 @@
     <string name="version_name">النسخه</string>
   <string name="ar">اللغة العربية</string>
   <string name="en">اللغة الإنجليزية</string>
+    <string name="save">حفظ</string>
+  <string name="forget_password">تغيير كلمة المرور</string>
+  <string name="password_hint_confirm">تأكيد كلمة المرور</string>
+  <string name="old_password">كلمة المرور القديمة</string>
 
 </resources>

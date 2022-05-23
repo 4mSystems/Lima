@@ -2,6 +2,7 @@ package app.te.lima_zola.data.auth.data_source.remote
 
 import app.te.lima_zola.data.remote.BaseRemoteDataSource
 import app.te.lima_zola.domain.auth.entity.request.*
+import app.te.lima_zola.domain.profile.entity.UpdatePassword
 import javax.inject.Inject
 
 class AuthRemoteDataSource @Inject constructor(private val apiService: AuthServices) :
@@ -23,7 +24,7 @@ class AuthRemoteDataSource @Inject constructor(private val apiService: AuthServi
     apiService.verifyAccount(request)
   }
 
-  suspend fun changePassword(request: ChangePasswordRequest) = safeApiCall {
+  suspend fun changePassword(request: UpdatePassword) = safeApiCall {
     apiService.changePassword(request)
   }
 

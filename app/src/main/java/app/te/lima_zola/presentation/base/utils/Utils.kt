@@ -3,8 +3,6 @@ package app.te.lima_zola.presentation.base.utils
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -117,3 +115,9 @@ fun openWhatsApp(context: Context, number: String) {
   val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(urlIntent))
   context.startActivity(browserIntent)
 }
+
+fun openDial(context: Context, number: String) {
+  val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", number, null))
+  context.startActivity(intent)
+}
+

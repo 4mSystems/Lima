@@ -44,6 +44,7 @@
         android:drawableStart="@drawable/ic_user"
         android:drawablePadding="@dimen/_6sdp"
         android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openProfile()}"
         android:text="@string/profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
@@ -95,12 +96,12 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:drawableStart="@drawable/ic_arrow_outward"
         android:drawablePadding="@dimen/_6sdp"
-        android:visibility="@{uiState.updateSubscribeVisibility}"
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openSubscribe()}"
         android:text="@string/subscribe_account"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
+        android:visibility="@{uiState.updateSubscribeVisibility}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_favorite" />
 
@@ -108,9 +109,9 @@
         android:id="@+id/v_subscribe_payment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:visibility="@{uiState.updateSubscribeVisibility}"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@color/line_color_op"
+        android:visibility="@{uiState.updateSubscribeVisibility}"
         app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment" />
 
       <androidx.appcompat.widget.AppCompatTextView
@@ -145,15 +146,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:drawableStart="@drawable/ic_logout"
         android:drawablePadding="@dimen/_6sdp"
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.logout()}"
-        android:text="@string/log_out"
+        android:text="@{uiState.getLogUser(context)}"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_change_language" />
+      <!--      app:fromResources="@{uiState.logUser}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.core.widget.NestedScrollView>

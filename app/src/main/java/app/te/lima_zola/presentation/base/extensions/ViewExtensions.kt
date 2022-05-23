@@ -71,6 +71,13 @@ fun TextView.fromHtml(text: String?) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.N)
+@BindingAdapter("app:fromResources")
+fun TextView.fromResources(resource: Int?) {
+  if (resource != null)
+    text = resources.getString(resource)
+}
+
 @BindingAdapter("app:goneUnless")
 fun View.goneUnless(visible: Boolean) {
   visibility = if (visible) View.VISIBLE else View.GONE
@@ -294,4 +301,9 @@ fun RecyclerView.setUpAdapter(
   ) else initHorizontalRV(this, this.context, spanCount.toInt())
   this.adapter = itemsAdapter
 
+}
+
+fun String.isNumeric(toCheck: String): Boolean {
+  val regex = "-?[0-9]+(\\.[0-9]+)?".toRegex()
+  return toCheck.matches(regex)
 }

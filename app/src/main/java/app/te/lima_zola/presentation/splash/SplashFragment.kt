@@ -29,7 +29,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), SplashEventListene
 
 
   override fun openHome() {
+
     openActivityAndClearStack(HomeActivity::class.java)
+
   }
 
   override fun openOnBoarding() {

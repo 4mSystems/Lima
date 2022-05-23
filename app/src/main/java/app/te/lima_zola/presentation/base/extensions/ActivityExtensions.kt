@@ -20,6 +20,14 @@ fun <A : Activity> Activity.openActivity(activity: Class<A>) {
 
 }
 
+fun <A : Activity> Activity.openIntentActivity(activity: Class<A>, extra: Int) {
+  Intent(this, activity).apply {
+    putExtra("extra", extra)
+    startActivity(this)
+  }
+}
+
+
 fun Context.adjustFontScale() {
   if (resources.configuration.fontScale > 1.1f) {
     resources.configuration.fontScale = 1f

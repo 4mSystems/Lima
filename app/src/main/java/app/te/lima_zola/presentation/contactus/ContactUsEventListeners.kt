@@ -1,6 +1,7 @@
 package app.te.lima_zola.presentation.contactus
 
-interface ContactUsEventListeners {
+import app.te.lima_zola.presentation.base.events.BaseEventListener
+
+interface ContactUsEventListeners : BaseEventListener {
   fun openContactUrl(url: String)
-  fun openWhatsApp(number: String)
 }

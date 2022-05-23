@@ -1,0 +1,39 @@
+package app.te.lima_zola.domain.profile.entity
+
+import android.os.Parcelable
+import androidx.annotation.Keep
+import androidx.databinding.ObservableField
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+@Keep
+class UpdateProfileRequest : Parcelable {
+  var name: String = ""
+    set(value) {
+      validation.nameError.set(null)
+      field = value
+    }
+
+  var phone: String = ""
+    set(value) {
+      validation.phoneError.set(null)
+      field = value
+    }
+
+
+  @Transient
+  var validation: UpdateProfileValidationException = UpdateProfileValidationException()
+
+}
+
+
+@Keep
+class UpdateProfileValidationException {
+
+  @Transient
+  var nameError: ObservableField<String> = ObservableField<String>()
+
+  @Transient
+  var phoneError: ObservableField<String> = ObservableField<String>()
+
+}

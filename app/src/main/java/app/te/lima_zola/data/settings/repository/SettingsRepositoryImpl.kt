@@ -2,6 +2,7 @@ package app.te.lima_zola.data.settings.repository
 
 import app.te.lima_zola.data.settings.data_source.remote.SettingsRemoteDataSource
 import app.te.lima_zola.domain.settings.models.AboutData
+import app.te.lima_zola.domain.settings.models.ContactUs
 import app.te.lima_zola.domain.settings.models.Teams
 import app.te.lima_zola.domain.settings.repository.SettingsRepository
 import app.te.lima_zola.domain.utils.BaseResponse
@@ -14,6 +15,8 @@ class SettingsRepositoryImpl @Inject constructor(private val remoteDataSource: S
     remoteDataSource.about(page)
 
   override suspend fun getTeam(): Resource<BaseResponse<List<Teams>>> = remoteDataSource.getTeam()
+  override suspend fun getContact(): Resource<BaseResponse<List<ContactUs>>> =
+    remoteDataSource.getContacts()
 
 
 }

@@ -97,6 +97,10 @@ fun <A : Activity> Fragment.openActivity(activity: Class<A>) {
   requireActivity().openActivity(activity)
 }
 
+fun <A : Activity> Fragment.openIntentActivity(activity: Class<A>, extra: Int) {
+  requireActivity().openIntentActivity(activity, extra)
+}
+
 fun <T> Fragment.getNavigationResultLiveData(key: String = "result") =
   findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<T>(key)
 

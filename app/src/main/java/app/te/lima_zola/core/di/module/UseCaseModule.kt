@@ -12,8 +12,11 @@ import app.te.lima_zola.domain.home.repository.HomeRepository
 import app.te.lima_zola.domain.home.use_case.HomeUseCase
 import app.te.lima_zola.domain.intro.repository.IntroRepository
 import app.te.lima_zola.domain.intro.use_case.IntroUseCase
+import app.te.lima_zola.domain.profile.repository.ProfileRepository
+import app.te.lima_zola.domain.profile.use_case.ProfileUseCase
 import app.te.lima_zola.domain.settings.repository.SettingsRepository
 import app.te.lima_zola.domain.settings.use_case.AboutUseCase
+import app.te.lima_zola.domain.settings.use_case.ContactUseCase
 import app.te.lima_zola.domain.settings.use_case.TeamUseCase
 import dagger.Module
 import dagger.Provides
@@ -84,12 +87,24 @@ class UseCaseModule {
     settingsRepository: SettingsRepository
   ): TeamUseCase = TeamUseCase(settingsRepository)
 
-@Provides
+  @Provides
+  @Singleton
+  fun provideContactUseCase(
+    settingsRepository: SettingsRepository
+  ): ContactUseCase = ContactUseCase(settingsRepository)
+
+  @Provides
   @Singleton
   fun provideAgentUseCase(
     agentsRepository: AgentsRepository
   ): AgentsUseCase = AgentsUseCase(agentsRepository)
 
+  @Provides
+  @Singleton
+  fun provideUpdateProfileUseCase(
+    profileRepository: ProfileRepository,
+    userLocalUseCase: UserLocalUseCase
+  ): ProfileUseCase = ProfileUseCase(profileRepository, userLocalUseCase)
 
   //public use cases
   @Provides

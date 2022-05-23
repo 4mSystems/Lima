@@ -2,6 +2,7 @@ package app.te.lima_zola.data.auth.data_source.remote
 
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
 import app.te.lima_zola.domain.auth.entity.request.*
+import app.te.lima_zola.domain.profile.entity.UpdatePassword
 import app.te.lima_zola.domain.utils.BaseResponse
 import retrofit2.http.*
 
@@ -20,7 +21,7 @@ interface AuthServices {
   suspend fun verifyAccount(@Body request: RegisterRequest): BaseResponse<UserResponse>
 
   @POST("V1/auth/change_password")
-  suspend fun changePassword(@Body request: ChangePasswordRequest): BaseResponse<*>
+  suspend fun changePassword(@Body request: UpdatePassword): BaseResponse<*>
 
   @POST("v1/auth/register")
   suspend fun register(@Body request: RegisterRequest): BaseResponse<*>
