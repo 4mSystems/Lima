@@ -5,6 +5,10 @@
   <data>
 
     <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.home.eventListener.HomeEventListener" />
+
+    <variable
       name="uiState"
       type="app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState" />
 
@@ -14,7 +18,8 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_4sdp">
+    android:layout_margin="@dimen/_4sdp"
+    android:onClick="@{()-> eventListener.openVideos(uiState.id)}">
 
     <androidx.appcompat.widget.AppCompatImageView
       android:id="@+id/cat_image"

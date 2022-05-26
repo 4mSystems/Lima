@@ -18,6 +18,8 @@ import app.te.lima_zola.domain.settings.repository.SettingsRepository
 import app.te.lima_zola.domain.settings.use_case.AboutUseCase
 import app.te.lima_zola.domain.settings.use_case.ContactUseCase
 import app.te.lima_zola.domain.settings.use_case.TeamUseCase
+import app.te.lima_zola.domain.videos_articles.repository.VideosArticlesRepository
+import app.te.lima_zola.domain.videos_articles.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -105,6 +107,36 @@ class UseCaseModule {
     profileRepository: ProfileRepository,
     userLocalUseCase: UserLocalUseCase
   ): ProfileUseCase = ProfileUseCase(profileRepository, userLocalUseCase)
+
+  @Provides
+  @Singleton
+  fun provideVideosArticlesUseCase(
+    videosArticlesRepository: VideosArticlesRepository
+  ): VideosArticlesUseCase = VideosArticlesUseCase(videosArticlesRepository)
+
+  @Provides
+  @Singleton
+  fun provideSubCategoryUseCase(
+    videosArticlesRepository: VideosArticlesRepository
+  ): SubCategoryUseCase = SubCategoryUseCase(videosArticlesRepository)
+
+  @Provides
+  @Singleton
+  fun provideAddToWishListUseCase(
+    videosArticlesRepository: VideosArticlesRepository
+  ): AddToWishListUseCase = AddToWishListUseCase(videosArticlesRepository)
+
+  @Provides
+  @Singleton
+  fun provideLikeContentUseCase(
+    videosArticlesRepository: VideosArticlesRepository
+  ): LikeContentUseCase = LikeContentUseCase(videosArticlesRepository)
+
+  @Provides
+  @Singleton
+  fun provideFavoriteVideosUseCase(
+    videosArticlesRepository: VideosArticlesRepository
+  ): FavoriteVideosUseCase = FavoriteVideosUseCase(videosArticlesRepository)
 
   //public use cases
   @Provides

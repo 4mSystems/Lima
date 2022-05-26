@@ -10,6 +10,13 @@
     android:label="@string/childern"
     tools:layout="@layout/fragment_home">
 
+    <action
+      android:id="@+id/action_fragment_to_videosFragment"
+      app:destination="@id/videosFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
   </fragment>
 
   <fragment
@@ -54,6 +61,13 @@
     <action
       android:id="@+id/action_accountFragment_to_nav_auth"
       app:destination="@id/nav_auth"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+    <action
+      android:id="@+id/action_accountFragment_to_favoriteVideosFragment"
+      app:destination="@id/favoriteVideosFragment"
       app:enterAnim="@anim/anim_slide_in_right"
       app:exitAnim="@anim/anim_slide_out_left"
       app:popEnterAnim="@anim/anim_slide_in_left"
@@ -162,5 +176,17 @@
     android:id="@+id/changePasswordFragment"
     android:name="app.te.lima_zola.presentation.profile.changePassword.ChangePasswordFragment"
     tools:layout="@layout/fragment_change_password" />
+  <fragment
+    android:id="@+id/videosFragment"
+    android:name="app.te.lima_zola.presentation.videos.VideosFragment"
+    tools:layout="@layout/fragment_videos">
+    <argument
+      android:name="cat_id"
+      app:argType="integer" />
+  </fragment>
+  <fragment
+    android:id="@+id/favoriteVideosFragment"
+    android:name="app.te.lima_zola.presentation.videos.FavoriteVideosFragment"
+    tools:layout="@layout/fragment_favorite_videos" />
 
 </navigation>

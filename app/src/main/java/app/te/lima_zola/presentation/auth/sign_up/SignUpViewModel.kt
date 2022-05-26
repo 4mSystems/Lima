@@ -44,7 +44,7 @@ class SignUpViewModel @Inject constructor(
       .launchIn(viewModelScope)
   }
 
-  fun getCities() {
+   fun getCities() {
     cityUseCases()
       .catch { exception -> }
       .onEach { result ->

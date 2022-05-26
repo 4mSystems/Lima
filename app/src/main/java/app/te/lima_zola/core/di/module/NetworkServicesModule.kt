@@ -8,6 +8,7 @@ import app.te.lima_zola.data.home.data_source.remote.HomeServices
 import app.te.lima_zola.data.intro.data_source.IntroServices
 import app.te.lima_zola.data.profile.data_source.ProfileServices
 import app.te.lima_zola.data.settings.data_source.remote.SettingsServices
+import app.te.lima_zola.data.videos_articles.data_source.VideosArticlesServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -59,6 +60,11 @@ object NetworkServicesModule {
   @Singleton
   fun provideUpdateProfileServices(retrofit: Retrofit): ProfileServices =
     retrofit.create(ProfileServices::class.java)
+
+  @Provides
+  @Singleton
+  fun provideVideosServices(retrofit: Retrofit): VideosArticlesServices =
+    retrofit.create(VideosArticlesServices::class.java)
 
 
 }

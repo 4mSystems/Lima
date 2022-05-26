@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.videos.eventListener.VideosEventListener" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/details_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/ic_arrow_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_12sdp"
+      android:layout_marginTop="@dimen/_50sdp"
+      android:background="?selectableItemBackground"
+      android:onClick="@{()-> eventListener.back()}"
+      android:src="@drawable/ic_arrow_back"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/title"
+      style="@style/TextBoldFont"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/_20sdp"
+      android:text="@string/favorite"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      android:textColor="@color/colorPrimaryDark"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
+
+    <include
+      android:id="@+id/videoLoading"
+      layout="@layout/video_loading_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:layout_marginEnd="@dimen/_15sdp"
+      app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <include
+      android:id="@+id/layout_videos"
+      layout="@layout/layout_video"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginStart="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:layout_marginEnd="@dimen/_15sdp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/title" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

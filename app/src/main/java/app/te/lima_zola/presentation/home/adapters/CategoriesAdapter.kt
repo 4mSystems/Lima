@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.ItemHomeBinding
+import app.te.lima_zola.presentation.home.HomeFragment
+import app.te.lima_zola.presentation.home.eventListener.HomeEventListener
 import app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState
 
-class CategoriesAdapter() :
+class CategoriesAdapter(val homeEventListener: HomeEventListener) :
   RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
   private val differCallback = object : DiffUtil.ItemCallback<CategoriesUiItemState>() {
     override fun areItemsTheSame(
@@ -70,6 +72,7 @@ class CategoriesAdapter() :
     }
 
     fun setModel(item: CategoriesUiItemState) {
+      itemLayoutBinding.eventListener = homeEventListener
       itemLayoutBinding.uiState = item
     }
   }

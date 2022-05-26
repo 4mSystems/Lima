@@ -5,6 +5,8 @@ import androidx.databinding.Bindable
 import androidx.lifecycle.viewModelScope
 import app.te.lima_zola.domain.account.use_case.UserLocalUseCase
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
+import app.te.lima_zola.domain.general.entity.countries.CityModel
+import app.te.lima_zola.domain.general.use_case.CitiesUseCase
 import app.te.lima_zola.domain.profile.entity.UpdateProfileRequest
 import app.te.lima_zola.domain.profile.use_case.ProfileUseCase
 import app.te.lima_zola.domain.utils.BaseResponse
@@ -19,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
   private val userLocalUseCase: UserLocalUseCase,
-  private val profileUseCase: ProfileUseCase
+  private val profileUseCase: ProfileUseCase,
+  private val cityUseCases: CitiesUseCase
 ) : BaseViewModel() {
 
   @Bindable
@@ -27,14 +30,23 @@ class ProfileViewModel @Inject constructor(
   private val _profileResponse =
     MutableStateFlow<Resource<BaseResponse<UserResponse>>>(Resource.Default)
   val profileResponse = _profileResponse
-  val userUiState = UserUiState(null, "")
+  private val userUiState = UserUiState(null, "")
+
+  private val _citiesResponse =
+    MutableStateFlow<Resource<BaseResponse<List<CityModel>>>>(Resource.Default)
+  val citiesResponse = _citiesResponse
+  var cities: List<CityModel> = listOf()
+
 
   init {
+    getCities()
     viewModelScope.launch {
       userLocalUseCase.invoke().collect { userLocal ->
         userUiState.userResponse = userLocal
         request.name = request.name.ifEmpty { userLocal.name }
         request.phone = userLocal.phone
+        request.city_id = userLocal.cityId.toString()
+        request.cityName = userLocal.cityName
       }
     }
 
@@ -51,5 +63,12 @@ class ProfileViewModel @Inject constructor(
     }.launchIn(viewModelScope)
   }
 
-
+  fun getCities() {
+    cityUseCases()
+      .catch { exception -> }
+      .onEach { result ->
+        _citiesResponse.value = result
+      }
+      .launchIn(viewModelScope)
+  }
 }

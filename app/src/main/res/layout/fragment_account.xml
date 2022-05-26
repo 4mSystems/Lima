@@ -71,6 +71,7 @@
         android:drawableStart="@drawable/ic_favorite"
         android:drawablePadding="@dimen/_6sdp"
         android:drawableTint="@color/colorPrimaryDark"
+        android:onClick="@{()-> eventListener.openFavorite()}"
         android:text="@string/favorite"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/black"

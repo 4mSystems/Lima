@@ -1,6 +1,10 @@
 package app.te.lima_zola.presentation.base.extensions
 
 import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
+import android.media.RingtoneManager
+import android.net.Uri
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -10,11 +14,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import app.te.lima_zola.R
 import app.te.lima_zola.domain.utils.FailureStatus
 import app.te.lima_zola.domain.utils.Resource.Failure
-import app.te.lima_zola.R
 import app.te.lima_zola.presentation.auth.AuthActivity
 import app.te.lima_zola.presentation.base.utils.*
+
 
 fun Fragment.handleApiError(
   failure: Failure,
@@ -130,4 +135,12 @@ fun Fragment.navigateSafe(directions: NavDirections, navOptions: NavOptions? = n
 
 fun Fragment.backToPreviousScreen() {
   findNavController().navigateUp()
+}
+
+fun makeActionSound(context: Context) {
+  val defaultSoundUri: Uri = Uri.parse(
+    ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/" + R.raw.like
+  )
+  val r = RingtoneManager.getRingtone(context, defaultSoundUri)
+  r.play()
 }

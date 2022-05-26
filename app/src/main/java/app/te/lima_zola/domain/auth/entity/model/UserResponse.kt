@@ -22,6 +22,9 @@ data class UserResponse(
   @SerializedName("city_id")
   val city_id: Int = 0,
 
+  @SerializedName("city_name")
+  val city_name: String = "",
+
   @SerializedName("phone")
   val phone: String = "",
 

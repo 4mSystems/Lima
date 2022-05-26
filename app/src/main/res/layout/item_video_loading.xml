@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+      android:id="@+id/cat_image"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_200sdp"
+      android:scaleType="centerCrop"
+      android:src="@color/overlayBackground"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_video_title"
+      style="@style/TextMediumFont"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_6sdp"
+      android:background="@color/overlayBackground"
+      android:ellipsize="end"
+      android:maxLines="2"
+      android:textAlignment="viewStart"
+      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toEndOf="@id/cat_image"
+      app:layout_constraintStart_toStartOf="@+id/cat_image"
+      app:layout_constraintTop_toBottomOf="@id/cat_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_likes"
+      style="@style/TextRegularFont"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_6sdp"
+      android:drawableEnd="@drawable/ic_like"
+      android:drawablePadding="@dimen/_4sdp"
+      android:drawableTint="@color/overlayBackground"
+      android:gravity="center_vertical"
+      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/colorAccent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_video_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_views"
+      style="@style/TextRegularFont"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_6sdp"
+      android:drawableEnd="@drawable/ic_views"
+      android:drawablePadding="@dimen/_4sdp"
+      android:drawableTint="@color/overlayBackground"
+      android:gravity="center_vertical"
+      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+      android:textColor="@color/colorAccent"
+      app:layout_constraintEnd_toStartOf="@id/tv_likes"
+      app:layout_constraintTop_toBottomOf="@+id/tv_video_title"
+      />
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:background="@color/line_color_op"
+      app:layout_constraintTop_toBottomOf="@id/tv_views" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -43,6 +43,11 @@ class ProfileUseCase @Inject constructor(
       request.validation.phoneError.set(Constants.EMPTY)
       isValid = false
     }
+    if (request.city_id.isEmpty()) {
+      request.validation.cityError.set(Constants.EMPTY)
+      isValid = false
+    }
+
     return isValid
   }
 }

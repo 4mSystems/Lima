@@ -20,6 +20,15 @@ class UpdateProfileRequest : Parcelable {
       field = value
     }
 
+  var city_id: String = ""
+    set(value) {
+      validation.cityError.set(null)
+      field = value
+    }
+
+  @Transient
+  var cityName: String = ""
+
 
   @Transient
   var validation: UpdateProfileValidationException = UpdateProfileValidationException()
@@ -32,6 +41,9 @@ class UpdateProfileValidationException {
 
   @Transient
   var nameError: ObservableField<String> = ObservableField<String>()
+
+  @Transient
+  var cityError: ObservableField<String> = ObservableField<String>()
 
   @Transient
   var phoneError: ObservableField<String> = ObservableField<String>()

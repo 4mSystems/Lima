@@ -19,6 +19,8 @@ import app.te.lima_zola.data.profile.data_source.ProfileDataSource
 import app.te.lima_zola.data.profile.repository.ProfileRepositoryImpl
 import app.te.lima_zola.data.settings.data_source.remote.SettingsRemoteDataSource
 import app.te.lima_zola.data.settings.repository.SettingsRepositoryImpl
+import app.te.lima_zola.data.videos_articles.data_source.VideosArticlesRemoteDataSource
+import app.te.lima_zola.data.videos_articles.repository.VideosArticlesRepositoryImpl
 import app.te.lima_zola.domain.account.repository.AccountRepository
 import app.te.lima_zola.domain.agents.repository.AgentsRepository
 import app.te.lima_zola.domain.auth.repository.AuthRepository
@@ -28,6 +30,7 @@ import app.te.lima_zola.domain.home.repository.local.HomeLocalRepository
 import app.te.lima_zola.domain.intro.repository.IntroRepository
 import app.te.lima_zola.domain.profile.repository.ProfileRepository
 import app.te.lima_zola.domain.settings.repository.SettingsRepository
+import app.te.lima_zola.domain.videos_articles.repository.VideosArticlesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -95,5 +98,11 @@ class RepositoryModule {
   fun provideUpdateProfileRepository(
     remoteDataSource: ProfileDataSource
   ): ProfileRepository = ProfileRepositoryImpl(remoteDataSource)
+
+  @Provides
+  @Singleton
+  fun provideVideosRepository(
+    remoteDataSource: VideosArticlesRemoteDataSource
+  ): VideosArticlesRepository = VideosArticlesRepositoryImpl(remoteDataSource)
 
 }

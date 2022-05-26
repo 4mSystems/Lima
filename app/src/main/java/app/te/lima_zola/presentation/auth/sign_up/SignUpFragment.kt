@@ -65,7 +65,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(), RegisterEventListe
           }
           is Resource.Failure -> {
             hideLoading()
-            handleApiError(it, retryAction = { viewModel.register() })
+            handleApiError(it, retryAction = { viewModel.getCities() })
           }
 
         }

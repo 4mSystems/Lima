@@ -172,6 +172,7 @@ dependencies {
   implementation(Libraries.coil)
   implementation(Libraries.ssp)
   implementation(Libraries.ssdp)
+  implementation(Libraries.shimmer)
 
   // Map
   implementation(Libraries.map)

@@ -2,6 +2,7 @@ package app.te.lima_zola.presentation.base.extensions
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
@@ -31,7 +32,9 @@ import coil.transform.RoundedCornersTransformation
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import app.te.lima_zola.R
+import com.google.android.material.imageview.ShapeableImageView
 import java.io.File
+import kotlin.math.abs
 
 fun View.show() {
   if (visibility == View.VISIBLE) return
@@ -147,8 +150,7 @@ fun ImageView.loadImage(imageUrl: String?, progressBar: ProgressBar?, defaultIma
 
   } else {
     progressBar?.hide()
-    Log.e("loadImage", "loadImage: $defaultImage")
-    load(R.drawable.bg_no_image) {
+    load(R.drawable.logo) {
       crossfade(true)
       transformations(
         CircleCropTransformation()
@@ -248,6 +250,11 @@ fun loadDrawable(imageView: ImageView, drawable: Drawable?) {
   imageView.setImageDrawable(drawable)
 }
 
+@BindingAdapter("load_drawable")
+fun ImageView.loadResourceDrawable(drawable: Int) {
+  this.setImageResource(drawable)
+}
+
 @BindingAdapter("app:changeBackground")
 fun MaterialCardView.changeBackground(background_color: Int) {
   this.setCardBackgroundColor(background_color)
@@ -306,4 +313,21 @@ fun RecyclerView.setUpAdapter(
 fun String.isNumeric(toCheck: String): Boolean {
   val regex = "-?[0-9]+(\\.[0-9]+)?".toRegex()
   return toCheck.matches(regex)
+}
+
+fun Long.toStringMatch(): String {
+  return if (abs(this / 1000000) >= 1) {
+    (this / 1000000).toString().plus("m")
+
+  } else if (this / 1000 >= 1) {
+    (this / 1000).toString().plus("k")
+  } else {
+    this.toString()
+  }
+}
+
+@BindingAdapter("app:stroke_color")
+fun ShapeableImageView.setupStoke(colorRes: Int) {
+  this.setStrokeColorResource(colorRes)
+  this.setStrokeWidthResource(R.dimen._1sdp)
 }

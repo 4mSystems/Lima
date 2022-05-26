@@ -107,5 +107,7 @@
   <string name="forget_password">تغيير كلمة المرور</string>
   <string name="password_hint_confirm">تأكيد كلمة المرور</string>
   <string name="old_password">كلمة المرور القديمة</string>
+    <string name="no_content_avail">"عفوا لا توجد بيانات متاحه "</string>
+  <string name="all_cat">الكل</string>
 
 </resources>

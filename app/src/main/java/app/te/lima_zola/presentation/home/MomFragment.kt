@@ -20,14 +20,14 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class MomFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
   private val viewModel: HomeViewModel by viewModels()
-  private val categoriesAdapter = CategoriesAdapter()
+  private lateinit var categoriesAdapter: CategoriesAdapter
 
   override
   fun getLayoutId() = R.layout.fragment_home
 
   override
   fun setBindingVariables() {
-    binding.eventListener = this
+    categoriesAdapter = CategoriesAdapter(this)
     viewModel.getHomeData(2)
   }
 
@@ -65,7 +65,9 @@ class MomFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
     window.statusBarColor = getMyColor(R.color.home_status_bar)
   }
 
-  override fun openVideos() {
+
+  override fun openVideos(cat_id: Int) {
+
   }
 
   override fun openDocs() {

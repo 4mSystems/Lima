@@ -17,7 +17,8 @@
 
   <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/register_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
@@ -153,7 +154,6 @@
           android:focusable="false"
           android:inputType="text"
           android:onClick="@{()-> eventListener.showCities()}"
-          android:text="@={request.city_id}"
           android:textAppearance="@style/TextAppearance.AppCompat.Small"
           android:textColor="@color/black"
           android:textColorHint="@color/colorGray" />

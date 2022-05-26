@@ -28,6 +28,7 @@
   <color name="left_chat">#F6F5F5</color>
   <color name="home_status_bar">#CDEEEB</color>
   <color name="account_status_bar">#F9F9F9</color>
+  <color name="details_status_bar">#FCE063</color>
   <color name="red">#AE0E0E</color>
   <color name="green">#158119</color>
   <color name="warningColor">#FFA900</color>

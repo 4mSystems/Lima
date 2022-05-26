@@ -9,7 +9,7 @@
   android:elevation="4dp"
   android:gravity="center"
   android:orientation="vertical"
-  tools:targetApi="lollipop">
+ >
 
   <com.airbnb.lottie.LottieAnimationView
     android:layout_width="@dimen/dimen350"

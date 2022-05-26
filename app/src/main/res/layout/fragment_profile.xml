@@ -17,7 +17,8 @@
 
   <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/register_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
@@ -118,6 +119,47 @@
           android:textColorHint="@color/colorGray" />
       </com.google.android.material.textfield.TextInputLayout>
 
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_city"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_35sdp"
+        android:hint="@string/country_hint"
+        android:textAlignment="viewEnd"
+        android:textColorHint="@color/colorGray"
+        app:boxBackgroundColor="@color/colorLight"
+        app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
+        app:boxCornerRadiusBottomStart="@dimen/_30sdp"
+        app:boxCornerRadiusTopEnd="@dimen/_30sdp"
+        app:boxCornerRadiusTopStart="@dimen/_30sdp"
+        app:boxStrokeColor="@color/colorLight"
+        app:endIconDrawable="@drawable/ic_arrow_down"
+        app:endIconMode="custom"
+        app:error="@{request.validation.cityError.equals(Constants.EMPTY)?@string/empty_warning:``}"
+        app:errorEnabled="@{request.validation.cityError==null?false:true}"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_phone"
+        app:startIconDrawable="@drawable/ic_password"
+        app:startIconTint="@color/colorGray">
+
+        <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/city"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:focusable="false"
+          android:inputType="text"
+          android:onClick="@{()-> eventListener.showCities()}"
+          android:text="@={request.cityName}"
+          android:textAppearance="@style/TextAppearance.AppCompat.Small"
+          android:textColor="@color/black"
+          android:textColorHint="@color/colorGray" />
+      </com.google.android.material.textfield.TextInputLayout>
+
       <com.google.android.material.button.MaterialButton
         android:id="@+id/appCompatButtonNext"
         android:layout_width="0dp"
@@ -134,7 +176,7 @@
         app:cornerRadius="@dimen/_25sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_phone" />
+        app:layout_constraintTop_toBottomOf="@id/input_city" />
 
       <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/forget_password"

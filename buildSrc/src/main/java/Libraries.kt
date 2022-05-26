@@ -51,6 +51,7 @@ object Libraries {
   const val coil = "io.coil-kt:coil:${Versions.coil}"
   const val ssp = "com.intuit.ssp:ssp-android:${Versions.ssp}"
   const val ssdp = "com.intuit.sdp:sdp-android:${Versions.ssp}"
+  const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
 
   // Utils
   const val playServices = "com.google.android.gms:play-services-auth:${Versions.playServices}"

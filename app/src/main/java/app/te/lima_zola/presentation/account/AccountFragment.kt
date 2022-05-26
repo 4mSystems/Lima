@@ -1,21 +1,16 @@
 package app.te.lima_zola.presentation.account
 
-import android.content.Intent
 import android.view.Window
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavDeepLinkBuilder
-import androidx.navigation.fragment.NavHostFragment
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentAccountBinding
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.auth.AuthActivity
-import app.te.lima_zola.presentation.auth.log_in.LogInFragment
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
 import codes.grand.pretty_pop_up.PrettyPopUpHelper
-import com.google.android.gms.auth.api.Auth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -96,7 +91,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventList
   }
 
   override fun openFavorite() {
-    TODO("Not yet implemented")
+    navigateSafe(AccountFragmentDirections.actionAccountFragmentToFavoriteVideosFragment())
   }
 
   override fun openSubscribe() {

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="eventListener"
+      type="app.te.lima_zola.presentation.videos.eventListener.VideosEventListener" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/details_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/ic_arrow_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_12sdp"
+      android:layout_marginTop="@dimen/_50sdp"
+      android:background="?selectableItemBackground"
+      android:onClick="@{()-> eventListener.back()}"
+      android:src="@drawable/ic_arrow_back"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+      android:id="@+id/subCategoryLoading"
+      layout="@layout/sub_category_loading_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toBottomOf="@id/ic_arrow_back" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rc_sub_categories"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/_8sdp"
+      android:orientation="horizontal"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintTop_toBottomOf="@id/ic_arrow_back"
+      tools:listitem="@layout/item_sub_category" />
+
+    <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/br"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:barrierDirection="bottom"
+      app:constraint_referenced_ids="subCategoryLoading,rc_sub_categories" />
+
+    <include
+      android:id="@+id/videoLoading"
+      layout="@layout/video_loading_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:layout_marginEnd="@dimen/_15sdp"
+      app:layout_constraintTop_toBottomOf="@id/br" />
+
+    <include
+      android:id="@+id/layout_videos"
+      layout="@layout/layout_video"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginStart="@dimen/_15sdp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:layout_marginEnd="@dimen/_15sdp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/br" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
