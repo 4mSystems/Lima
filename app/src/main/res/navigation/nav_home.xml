@@ -17,6 +17,13 @@
       app:exitAnim="@anim/anim_slide_out_left"
       app:popEnterAnim="@anim/anim_slide_in_left"
       app:popExitAnim="@anim/anim_slide_out_right" />
+    <action
+      android:id="@+id/action_home_fragment_to_documentsFragment"
+      app:destination="@id/documentsFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
   </fragment>
 
   <fragment
@@ -25,6 +32,20 @@
     android:label="@string/childern"
     tools:layout="@layout/fragment_home">
 
+    <action
+      android:id="@+id/action_mother_fragment_to_videosFragment"
+      app:destination="@id/videosFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
+    <action
+      android:id="@+id/action_mother_fragment_to_documentsFragment"
+      app:destination="@id/documentsFragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right" />
   </fragment>
 
   <fragment
@@ -188,5 +209,13 @@
     android:id="@+id/favoriteVideosFragment"
     android:name="app.te.lima_zola.presentation.videos.FavoriteVideosFragment"
     tools:layout="@layout/fragment_favorite_videos" />
+  <fragment
+    android:id="@+id/documentsFragment"
+    android:name="app.te.lima_zola.presentation.documents.DocumentsFragment"
+    tools:layout="@layout/fragment_documents">
+    <argument
+      android:name="cat_id"
+      app:argType="integer" />
+  </fragment>
 
 </navigation>

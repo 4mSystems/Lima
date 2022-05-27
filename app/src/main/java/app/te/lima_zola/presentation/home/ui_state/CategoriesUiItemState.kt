@@ -6,4 +6,5 @@ data class CategoriesUiItemState(val categoriesApiModel: CategoriesApiModel) {
   fun id(): Int = categoriesApiModel.id
   fun categoryName(): String = categoriesApiModel.name
   fun categoryImage(): String = categoriesApiModel.image
+  val contentType: String = categoriesApiModel.type
 }

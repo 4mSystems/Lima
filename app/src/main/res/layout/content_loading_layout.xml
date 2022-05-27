@@ -16,13 +16,13 @@
       android:layout_height="wrap_content"
       android:orientation="vertical">
 
-      <include layout="@layout/item_video_loading" />
+      <include layout="@layout/item_content_loading" />
 
-      <include layout="@layout/item_video_loading" />
+      <include layout="@layout/item_content_loading" />
 
-      <include layout="@layout/item_video_loading" />
+      <include layout="@layout/item_content_loading" />
 
-      <include layout="@layout/item_video_loading" />
+      <include layout="@layout/item_content_loading" />
 
     </LinearLayout>
   </com.facebook.shimmer.ShimmerFrameLayout>

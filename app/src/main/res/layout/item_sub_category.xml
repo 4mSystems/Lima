@@ -10,7 +10,7 @@
 
     <variable
       name="eventListener"
-      type="app.te.lima_zola.presentation.videos.eventListener.VideosEventListener" />
+      type="app.te.lima_zola.presentation.base.events.BaseContentEventListener" />
 
   </data>
 

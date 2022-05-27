@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-
-    <variable
-      name="eventListener"
-      type="app.te.lima_zola.presentation.home.eventListener.HomeEventListener" />
-
-    <variable
-      name="uiState"
-      type="app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState" />
 
   </data>
 
@@ -18,32 +11,42 @@
   <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_4sdp"
-    android:onClick="@{()-> eventListener.openVideos(uiState.id,uiState.contentType)}">
+    android:layout_marginTop="@dimen/_10sdp">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
       android:id="@+id/cat_image"
-      android:layout_width="@dimen/_100sdp"
-      android:layout_height="@dimen/_100sdp"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_200sdp"
       android:scaleType="centerCrop"
       android:src="@color/overlayBackground"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:loadImage="@{uiState.categoryImage()}" />
+      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
     <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_video_title"
       style="@style/TextMediumFont"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_margin="@dimen/_3sdp"
-      android:text="@{uiState.categoryName()}"
-      android:textAlignment="center"
+      android:layout_margin="@dimen/_6sdp"
+      android:background="@color/overlayBackground"
+      android:ellipsize="end"
+      android:maxLines="2"
+      android:textAlignment="viewStart"
       android:textAppearance="@style/TextAppearance.AppCompat.Medium"
       android:textColor="@color/black"
-      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="@id/cat_image"
       app:layout_constraintStart_toStartOf="@+id/cat_image"
       app:layout_constraintTop_toBottomOf="@id/cat_image" />
+
+
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_marginTop="@dimen/_8sdp"
+      android:background="@color/line_color_op"
+      app:layout_constraintTop_toBottomOf="@id/tv_video_title" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

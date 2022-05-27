@@ -6,14 +6,14 @@ import app.te.lima_zola.data.remote.AbstractPagingSource
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.domain.videos_articles.repository.VideosArticlesRepository
 import app.te.lima_zola.presentation.videos.ui_state.ContentEmptyUiState
-import app.te.lima_zola.presentation.videos.ui_state.MainVideoUiState
+import app.te.lima_zola.presentation.videos.ui_state.MainContentUiState
 import app.te.lima_zola.presentation.videos.ui_state.VideoItemUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 
-class VideosArticlesUseCase @Inject constructor(
+class VideosUseCase @Inject constructor(
   private val videosArticlesRepository: VideosArticlesRepository
 ) {
 
@@ -21,14 +21,14 @@ class VideosArticlesUseCase @Inject constructor(
     Pager(
       config = PagingConfig(pageSize = 10, enablePlaceholders = false),
       pagingSourceFactory = {
-        object : AbstractPagingSource<MainVideoUiState>() {
+        object : AbstractPagingSource<MainContentUiState>() {
 
           override suspend fun fetchData(
             pageSize: Int,
             PageIndex: Int
-          ): List<MainVideoUiState> {
+          ): List<MainContentUiState> {
             val result = videosArticlesRepository.videosArticles(cat_id, PageIndex)
-            val items = mutableListOf<MainVideoUiState>()
+            val items = mutableListOf<MainContentUiState>()
             if (result is Resource.Success) {
               nextPage = result.value.data.links.next
               val data = result.value.data.data

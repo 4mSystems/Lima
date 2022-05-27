@@ -1,9 +1,8 @@
 package app.te.lima_zola.presentation.videos.eventListener
 
-import app.te.lima_zola.presentation.base.events.BaseEventListener
+import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 
-interface VideosEventListener : BaseEventListener {
-  fun changeSubCategoryItem(itemId: Int, currentPosition: Int)
+interface VideosEventListener : BaseContentEventListener {
   fun makeLike(itemId: Int)
   fun makeWishList(itemId: Int)
 }

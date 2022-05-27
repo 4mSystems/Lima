@@ -40,6 +40,7 @@ object Versions {
   const val coil = "1.4.0"
   const val ssp = "1.0.6"
   const val shimmer = "0.5.0"
+  const val exoplayer = "2.17.1"
 
   // Utils
   const val playServices = "19.2.0"

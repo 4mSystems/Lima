@@ -9,6 +9,7 @@ import app.te.lima_zola.databinding.FragmentHomeBinding
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
+import app.te.lima_zola.presentation.base.utils.Constants
 import app.te.lima_zola.presentation.home.adapters.CategoriesAdapter
 import app.te.lima_zola.presentation.home.eventListener.HomeEventListener
 import app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState
@@ -66,8 +67,11 @@ class MomFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
   }
 
 
-  override fun openVideos(cat_id: Int) {
-
+  override fun openVideos(cat_id: Int, type: String) {
+    if (type == Constants.VIDEO_TYPE)
+      navigateSafe(MomFragmentDirections.actionMotherFragmentToVideosFragment(cat_id))
+    else
+      navigateSafe(MomFragmentDirections.actionMotherFragmentToDocumentsFragment(cat_id))
   }
 
   override fun openDocs() {

@@ -13,11 +13,11 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 
-class FavoriteVideosUseCase @Inject constructor(
+class ArticleUseCase @Inject constructor(
   private val videosArticlesRepository: VideosArticlesRepository
 ) {
 
-  operator fun invoke() =
+  operator fun invoke(cat_id :Int) =
     Pager(
       config = PagingConfig(pageSize = 10, enablePlaceholders = false),
       pagingSourceFactory = {
@@ -27,7 +27,7 @@ class FavoriteVideosUseCase @Inject constructor(
             pageSize: Int,
             PageIndex: Int
           ): List<MainContentUiState> {
-            val result = videosArticlesRepository.favoriteVideos(PageIndex)
+            val result = videosArticlesRepository.videosArticles(cat_id, PageIndex)
             val items = mutableListOf<MainContentUiState>()
             if (result is Resource.Success) {
               nextPage = result.value.data.links.next

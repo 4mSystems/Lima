@@ -1,6 +1,6 @@
 object Config {
   object AppConfig {
-    const val appId = "app.te.protein_chef"
+    const val appId = "app.te.lima_zola"
     const val compileSdkVersion = 32
     const val minSdkVersion = 23
     const val versionCode = 2

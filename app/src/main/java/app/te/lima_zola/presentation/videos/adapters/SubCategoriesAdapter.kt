@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.ItemSubCategoryBinding
-import app.te.lima_zola.presentation.videos.eventListener.VideosEventListener
+import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 import app.te.lima_zola.presentation.videos.ui_state.SubCategoryItemUiState
 
-class SubCategoriesAdapter(val videosEventListener: VideosEventListener) :
+class SubCategoriesAdapter(val baseContentEventListener: BaseContentEventListener) :
   RecyclerView.Adapter<SubCategoriesAdapter.ViewHolder>() {
   var lastPosition: Int = 0
   private val differCallback = object : DiffUtil.ItemCallback<SubCategoryItemUiState>() {
@@ -83,7 +83,7 @@ class SubCategoriesAdapter(val videosEventListener: VideosEventListener) :
     }
 
     fun setModel(item: SubCategoryItemUiState) {
-      itemLayoutBinding.eventListener = videosEventListener
+      itemLayoutBinding.eventListener = baseContentEventListener
       itemLayoutBinding.uiState = item
     }
   }

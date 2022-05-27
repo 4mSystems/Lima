@@ -40,8 +40,8 @@
       app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
 
     <include
-      android:id="@+id/videoLoading"
-      layout="@layout/video_loading_layout"
+      android:id="@+id/contentLoading"
+      layout="@layout/content_loading_layout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/_15sdp"

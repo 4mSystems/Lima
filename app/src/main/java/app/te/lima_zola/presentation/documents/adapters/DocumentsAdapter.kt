@@ -1,4 +1,4 @@
-package app.te.lima_zola.presentation.videos.adapters
+package app.te.lima_zola.presentation.documents.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import app.te.lima_zola.R
 import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 import app.te.lima_zola.presentation.videos.ui_state.MainContentUiState
 
-class VideosAdapter(val baseContentEventListener: BaseContentEventListener) :
-  PagingDataAdapter<MainContentUiState, VideosAdapter.ViewHolder>(differCallback) {
+class DocumentsAdapter(val baseContentEventListener: BaseContentEventListener) :
+  PagingDataAdapter<MainContentUiState, DocumentsAdapter.ViewHolder>(differCallback) {
   lateinit var context: Context
 
   companion object {

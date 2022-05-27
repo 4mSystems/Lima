@@ -53,6 +53,14 @@ object Libraries {
   const val ssdp = "com.intuit.sdp:sdp-android:${Versions.ssp}"
   const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
 
+  // EXO PLAYER
+  const val exoplayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
+  const val exoplayer_core = "com.google.android.exoplayer:exoplayer-core:${Versions.exoplayer}"
+  const val exoplayer_dash = "com.google.android.exoplayer:exoplayer-dash:${Versions.exoplayer}"
+  const val exoplayer_ui = "com.google.android.exoplayer:exoplayer-ui:${Versions.exoplayer}"
+  const val exoplayer_smooth_streaming =
+    "com.google.android.exoplayer:exoplayer-smoothstreaming:${Versions.exoplayer}"
+
   // Utils
   const val playServices = "com.google.android.gms:play-services-auth:${Versions.playServices}"
   const val localization =
@@ -75,7 +83,8 @@ object Libraries {
   const val firebase_messaging = "com.google.firebase:firebase-messaging-ktx"
   const val firebase_auth_ktx = "com.google.firebase:firebase-auth-ktx"
   const val firebase_auth = "com.google.android.gms:play-services-auth:${Versions.firebase_auth}"
-//  const val facebook_auth = "com.facebook.android:facebook-login:${Versions.facebook_auth}"
+
+  //  const val facebook_auth = "com.facebook.android:facebook-login:${Versions.facebook_auth}"
   const val facebook_auth = "com.facebook.android:facebook-android-sdk:${Versions.facebook_auth}"
 
   //multi select media

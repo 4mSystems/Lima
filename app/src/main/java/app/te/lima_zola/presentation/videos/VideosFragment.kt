@@ -11,7 +11,6 @@ import androidx.paging.PagingData
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentVideosBinding
 import app.te.lima_zola.domain.utils.Resource
-import app.te.lima_zola.domain.videos_articles.entity.SubCategory
 import app.te.lima_zola.domain.videos_articles.entity.request.AddToWishListRequest
 import app.te.lima_zola.domain.videos_articles.entity.request.LikeRequest
 import app.te.lima_zola.presentation.base.BaseFragment
@@ -19,7 +18,6 @@ import app.te.lima_zola.presentation.base.extensions.*
 import app.te.lima_zola.presentation.videos.adapters.VideosAdapter
 import app.te.lima_zola.presentation.videos.adapters.SubCategoriesAdapter
 import app.te.lima_zola.presentation.videos.eventListener.VideosEventListener
-import app.te.lima_zola.presentation.videos.ui_state.SubCategoryItemUiState
 import app.te.lima_zola.presentation.videos.viewModels.VideosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -47,9 +45,9 @@ class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListene
     adapter.addLoadStateListener { loadState ->
 
       if (loadState.refresh is LoadState.Loading && !isDetached)
-        binding.videoLoading.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.contentLoading.shimmerFrameLayout.visibility = View.VISIBLE
       else
-        binding.videoLoading.shimmerFrameLayout.visibility = View.GONE
+        binding.contentLoading.shimmerFrameLayout.visibility = View.GONE
 
       if (loadState.source.refresh is LoadState.NotLoading &&
         loadState.append.endOfPaginationReached && (adapter.itemCount
@@ -83,20 +81,20 @@ class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListene
         when (it) {
           Resource.Loading -> {
             hideKeyboard()
-            binding.subCategoryLoading.shimmerFrameLayout.visibility = View.VISIBLE
+            binding.layoutSubCategory.subCategoryLoading.shimmerFrameLayout.visibility = View.VISIBLE
           }
           is Resource.Success -> {
-            binding.subCategoryLoading.shimmerFrameLayout.visibility = View.GONE
+            binding.layoutSubCategory.subCategoryLoading.shimmerFrameLayout.visibility = View.GONE
             subCategoriesAdapter.differ.submitList(
               viewModel.setupSubCategory(
                 it.value.data,
                 getString(R.string.all_cat)
               )
             )
-            binding.rcSubCategories.setUpAdapter(subCategoriesAdapter, "1", "2")
+            binding.layoutSubCategory.rcSubCategories.setUpAdapter(subCategoriesAdapter, "1", "2")
           }
           is Resource.Failure -> {
-            binding.subCategoryLoading.shimmerFrameLayout.visibility = View.GONE
+            binding.layoutSubCategory.subCategoryLoading.shimmerFrameLayout.visibility = View.GONE
             handleApiError(it)
           }
         }
@@ -132,6 +130,10 @@ class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListene
         ?: VideosFragmentArgs.fromSavedStateHandle(viewModel.savedStateHandle).catId) // all videos
     }
     subCategoriesAdapter.onItemChange(currentPosition = currentPosition)
+  }
+
+  override fun openContent(itemId: Int) {
+
   }
 
   override fun makeLike(itemId: Int) {

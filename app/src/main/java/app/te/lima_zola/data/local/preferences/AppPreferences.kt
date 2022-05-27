@@ -92,7 +92,7 @@ class AppPreferences @Inject constructor(private val context: Context) {
         .setId(user.id)
         .setEmail(user.email ?: "")
         .setName(user.name)
-        .setImage(user.image)
+        .setImage(user.image?:"")
         .setPhone(user.phone)
         .setJwt(user.jwt)
         .setSubscriber(user.subscriber)

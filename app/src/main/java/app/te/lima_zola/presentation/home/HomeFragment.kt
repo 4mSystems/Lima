@@ -9,6 +9,7 @@ import app.te.lima_zola.databinding.FragmentHomeBinding
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
+import app.te.lima_zola.presentation.base.utils.Constants
 import app.te.lima_zola.presentation.home.adapters.CategoriesAdapter
 import app.te.lima_zola.presentation.home.eventListener.HomeEventListener
 import app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState
@@ -65,8 +66,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
     window.statusBarColor = getMyColor(R.color.home_status_bar)
   }
 
-  override fun openVideos(cat_id: Int) {
-    navigateSafe(HomeFragmentDirections.actionFragmentToVideosFragment(cat_id))
+  override fun openVideos(cat_id: Int, type: String) {
+    if (type == Constants.VIDEO_TYPE)
+      navigateSafe(HomeFragmentDirections.actionFragmentToVideosFragment(cat_id))
+    else
+      navigateSafe(HomeFragmentDirections.actionHomeFragmentToDocumentsFragment(cat_id))
   }
 
   override fun openDocs() {

@@ -1,4 +1,4 @@
-package app.te.lima_zola.presentation.videos
+package app.te.lima_zola.presentation.documents
 
 import android.view.View
 import android.view.Window
@@ -8,31 +8,31 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import app.te.lima_zola.R
-import app.te.lima_zola.databinding.FragmentFavoriteVideosBinding
+import app.te.lima_zola.databinding.FragmentDocumentsBinding
 import app.te.lima_zola.domain.utils.Resource
-import app.te.lima_zola.domain.videos_articles.entity.request.AddToWishListRequest
-import app.te.lima_zola.domain.videos_articles.entity.request.LikeRequest
 import app.te.lima_zola.presentation.base.BaseFragment
+import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 import app.te.lima_zola.presentation.base.extensions.*
-import app.te.lima_zola.presentation.videos.adapters.VideosAdapter
-import app.te.lima_zola.presentation.videos.eventListener.VideosEventListener
-import app.te.lima_zola.presentation.videos.viewModels.FavoriteVideosViewModel
+import app.te.lima_zola.presentation.documents.adapters.DocumentsAdapter
+import app.te.lima_zola.presentation.documents.viewModels.DocumentsViewModel
+import app.te.lima_zola.presentation.videos.adapters.SubCategoriesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint
-class FavoriteVideosFragment : BaseFragment<FragmentFavoriteVideosBinding>(), VideosEventListener {
-  private val viewModel: FavoriteVideosViewModel by viewModels()
-  private var adapter = VideosAdapter(this)
+class DocumentsFragment : BaseFragment<FragmentDocumentsBinding>(), BaseContentEventListener {
+  private val viewModel: DocumentsViewModel by viewModels()
+  private lateinit var subCategoriesAdapter: SubCategoriesAdapter
+  private var adapter = DocumentsAdapter(this)
 
   override
-  fun getLayoutId() = R.layout.fragment_favorite_videos
+  fun getLayoutId() = R.layout.fragment_documents
 
   override
   fun setBindingVariables() {
+    subCategoriesAdapter = SubCategoriesAdapter(this)
     binding.eventListener = this
-    viewModel.getFavoriteVideos()
   }
 
   override
@@ -67,21 +67,31 @@ class FavoriteVideosFragment : BaseFragment<FragmentFavoriteVideosBinding>(), Vi
     }
 
     lifecycleScope.launchWhenStarted {
-      viewModel.videoArticlesResponse.collect {
+      viewModel.articlesResponse.collect {
         adapter.submitData(it)
-        binding.layoutVideos.rcVideos.setUpAdapter(adapter, "1", "1")
+        binding.layoutDocuments.rcVideos.setUpAdapter(adapter, "1", "1")
       }
     }
     lifecycleScope.launchWhenResumed {
-      viewModel.actionsResponse.collect {
+      viewModel.subCategoryResponse.collect {
         when (it) {
           Resource.Loading -> {
             hideKeyboard()
+            binding.layoutSubCategory.subCategoryLoading.shimmerFrameLayout.visibility =
+              View.VISIBLE
           }
           is Resource.Success -> {
-            makeActionSound(requireContext())
+            binding.layoutSubCategory.subCategoryLoading.shimmerFrameLayout.visibility = View.GONE
+            subCategoriesAdapter.differ.submitList(
+              viewModel.setupSubCategory(
+                it.value.data,
+                getString(R.string.all_cat)
+              )
+            )
+            binding.layoutSubCategory.rcSubCategories.setUpAdapter(subCategoriesAdapter, "1", "2")
           }
           is Resource.Failure -> {
+            binding.layoutSubCategory.subCategoryLoading.shimmerFrameLayout.visibility = View.GONE
             handleApiError(it)
           }
         }
@@ -95,21 +105,17 @@ class FavoriteVideosFragment : BaseFragment<FragmentFavoriteVideosBinding>(), Vi
     window.statusBarColor = getMyColor(R.color.details_status_bar)
   }
 
+  override fun changeSubCategoryItem(itemId: Int, currentPosition: Int) {
+//    lifecycleScope.launch {
+//      adapter.submitData(PagingData.empty())
+//      viewModel.getVideosArticles(itemId.takeIf { it != 0 }
+//        ?: VideosFragmentArgs.fromSavedStateHandle(viewModel.savedStateHandle).catId) // all videos
+//    }
+    subCategoriesAdapter.onItemChange(currentPosition = currentPosition)
+  }
 
 
   override fun openContent(itemId: Int) {
-
-  }
-
-  override fun makeLike(itemId: Int) {
-    viewModel.likeContent(LikeRequest(itemId))
-  }
-
-  override fun makeWishList(itemId: Int) {
-    viewModel.addToWishList(AddToWishListRequest(itemId))
-  }
-
-  override fun changeSubCategoryItem(itemId: Int, currentPosition: Int) {
 
   }
 

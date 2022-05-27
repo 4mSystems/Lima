@@ -110,9 +110,14 @@ class UseCaseModule {
 
   @Provides
   @Singleton
-  fun provideVideosArticlesUseCase(
+  fun provideVideosUseCase(
     videosArticlesRepository: VideosArticlesRepository
-  ): VideosArticlesUseCase = VideosArticlesUseCase(videosArticlesRepository)
+  ): VideosUseCase = VideosUseCase(videosArticlesRepository)
+ @Provides
+  @Singleton
+  fun provideArticleUseCase(
+    videosArticlesRepository: VideosArticlesRepository
+  ): ArticleUseCase = ArticleUseCase(videosArticlesRepository)
 
   @Provides
   @Singleton

@@ -1,4 +1,4 @@
-package app.te.lima_zola.presentation.videos.viewModels
+package app.te.lima_zola.presentation.documents.viewModels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -6,12 +6,7 @@ import androidx.paging.PagingData
 import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.domain.videos_articles.entity.SubCategory
-import app.te.lima_zola.domain.videos_articles.entity.request.AddToWishListRequest
-import app.te.lima_zola.domain.videos_articles.entity.request.LikeRequest
-import app.te.lima_zola.domain.videos_articles.use_case.AddToWishListUseCase
-import app.te.lima_zola.domain.videos_articles.use_case.LikeContentUseCase
-import app.te.lima_zola.domain.videos_articles.use_case.SubCategoryUseCase
-import app.te.lima_zola.domain.videos_articles.use_case.VideosUseCase
+import app.te.lima_zola.domain.videos_articles.use_case.*
 import app.te.lima_zola.presentation.base.BaseViewModel
 import app.te.lima_zola.presentation.videos.ui_state.MainContentUiState
 import app.te.lima_zola.presentation.videos.ui_state.SubCategoryItemUiState
@@ -21,11 +16,9 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
-class VideosViewModel @Inject constructor(
-  private val videosUseCase: VideosUseCase,
+class DocumentsViewModel @Inject constructor(
+  private val articleUseCase: ArticleUseCase,
   private val subCategoryUseCase: SubCategoryUseCase,
-  private val addToWishListUseCase: AddToWishListUseCase,
-  private val likeContentUseCase: LikeContentUseCase,
   val savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
@@ -33,13 +26,9 @@ class VideosViewModel @Inject constructor(
     MutableStateFlow<Resource<BaseResponse<List<SubCategory>>>>(Resource.Default)
   val subCategoryResponse = _subCategoryResponse
 
-  private val _actionsResponse =
-    MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
-  val actionsResponse = _actionsResponse
-
-  private val _videoArticlesResponse =
+  private val _articlesResponse =
     MutableStateFlow<PagingData<MainContentUiState>>(PagingData.empty())
-  val videoArticlesResponse = _videoArticlesResponse
+  val articlesResponse = _articlesResponse
 
   init {
     savedStateHandle.get<Int>("cat_id")?.let { catId ->
@@ -54,35 +43,19 @@ class VideosViewModel @Inject constructor(
         withContext(Dispatchers.IO) { async { subCategoryUseCase.invoke(cat_id) } }
 
       val videosArticlesData =
-        withContext(Dispatchers.IO) { async { videosUseCase.invoke(cat_id) } }
+        withContext(Dispatchers.IO) { async { articleUseCase.invoke(cat_id) } }
 
       videosArticlesData.await().collect { result ->
-        _videoArticlesResponse.value = result
+        _articlesResponse.value = result
         _subCategoryResponse.value = subCategories.await()
       }
     }
   }
 
-  fun getVideosArticles(cat_id: Int) {
+  fun getArticles(cat_id: Int) {
     viewModelScope.launch {
-      videosUseCase.invoke(cat_id).collect { result ->
-        _videoArticlesResponse.value = result
-      }
-    }
-  }
-
-  fun addToWishList(addToWishListRequest: AddToWishListRequest) {
-    viewModelScope.launch {
-      addToWishListUseCase(addToWishListRequest).collect { result ->
-        _actionsResponse.value = result
-      }
-    }
-  }
-
-  fun likeContent(likeRequest: LikeRequest) {
-    viewModelScope.launch {
-      likeContentUseCase(likeRequest).collect { result ->
-        _actionsResponse.value = result
+      articleUseCase.invoke(cat_id).collect { result ->
+        _articlesResponse.value = result
       }
     }
   }

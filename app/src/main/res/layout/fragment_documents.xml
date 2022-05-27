@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
- >
+  xmlns:tools="http://schemas.android.com/tools">
 
   <data>
 
@@ -46,8 +46,8 @@
       app:layout_constraintTop_toBottomOf="@id/layout_sub_category" />
 
     <include
-      android:id="@+id/layout_videos"
-      layout="@layout/layout_video"
+      android:id="@+id/layout_documents"
+      layout="@layout/layout_documents"
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_marginStart="@dimen/_15sdp"

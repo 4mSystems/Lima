@@ -173,6 +173,12 @@ dependencies {
   implementation(Libraries.ssp)
   implementation(Libraries.ssdp)
   implementation(Libraries.shimmer)
+  //EXO PLAYER
+  implementation(Libraries.exoplayer)
+  implementation(Libraries.exoplayer_core)
+  implementation(Libraries.exoplayer_dash)
+  implementation(Libraries.exoplayer_ui)
+  implementation(Libraries.exoplayer_smooth_streaming)
 
   // Map
   implementation(Libraries.map)

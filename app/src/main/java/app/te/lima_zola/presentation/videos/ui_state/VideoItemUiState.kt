@@ -9,25 +9,26 @@ import app.te.lima_zola.R
 import app.te.lima_zola.databinding.ItemVideoBinding
 import app.te.lima_zola.domain.videos_articles.entity.VideoData
 import app.te.lima_zola.presentation.base.BaseUiState
+import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 import app.te.lima_zola.presentation.base.extensions.toStringMatch
 import app.te.lima_zola.presentation.base.utils.Constants
 import app.te.lima_zola.presentation.videos.eventListener.VideosEventListener
 
-class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainVideoUiState {
+class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainContentUiState {
   lateinit var videosEventListener: VideosEventListener
-  var itemPosition: Int = 0
+  private var itemPosition: Int = 0
   override fun getLayoutRes(): Int = R.layout.item_video
 
   override fun bind(
     item: View?,
     position: Int,
     context: Context,
-    videosEventListener: VideosEventListener
+    baseContentEventListener: BaseContentEventListener
   ) {
     item ?: return
     val binding = DataBindingUtil.bind<ItemVideoBinding>(item)
     binding?.uiState = this
-    this.videosEventListener = videosEventListener
+    this.videosEventListener = baseContentEventListener as VideosEventListener
     itemPosition = position
     updateFavorite()
     updateLike()

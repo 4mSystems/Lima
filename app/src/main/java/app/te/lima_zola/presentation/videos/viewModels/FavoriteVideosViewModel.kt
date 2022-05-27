@@ -1,6 +1,5 @@
 package app.te.lima_zola.presentation.videos.viewModels
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import app.te.lima_zola.domain.utils.BaseResponse
@@ -11,7 +10,7 @@ import app.te.lima_zola.domain.videos_articles.use_case.AddToWishListUseCase
 import app.te.lima_zola.domain.videos_articles.use_case.FavoriteVideosUseCase
 import app.te.lima_zola.domain.videos_articles.use_case.LikeContentUseCase
 import app.te.lima_zola.presentation.base.BaseViewModel
-import app.te.lima_zola.presentation.videos.ui_state.MainVideoUiState
+import app.te.lima_zola.presentation.videos.ui_state.MainContentUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -30,7 +29,7 @@ class FavoriteVideosViewModel @Inject constructor(
   val actionsResponse = _actionsResponse
 
   private val _videoArticlesResponse =
-    MutableStateFlow<PagingData<MainVideoUiState>>(PagingData.empty())
+    MutableStateFlow<PagingData<MainContentUiState>>(PagingData.empty())
   val videoArticlesResponse = _videoArticlesResponse
 
    fun getFavoriteVideos() {
