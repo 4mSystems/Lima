@@ -28,16 +28,16 @@
       android:layout_height="match_parent">
 
       <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ic_arrow_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_100sdp"
-        android:background="?selectableItemBackground"
-        android:onClick="@{()-> eventListener.back()}"
-        android:src="@drawable/ic_arrow_back"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+          android:id="@+id/ic_arrow_back"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/_12sdp"
+          android:layout_marginTop="@dimen/_50sdp"
+          android:background="?selectableItemBackground"
+          android:onClick="@{()-> eventListener.back()}"
+          android:src="@drawable/ic_arrow_back"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
 
       <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/register"

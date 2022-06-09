@@ -1,13 +1,14 @@
 package app.te.lima_zola.domain.videos_articles.use_case
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import app.te.lima_zola.data.remote.AbstractPagingSource
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.domain.videos_articles.repository.VideosArticlesRepository
+import app.te.lima_zola.presentation.documents.ui_state.DocumentItemUiState
 import app.te.lima_zola.presentation.videos.ui_state.ContentEmptyUiState
 import app.te.lima_zola.presentation.videos.ui_state.MainContentUiState
-import app.te.lima_zola.presentation.videos.ui_state.VideoItemUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -36,7 +37,7 @@ class ArticleUseCase @Inject constructor(
                 items.add(ContentEmptyUiState())
               } else {
                 data.map { orderData ->
-                  items.add(VideoItemUiState(orderData))
+                  items.add(DocumentItemUiState(orderData))
                 }
               }
 

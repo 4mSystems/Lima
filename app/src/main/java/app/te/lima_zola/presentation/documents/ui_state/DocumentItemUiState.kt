@@ -12,28 +12,33 @@ import app.te.lima_zola.presentation.base.utils.Constants
 import app.te.lima_zola.presentation.videos.ui_state.MainContentUiState
 
 class DocumentItemUiState(private val videoData: VideoData) : BaseUiState(), MainContentUiState {
-  lateinit var baseContentEventListener: BaseContentEventListener
-  private var itemPosition: Int = 0
-  override fun getLayoutRes(): Int = R.layout.item_document
+    lateinit var baseContentEventListener: BaseContentEventListener
+    private var itemPosition: Int = 0
+    override fun getLayoutRes(): Int = R.layout.item_document
 
-  override fun bind(
-    item: View?,
-    position: Int,
-    context: Context,
-    baseContentEventListener: BaseContentEventListener
-  ) {
-    item ?: return
-    val binding = DataBindingUtil.bind<ItemDocumentBinding>(item)
-    binding?.uiState = this
-    this.baseContentEventListener = baseContentEventListener
-    itemPosition = position
+    override fun bind(
+        item: View?,
+        position: Int,
+        context: Context,
+        baseContentEventListener: BaseContentEventListener
+    ) {
+        item ?: return
+        val binding = DataBindingUtil.bind<ItemDocumentBinding>(item)
+        binding?.uiState = this
+        this.baseContentEventListener = baseContentEventListener
+        itemPosition = position
 
-  }
+    }
 
-  override fun getId(): Int = videoData.id
+    override fun getId(): Int = videoData.id
 
-  val documentImage: String = videoData.image
-  val documentTitle: String = videoData.name
-  var documentLocked: Int = if (videoData.free == Constants.FREE) View.VISIBLE else View.GONE
-
+    val documentImage: String = videoData.image
+    val documentTitle: String = videoData.name
+    var documentLocked: Int = if (videoData.free == Constants.FREE) View.VISIBLE else View.GONE
+    fun openDocument() {
+        if (documentLocked == View.GONE)
+            baseContentEventListener.openContent(getId(), "")
+        else
+            baseContentEventListener.openContent(Constants.FREE, "")
+    }
 }

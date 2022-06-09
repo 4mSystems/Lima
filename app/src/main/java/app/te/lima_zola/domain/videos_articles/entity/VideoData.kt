@@ -10,6 +10,7 @@ data class VideoData(
   val free: Int,
   val id: Int,
   val image: String,
+  val video: String,
   val likes: Long,
   var is_liked: Boolean,
   val name: String,

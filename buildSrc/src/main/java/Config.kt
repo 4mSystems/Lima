@@ -6,6 +6,7 @@ object Config {
     const val versionCode = 2
     const val versionName = "1"
     const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val cmakePath = "jni/CMakeLists.txt"
   }
 
   object Dependencies {

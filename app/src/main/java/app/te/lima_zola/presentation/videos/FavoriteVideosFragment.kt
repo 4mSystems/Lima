@@ -23,99 +23,98 @@ import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class FavoriteVideosFragment : BaseFragment<FragmentFavoriteVideosBinding>(), VideosEventListener {
-  private val viewModel: FavoriteVideosViewModel by viewModels()
-  private var adapter = VideosAdapter(this)
+    private val viewModel: FavoriteVideosViewModel by viewModels()
+    private var adapter = VideosAdapter(this)
 
-  override
-  fun getLayoutId() = R.layout.fragment_favorite_videos
+    override
+    fun getLayoutId() = R.layout.fragment_favorite_videos
 
-  override
-  fun setBindingVariables() {
-    binding.eventListener = this
-    viewModel.getFavoriteVideos()
-  }
-
-  override
-  fun setupObservers() {
-
-    adapter.addLoadStateListener { loadState ->
-
-      if (loadState.refresh is LoadState.Loading && !isDetached)
-        binding.contentLoading.shimmerFrameLayout.visibility = View.VISIBLE
-      else
-        binding.contentLoading.shimmerFrameLayout.visibility = View.GONE
-
-      if (loadState.source.refresh is LoadState.NotLoading &&
-        loadState.append.endOfPaginationReached && (adapter.itemCount
-          ?: 0) < 1
-      ) {
-        // getting the error
-        val error = when {
-          loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-          loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-          loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-          else -> null
-        }
-
-        error?.let {
-          if (it.error.message != null)
-            if (it.error.message?.isNotEmpty() == true)
-              Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG)
-                .show()
-        }
-      }
+    override
+    fun setBindingVariables() {
+        binding.eventListener = this
+        viewModel.getFavoriteVideos()
     }
 
-    lifecycleScope.launchWhenStarted {
-      viewModel.videoArticlesResponse.collect {
-        adapter.submitData(it)
-        binding.layoutVideos.rcVideos.setUpAdapter(adapter, "1", "1")
-      }
-    }
-    lifecycleScope.launchWhenResumed {
-      viewModel.actionsResponse.collect {
-        when (it) {
-          Resource.Loading -> {
-            hideKeyboard()
-          }
-          is Resource.Success -> {
-            makeActionSound(requireContext())
-          }
-          is Resource.Failure -> {
-            handleApiError(it)
-          }
+    override
+    fun setupObservers() {
+
+        adapter.addLoadStateListener { loadState ->
+
+            if (loadState.refresh is LoadState.Loading && !isDetached)
+                binding.contentLoading.shimmerFrameLayout.visibility = View.VISIBLE
+            else
+                binding.contentLoading.shimmerFrameLayout.visibility = View.GONE
+
+            if (loadState.source.refresh is LoadState.NotLoading &&
+                loadState.append.endOfPaginationReached && (adapter.itemCount
+                    ?: 0) < 1
+            ) {
+                // getting the error
+                val error = when {
+                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    else -> null
+                }
+
+                error?.let {
+                    if (it.error.message != null)
+                        if (it.error.message?.isNotEmpty() == true)
+                            Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG)
+                                .show()
+                }
+            }
         }
-      }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.videoArticlesResponse.collect {
+                adapter.submitData(it)
+                binding.layoutVideos.rcVideos.setUpAdapter(adapter, "1", "1")
+            }
+        }
+        lifecycleScope.launchWhenResumed {
+            viewModel.actionsResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        hideKeyboard()
+                    }
+                    is Resource.Success -> {
+                        makeActionSound(requireContext())
+                    }
+                    is Resource.Failure -> {
+                        handleApiError(it)
+                    }
+                }
+            }
+        }
     }
-  }
 
-  override fun setupStatusBar() {
-    val window: Window = requireActivity().window
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-    window.statusBarColor = getMyColor(R.color.details_status_bar)
-  }
-
+    override fun setupStatusBar() {
+        val window: Window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = getMyColor(R.color.details_status_bar)
+    }
 
 
-  override fun openContent(itemId: Int) {
+    override fun openContent(itemId: Int, content: String) {
 
-  }
+    }
 
-  override fun makeLike(itemId: Int) {
-    viewModel.likeContent(LikeRequest(itemId))
-  }
+    override fun makeLike(itemId: Int) {
+        viewModel.likeContent(LikeRequest(itemId))
+    }
 
-  override fun makeWishList(itemId: Int) {
-    viewModel.addToWishList(AddToWishListRequest(itemId))
-  }
+    override fun makeWishList(itemId: Int) {
+        viewModel.addToWishList(AddToWishListRequest(itemId))
+    }
 
-  override fun changeSubCategoryItem(itemId: Int, currentPosition: Int) {
+    override fun changeSubCategoryItem(itemId: Int, currentPosition: Int) {
 
-  }
+    }
 
-  override fun back() {
-    backToPreviousScreen()
-  }
+    override fun back() {
+        backToPreviousScreen()
+    }
 
 
 }

@@ -3,6 +3,7 @@ package app.te.lima_zola.presentation.videos.viewModels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import app.te.lima_zola.domain.account.use_case.UserLocalUseCase
 import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.domain.videos_articles.entity.SubCategory
@@ -26,6 +27,7 @@ class VideosViewModel @Inject constructor(
   private val subCategoryUseCase: SubCategoryUseCase,
   private val addToWishListUseCase: AddToWishListUseCase,
   private val likeContentUseCase: LikeContentUseCase,
+  val userLocalUseCase: UserLocalUseCase,
   val savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 

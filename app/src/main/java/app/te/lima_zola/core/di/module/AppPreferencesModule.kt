@@ -2,8 +2,6 @@ package app.te.lima_zola.core.di.module
 
 import android.content.Context
 import app.te.lima_zola.data.local.preferences.AppPreferences
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,9 +17,4 @@ object AppPreferencesModule {
   @Singleton
   fun providePreferences(@ApplicationContext context: Context) = AppPreferences(context)
 
-  @Provides
-  @Singleton
-  fun provideFusedLocationProviderClient(@ApplicationContext context: Context): FusedLocationProviderClient {
-    return LocationServices.getFusedLocationProviderClient(context)
-  }
 }

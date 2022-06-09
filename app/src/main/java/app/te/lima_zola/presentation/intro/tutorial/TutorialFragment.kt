@@ -10,7 +10,6 @@ import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.handleApiError
 import app.te.lima_zola.presentation.base.extensions.hideKeyboard
 import app.te.lima_zola.databinding.FragmentTutorialBinding
-import app.te.lima_zola.presentation.base.extensions.navigateSafe
 import app.te.lima_zola.presentation.base.extensions.openActivityAndClearStack
 import app.te.lima_zola.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -72,7 +71,6 @@ class TutorialFragment : BaseFragment<FragmentTutorialBinding>() {
 
   private fun openIntro() {
     viewModel.setFirstTime(false)
-    navigateSafe(TutorialFragmentDirections.actionTutorialFragmentToLogInFragment())
-//    requireActivity().openActivityAndClearStack(HomeActivity::class.java)
+    requireActivity().openActivityAndClearStack(HomeActivity::class.java)
   }
 }

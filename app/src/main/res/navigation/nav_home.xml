@@ -1,221 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  app:startDestination="@id/home_fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/home_fragment">
 
-  <fragment
-    android:id="@+id/home_fragment"
-    android:name="app.te.lima_zola.presentation.home.HomeFragment"
-    android:label="@string/childern"
-    tools:layout="@layout/fragment_home">
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="app.te.lima_zola.presentation.home.HomeFragment"
+        android:label="@string/childern"
+        tools:layout="@layout/fragment_home">
 
-    <action
-      android:id="@+id/action_fragment_to_videosFragment"
-      app:destination="@id/videosFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_home_fragment_to_documentsFragment"
-      app:destination="@id/documentsFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-  </fragment>
+        <action
+            android:id="@+id/action_fragment_to_videosFragment"
+            app:destination="@id/videosFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_home_fragment_to_documentsFragment"
+            app:destination="@id/documentsFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+    </fragment>
 
-  <fragment
-    android:id="@+id/mother_fragment"
-    android:name="app.te.lima_zola.presentation.home.MomFragment"
-    android:label="@string/childern"
-    tools:layout="@layout/fragment_home">
+    <fragment
+        android:id="@+id/mother_fragment"
+        android:name="app.te.lima_zola.presentation.home.MomFragment"
+        android:label="@string/childern"
+        tools:layout="@layout/fragment_home">
 
-    <action
-      android:id="@+id/action_mother_fragment_to_videosFragment"
-      app:destination="@id/videosFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_mother_fragment_to_documentsFragment"
-      app:destination="@id/documentsFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-  </fragment>
+        <action
+            android:id="@+id/action_mother_fragment_to_videosFragment"
+            app:destination="@id/videosFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_mother_fragment_to_documentsFragment"
+            app:destination="@id/documentsFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+    </fragment>
 
-  <fragment
-    android:id="@+id/agents_fragment"
-    android:name="app.te.lima_zola.presentation.agents.AgentsFragment"
-    android:label="@string/agents"
-    tools:layout="@layout/fragment_agents" />
-  <fragment
-    android:id="@+id/accountFragment"
-    android:name="app.te.lima_zola.presentation.account.AccountFragment"
-    tools:layout="@layout/fragment_account">
-    <action
-      android:id="@+id/action_accountFragment_to_languageFragment"
-      app:destination="@id/languageFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_accountFragment_to_nav_subscribe"
-      app:destination="@id/nav_subscribe"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="app.te.lima_zola.presentation.account.AccountFragment"
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accountFragment_to_languageFragment"
+            app:destination="@id/languageFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_nav_subscribe"
+            app:destination="@id/nav_subscribe"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
 
-    <action
-      android:id="@+id/action_accountFragment_to_profileFragment"
-      app:destination="@id/profileFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_accountFragment_to_nav_auth"
-      app:destination="@id/nav_auth"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_accountFragment_to_favoriteVideosFragment"
-      app:destination="@id/favoriteVideosFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_nav_auth"
+            app:destination="@id/nav_auth"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_accountFragment_to_favoriteVideosFragment"
+            app:destination="@id/favoriteVideosFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
 
-  </fragment>
-  <include app:graph="@navigation/nav_auth" />
+    </fragment>
+    <include app:graph="@navigation/nav_auth" />
 
-  <fragment
-    android:id="@+id/moreFragment"
-    android:name="app.te.lima_zola.presentation.more.MoreFragment"
-    tools:layout="@layout/fragment_more">
-    <action
-      android:id="@+id/action_moreFragment_to_aboutFekraFragment"
-      app:destination="@id/aboutFekraFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_moreFragment_to_aboutFragment"
-      app:destination="@id/aboutFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_moreFragment_to_termsFragment"
-      app:destination="@id/termsFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_moreFragment_to_privacyFragment"
-      app:destination="@id/privacyFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="app.te.lima_zola.presentation.more.MoreFragment"
+        tools:layout="@layout/fragment_more">
+        <action
+            android:id="@+id/action_moreFragment_to_aboutFekraFragment"
+            app:destination="@id/aboutFekraFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_moreFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_moreFragment_to_termsFragment"
+            app:destination="@id/termsFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_moreFragment_to_privacyFragment"
+            app:destination="@id/privacyFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
 
-    <action
-      android:id="@+id/action_moreFragment_to_teamFragment"
-      app:destination="@id/teamFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-    <action
-      android:id="@+id/action_moreFragment_to_contactFragment"
-      app:destination="@id/contact_fragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_moreFragment_to_teamFragment"
+            app:destination="@id/teamFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_moreFragment_to_contactFragment"
+            app:destination="@id/contact_fragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
 
-  </fragment>
+    </fragment>
 
-  <fragment
-    android:id="@+id/aboutFragment"
-    android:name="app.te.lima_zola.presentation.settings.AboutFragment"
-    tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="app.te.lima_zola.presentation.settings.AboutFragment"
+        tools:layout="@layout/fragment_about" />
 
-  <fragment
-    android:id="@+id/aboutFekraFragment"
-    android:name="app.te.lima_zola.presentation.settings.AboutFekraFragment"
-    tools:layout="@layout/fragment_about_fekra" />
-  <fragment
-    android:id="@+id/termsFragment"
-    android:name="app.te.lima_zola.presentation.settings.TermsFragment"
-    tools:layout="@layout/fragment_terms" />
-  <fragment
-    android:id="@+id/privacyFragment"
-    android:name="app.te.lima_zola.presentation.settings.PrivacyFragment"
-    tools:layout="@layout/fragment_privacy" />
-  <fragment
-    android:id="@+id/teamFragment"
-    android:name="app.te.lima_zola.presentation.settings.TeamFragment"
-    tools:layout="@layout/fragment_team" />
+    <fragment
+        android:id="@+id/aboutFekraFragment"
+        android:name="app.te.lima_zola.presentation.settings.AboutFekraFragment"
+        tools:layout="@layout/fragment_about_fekra" />
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="app.te.lima_zola.presentation.settings.TermsFragment"
+        tools:layout="@layout/fragment_terms" />
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="app.te.lima_zola.presentation.settings.PrivacyFragment"
+        tools:layout="@layout/fragment_privacy" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="app.te.lima_zola.presentation.settings.TeamFragment"
+        tools:layout="@layout/fragment_team" />
 
-  <fragment
-    android:id="@+id/contact_fragment"
-    android:name="app.te.lima_zola.presentation.contactus.ContactUsFragment"
-    android:label="@string/contact_us"
-    tools:layout="@layout/fragment_contact_us" />
-  <fragment
-    android:id="@+id/languageFragment"
-    android:name="app.te.lima_zola.presentation.account.LanguageFragment"
-    tools:layout="@layout/fragment_language" />
-  <include app:graph="@navigation/nav_subscribe" />
+    <fragment
+        android:id="@+id/contact_fragment"
+        android:name="app.te.lima_zola.presentation.contactus.ContactUsFragment"
+        android:label="@string/contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="app.te.lima_zola.presentation.account.LanguageFragment"
+        tools:layout="@layout/fragment_language" />
+    <include app:graph="@navigation/nav_subscribe" />
 
-  <fragment
-    android:id="@+id/profileFragment"
-    android:name="app.te.lima_zola.presentation.profile.ProfileFragment"
-    tools:layout="@layout/fragment_profile">
-    <action
-      android:id="@+id/action_profileFragment_to_changePasswordFragment"
-      app:destination="@id/changePasswordFragment"
-      app:enterAnim="@anim/anim_slide_in_right"
-      app:exitAnim="@anim/anim_slide_out_left"
-      app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right" />
-  </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="app.te.lima_zola.presentation.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+    </fragment>
 
-  <fragment
-    android:id="@+id/changePasswordFragment"
-    android:name="app.te.lima_zola.presentation.profile.changePassword.ChangePasswordFragment"
-    tools:layout="@layout/fragment_change_password" />
-  <fragment
-    android:id="@+id/videosFragment"
-    android:name="app.te.lima_zola.presentation.videos.VideosFragment"
-    tools:layout="@layout/fragment_videos">
-    <argument
-      android:name="cat_id"
-      app:argType="integer" />
-  </fragment>
-  <fragment
-    android:id="@+id/favoriteVideosFragment"
-    android:name="app.te.lima_zola.presentation.videos.FavoriteVideosFragment"
-    tools:layout="@layout/fragment_favorite_videos" />
-  <fragment
-    android:id="@+id/documentsFragment"
-    android:name="app.te.lima_zola.presentation.documents.DocumentsFragment"
-    tools:layout="@layout/fragment_documents">
-    <argument
-      android:name="cat_id"
-      app:argType="integer" />
-  </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="app.te.lima_zola.presentation.profile.changePassword.ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/videosFragment"
+        android:name="app.te.lima_zola.presentation.videos.VideosFragment"
+        tools:layout="@layout/fragment_videos">
+        <argument
+            android:name="cat_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_videosFragment_to_nav_subscribe"
+            app:destination="@id/nav_subscribe"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteVideosFragment"
+        android:name="app.te.lima_zola.presentation.videos.FavoriteVideosFragment"
+        tools:layout="@layout/fragment_favorite_videos" />
+    <fragment
+        android:id="@+id/documentsFragment"
+        android:name="app.te.lima_zola.presentation.documents.DocumentsFragment"
+        tools:layout="@layout/fragment_documents">
+        <argument
+            android:name="cat_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_documentsFragment_to_nav_subscribe"
+            app:destination="@id/nav_subscribe"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_documentsFragment_to_documentDetailsFragment"
+            app:destination="@id/documentDetailsFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/documentDetailsFragment"
+        android:name="app.te.lima_zola.presentation.documents.DocumentDetailsFragment"
+        tools:layout="@layout/fragment_document_details">
+        <argument
+            android:name="doc_id"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

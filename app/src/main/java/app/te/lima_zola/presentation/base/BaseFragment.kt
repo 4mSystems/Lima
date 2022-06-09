@@ -1,6 +1,5 @@
 package app.te.lima_zola.presentation.base
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.net.Uri
 import android.os.Bundle
@@ -19,7 +18,6 @@ import com.afollestad.assent.showSystemAppDetailsPage
 import app.te.lima_zola.presentation.base.utils.SingleLiveEvent
 import app.te.lima_zola.presentation.base.utils.hideLoadingDialog
 import app.te.lima_zola.presentation.base.utils.showLoadingDialog
-import gun0912.tedbottompicker.TedRxBottomPicker
 import java.util.Locale
 
 abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
@@ -133,29 +131,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     else {
       fragmentActivity.showSystemAppDetailsPage()
       false
-    }
-  }
-
-  // Pick Single image
-  @SuppressLint("CheckResult")
-  fun singleTedBottomPicker(fragmentActivity: FragmentActivity) {
-    if (checkGalleryPermissions(fragmentActivity)) {
-      TedRxBottomPicker.with(fragmentActivity)
-        .show()
-        .subscribe({
-          selectedImages.value = it
-        }, Throwable::printStackTrace)
-    }
-  }
-
-  @SuppressLint("CheckResult")
-  fun multiTedBottomPicker(fragmentActivity: FragmentActivity) {
-    if (checkGalleryPermissions(fragmentActivity)) {
-      TedRxBottomPicker.with(fragmentActivity)
-        .show()
-        .subscribe({
-          selectedImages.value = it
-        }, Throwable::printStackTrace)
     }
   }
 

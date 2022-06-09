@@ -101,5 +101,6 @@
   <string name="old_password">كلمة المرور القديمة</string>
     <string name="no_content_avail">"عفوا لا توجد بيانات متاحه "</string>
   <string name="all_cat">الكل</string>
+    <string name="track_selection_title">Select tracks</string>
 
 </resources>

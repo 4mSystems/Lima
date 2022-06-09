@@ -1,84 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <data>
+    <data>
 
-    <variable
-      name="uiState"
-      type="app.te.lima_zola.presentation.documents.ui_state.DocumentItemUiState" />
+        <variable
+            name="uiState"
+            type="app.te.lima_zola.presentation.documents.ui_state.DocumentItemUiState" />
 
-  </data>
-
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_10sdp">
-
-    <com.google.android.material.imageview.ShapeableImageView
-      android:id="@+id/cat_image"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/_200sdp"
-      android:scaleType="centerCrop"
-      android:src="@color/overlayBackground"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:loadImage="@{uiState.documentImage}"
-      app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/_10sdp"
-      android:src="@drawable/ic_lock"
-      android:visibility="@{uiState.documentLocked}"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+    </data>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_video_title"
-      style="@style/TextMediumFont"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/_6sdp"
-      android:ellipsize="end"
-      android:maxLines="2"
-      android:textAlignment="viewStart"
-      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-      android:textColor="@color/black"
-      app:fromHtml="@{uiState.documentTitle}"
-      app:layout_constraintEnd_toEndOf="@id/cat_image"
-      app:layout_constraintStart_toStartOf="@+id/cat_image"
-      app:layout_constraintTop_toBottomOf="@id/cat_image"
-      tools:text="الدرس الأول .. مهارات الإتصال" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:onClick="@{()->uiState.openDocument()}">
 
-    <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_doc_desc"
-      style="@style/TextMediumFont"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/_6sdp"
-      android:ellipsize="end"
-      android:maxLines="4"
-      android:textAlignment="viewStart"
-      android:textAppearance="@style/TextAppearance.AppCompat.Small"
-      android:textColor="@color/black_light"
-      app:fromHtml="@{uiState.documentTitle}"
-      app:layout_constraintEnd_toEndOf="@id/cat_image"
-      app:layout_constraintStart_toStartOf="@+id/cat_image"
-      app:layout_constraintTop_toBottomOf="@id/tv_video_title"
-      tools:text="لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/cat_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:scaleType="centerCrop"
+            android:src="@color/overlayBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{uiState.documentImage}"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/ic_lock"
+            android:visibility="@{uiState.documentLocked}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:layout_marginTop="@dimen/_8sdp"
-      android:background="@color/line_color_op"
-      app:layout_constraintTop_toBottomOf="@id/tv_doc_desc" />
-  </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_video_title"
+            style="@style/TextMediumFont"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_6sdp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            app:fromHtml="@{uiState.documentTitle}"
+            app:layout_constraintEnd_toEndOf="@id/cat_image"
+            app:layout_constraintStart_toStartOf="@+id/cat_image"
+            app:layout_constraintTop_toBottomOf="@id/cat_image"
+            tools:text="الدرس الأول .. مهارات الإتصال" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_doc_desc"
+            style="@style/TextMediumFont"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black_light"
+            app:fromHtml="@{uiState.documentTitle}"
+            app:layout_constraintEnd_toEndOf="@id/cat_image"
+            app:layout_constraintStart_toStartOf="@+id/cat_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_video_title"
+            tools:text="لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@color/line_color_op"
+            app:layout_constraintTop_toBottomOf="@id/tv_doc_desc" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

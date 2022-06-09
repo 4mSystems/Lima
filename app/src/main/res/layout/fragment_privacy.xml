@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <data>
+    <data>
 
-    <variable
-      name="eventListener"
-      type="app.te.lima_zola.presentation.base.events.BaseEventListener" />
+        <variable
+            name="eventListener"
+            type="app.te.lima_zola.presentation.base.events.BaseEventListener" />
 
-    <variable
-      name="uiState"
-      type="app.te.lima_zola.presentation.settings.ui_state.AboutDataUiState" />
-  </data>
+        <variable
+            name="uiState"
+            type="app.te.lima_zola.presentation.settings.ui_state.AboutDataUiState" />
+    </data>
 
-  <androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/about">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/_10sdp"
-      app:cardCornerRadius="@dimen/_4sdp"
-      app:cardUseCompatPadding="true">
-
-      <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ic_arrow_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_100sdp"
-        android:background="?selectableItemBackground"
-        android:onClick="@{()-> eventListener.back()}"
-        android:src="@drawable/ic_arrow_back"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-      <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/register"
-        style="@style/TextBoldFont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/privacy"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
-
-      <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ic_about"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register"
-        app:loadImage="@{uiState.image}" />
-
-      <androidx.appcompat.widget.AppCompatTextView
-        style="@style/TextRegularFont"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:text="@{uiState.title}"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ic_about"
-        tools:layout_editor_absoluteX="13dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-  </androidx.core.widget.NestedScrollView>
+        android:layout_height="match_parent"
+        android:background="@drawable/about">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardUseCompatPadding="true">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:background="?selectableItemBackground"
+                android:onClick="@{()-> eventListener.back()}"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/register"
+                style="@style/TextBoldFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/privacy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_about"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/register"
+                app:loadImage="@{uiState.image}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextRegularFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="@{uiState.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ic_about"
+                tools:layout_editor_absoluteX="13dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
