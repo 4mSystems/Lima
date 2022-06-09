@@ -6,5 +6,6 @@ import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
 
 interface ProfileRepository {
+  suspend fun getProfile(): Resource<BaseResponse<UserResponse>>
   suspend fun updateProfile(request: UpdateProfileRequest): Resource<BaseResponse<UserResponse>>
 }

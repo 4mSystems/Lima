@@ -14,6 +14,7 @@ import app.te.lima_zola.domain.intro.repository.IntroRepository
 import app.te.lima_zola.domain.intro.use_case.IntroUseCase
 import app.te.lima_zola.domain.profile.repository.ProfileRepository
 import app.te.lima_zola.domain.profile.use_case.ProfileUseCase
+import app.te.lima_zola.domain.profile.use_case.UpdateProfileUseCase
 import app.te.lima_zola.domain.settings.repository.SettingsRepository
 import app.te.lima_zola.domain.settings.use_case.AboutUseCase
 import app.te.lima_zola.domain.settings.use_case.ContactUseCase
@@ -106,7 +107,13 @@ class UseCaseModule {
     fun provideUpdateProfileUseCase(
         profileRepository: ProfileRepository,
         userLocalUseCase: UserLocalUseCase
-    ): ProfileUseCase = ProfileUseCase(profileRepository, userLocalUseCase)
+    ): UpdateProfileUseCase = UpdateProfileUseCase(profileRepository, userLocalUseCase)
+
+    @Provides
+    @Singleton
+    fun provideProfileUseCase(
+        profileRepository: ProfileRepository
+    ): ProfileUseCase = ProfileUseCase(profileRepository)
 
     @Provides
     @Singleton

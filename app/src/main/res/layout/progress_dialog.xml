@@ -5,15 +5,14 @@
   android:layout_width="@dimen/_200sdp"
   android:layout_height="@dimen/_200sdp"
   android:layout_gravity="center"
-  android:background="@drawable/bg_rounded_white"
   android:elevation="4dp"
   android:gravity="center"
   android:orientation="vertical"
  >
 
   <com.airbnb.lottie.LottieAnimationView
-    android:layout_width="@dimen/dimen350"
-    android:layout_height="@dimen/dimen350"
+    android:layout_width="@dimen/_150sdp"
+    android:layout_height="@dimen/_150sdp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

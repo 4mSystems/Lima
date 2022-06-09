@@ -6,7 +6,8 @@ import app.te.lima_zola.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import app.te.lima_zola.data.local.preferences.AppPreferences
-import com.readystatesoftware.chuck.ChuckInterceptor
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -77,15 +78,20 @@ object RetrofitModule {
         .connectTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
         .addInterceptor(headersInterceptor)
         .addNetworkInterceptor(logging)
-        .addInterceptor(ChuckInterceptor(context))
-        .build()
+        .addInterceptor(
+          ChuckerInterceptor.Builder(context)
+            .collector(ChuckerCollector(context))
+            .maxContentLength(250000L)
+            .redactHeaders(emptySet())
+            .alwaysReadResponseBody(false)
+            .build()
+        )        .build()
     } else {
       OkHttpClient.Builder()
         .readTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
         .connectTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
         .addInterceptor(headersInterceptor)
         .addNetworkInterceptor(logging)
-        .addInterceptor(headersInterceptor)
         .build()
     }
   }

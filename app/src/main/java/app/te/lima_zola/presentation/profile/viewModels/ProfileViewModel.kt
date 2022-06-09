@@ -3,72 +3,83 @@ package app.te.lima_zola.presentation.profile.viewModels
 import android.util.Log
 import androidx.databinding.Bindable
 import androidx.lifecycle.viewModelScope
-import app.te.lima_zola.domain.account.use_case.UserLocalUseCase
+import app.te.lima_zola.BR
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
 import app.te.lima_zola.domain.general.entity.countries.CityModel
 import app.te.lima_zola.domain.general.use_case.CitiesUseCase
 import app.te.lima_zola.domain.profile.entity.UpdateProfileRequest
 import app.te.lima_zola.domain.profile.use_case.ProfileUseCase
+import app.te.lima_zola.domain.profile.use_case.UpdateProfileUseCase
 import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseViewModel
-import app.te.lima_zola.presentation.profile.ui_state.UserUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-  private val userLocalUseCase: UserLocalUseCase,
-  private val profileUseCase: ProfileUseCase,
-  private val cityUseCases: CitiesUseCase
+    private val updateProfileUseCase: UpdateProfileUseCase,
+    private val profileUseCase: ProfileUseCase,
+    private val cityUseCases: CitiesUseCase
 ) : BaseViewModel() {
 
-  @Bindable
-  var request = UpdateProfileRequest()
-  private val _profileResponse =
-    MutableStateFlow<Resource<BaseResponse<UserResponse>>>(Resource.Default)
-  val profileResponse = _profileResponse
-  private val userUiState = UserUiState(null, "")
+    @Bindable
+    var request = UpdateProfileRequest()
+    private val _profileResponse =
+        MutableStateFlow<Resource<BaseResponse<UserResponse>>>(Resource.Default)
 
-  private val _citiesResponse =
-    MutableStateFlow<Resource<BaseResponse<List<CityModel>>>>(Resource.Default)
-  val citiesResponse = _citiesResponse
-  var cities: List<CityModel> = listOf()
+    val profileResponse = _profileResponse
+    private val _updateProfileResponse =
+        MutableStateFlow<Resource<BaseResponse<UserResponse>>>(Resource.Default)
+    val updateProfileResponse = _updateProfileResponse
+
+    private val _citiesResponse =
+        MutableStateFlow<Resource<BaseResponse<List<CityModel>>>>(Resource.Default)
+    val citiesResponse = _citiesResponse
+    var cities: List<CityModel> = listOf()
 
 
-  init {
-    getCities()
-    viewModelScope.launch {
-      userLocalUseCase.invoke().collect { userLocal ->
-        userUiState.userResponse = userLocal
-        request.name = request.name.ifEmpty { userLocal.name }
-        request.phone = userLocal.phone
-        request.city_id = userLocal.cityId.toString()
-        request.cityName = userLocal.cityName
-      }
+    init {
+        getProfile()
     }
 
-  }
+    private fun getProfile() {
+        profileUseCase.invoke().catch { exception ->
+            Log.e(
+                "updateProfile",
+                "updateProfile: ${exception.printStackTrace()}"
+            )
+        }.onEach { result ->
+            _profileResponse.value = result
+        }.launchIn(viewModelScope)
+    }
 
-  fun updateProfile() {
-    profileUseCase.invoke(request).catch { exception ->
-      Log.e(
-        "updateProfile",
-        "updateProfile: ${exception.printStackTrace()}"
-      )
-    }.onEach { result ->
-      _profileResponse.value = result
-    }.launchIn(viewModelScope)
-  }
+    fun updateProfile() {
+        updateProfileUseCase.invoke(request).catch { exception ->
+            Log.e(
+                "updateProfile",
+                "updateProfile: ${exception.printStackTrace()}"
+            )
+        }.onEach { result ->
+            _updateProfileResponse.value = result
+        }.launchIn(viewModelScope)
+    }
 
-  fun getCities() {
-    cityUseCases()
-      .catch { exception -> }
-      .onEach { result ->
-        _citiesResponse.value = result
-      }
-      .launchIn(viewModelScope)
-  }
+    fun getCities() {
+        cityUseCases()
+            .catch { exception -> }
+            .onEach { result ->
+                _citiesResponse.value = result
+            }
+            .launchIn(viewModelScope)
+    }
+
+    fun updateRequest(data: UserResponse) {
+        request.name = request.name.ifEmpty { data.name }
+        request.phone = data.phone
+        request.city_id = data.city_id.toString()
+        request.cityName = data.city_name
+        notifyPropertyChanged(BR.request)
+    }
 }

@@ -13,7 +13,7 @@
     <item name="android:statusBarColor">@color/colorPrimary</item>
 
     <!-- App Font -->
-    <item name="fontFamily">@font/tajawal_medium</item>
+    <item name="fontFamily">@font/cairo_medium</item>
 
     <item name="android:windowContentTransitions">true</item>
     <item name="android:windowActionBarOverlay">true</item>
@@ -35,15 +35,15 @@
 
   <style name="TextBoldFont">
     <item name="android:textStyle">bold</item>
-    <item name="fontFamily">@font/tajawal_bold</item>
+    <item name="fontFamily">@font/cairo_bold</item>
   </style>
 
   <style name="TextMediumFont">
-    <item name="fontFamily">@font/tajawal_medium</item>
+    <item name="fontFamily">@font/cairo_medium</item>
   </style>
 
   <style name="TextRegularFont">
-    <item name="fontFamily">@font/tajawal_regular</item>
+    <item name="fontFamily">@font/cairo_regular</item>
   </style>
 
   <style name="CustomDialogAnimation" parent="Theme.MaterialComponents.DayNight.Dialog.Bridge">
@@ -81,12 +81,12 @@
 
   <style name="TutorialTitleFont">
     <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
-    <item name="fontFamily">@font/tajawal_bold</item>
+    <item name="fontFamily">@font/cairo_bold</item>
   </style>
 
   <style name="TutorialContentFont">
     <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
-    <item name="fontFamily">@font/tajawal_regular</item>
+    <item name="fontFamily">@font/cairo_regular</item>
   </style>
 
   <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">

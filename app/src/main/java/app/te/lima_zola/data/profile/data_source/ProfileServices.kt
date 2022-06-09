@@ -7,7 +7,10 @@ import retrofit2.http.*
 
 interface ProfileServices {
 
-  @POST("v1/user/profile/update")
-  suspend fun updateProfile(@Body request: UpdateProfileRequest): BaseResponse<UserResponse>
+    @GET("v1/user/profile")
+    suspend fun getProfile(): BaseResponse<UserResponse>
+
+    @POST("v1/user/profile/update")
+    suspend fun updateProfile(@Body request: UpdateProfileRequest): BaseResponse<UserResponse>
 
 }
