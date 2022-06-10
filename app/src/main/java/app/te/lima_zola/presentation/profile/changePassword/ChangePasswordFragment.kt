@@ -18,53 +18,55 @@ import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>(),
-  ChangePasswordEventListener {
+    ChangePasswordEventListener {
 
-  private val viewModel: ChangePasswordViewModel by viewModels()
+    private val viewModel: ChangePasswordViewModel by viewModels()
 
-  override
-  fun getLayoutId() = R.layout.fragment_change_password
+    override
+    fun getLayoutId() = R.layout.fragment_change_password
 
-  override
-  fun setBindingVariables() {
-    binding.request = viewModel.request
-    binding.eventListener = this
-  }
-
-  override
-  fun setupObservers() {
-    lifecycleScope.launchWhenResumed {
-      viewModel.changePasswordResponse.collect {
-        when (it) {
-          Resource.Loading -> {
-            hideKeyboard()
-            showLoading()
-          }
-          is Resource.Success -> {
-            hideLoading()
-            showSuccessAlert(requireActivity(), it.value.message)
-            backToPreviousScreen()
-          }
-          is Resource.Failure -> {
-            hideLoading()
-            handleApiError(it, retryAction = { viewModel.changePassword() })
-          }
-          Resource.Default -> {
-          }
-        }
-      }
+    override
+    fun setBindingVariables() {
+        binding.request = viewModel.request
+        binding.eventListener = this
     }
-  }
 
-  override fun changePassword() {
-    viewModel.changePassword()
-  }
-  override fun setupStatusBar() {
-    val window: Window = requireActivity().window
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-    window.statusBarColor = getMyColor(R.color.colorPrimary)
-  }
-  override fun back() {
-    backToPreviousScreen()
-  }
+    override
+    fun setupObservers() {
+        lifecycleScope.launchWhenResumed {
+            viewModel.changePasswordResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        hideKeyboard()
+                        showLoading()
+                    }
+                    is Resource.Success -> {
+                        hideLoading()
+                        showSuccessAlert(requireActivity(), it.value.message)
+                        backToPreviousScreen()
+                    }
+                    is Resource.Failure -> {
+                        hideLoading()
+                        handleApiError(it, retryAction = { viewModel.changePassword() })
+                    }
+                    Resource.Default -> {
+                    }
+                }
+            }
+        }
+    }
+
+    override fun changePassword() {
+        viewModel.changePassword()
+    }
+
+    override fun setupStatusBar() {
+        val window: Window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = getMyColor(R.color.colorPrimary)
+    }
+
+    override fun back() {
+        backToPreviousScreen()
+    }
 }

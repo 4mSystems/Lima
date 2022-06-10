@@ -263,11 +263,11 @@ public class PlayerActivity extends AppCompatActivity {
 
         @Override
         public void onPlaybackStateChanged(@Player.State int playbackState) {
-//            if (playbackState == Player.STATE_ENDED) {
-////                showControls();
-//                Log.e(TAG, "onPlaybackStateChanged: ");
-//                exoPlayerBinding.progress.setVisibility(View.GONE);
-//            }
+            if (playbackState == Player.STATE_ENDED) {
+//                showControls();
+                Log.e(TAG, "onPlaybackStateChanged: ");
+
+            }
 //            if (playbackState == Player.STATE_IDLE) {
 //                Log.e(TAG, "onPlaybackStateChanged: IDLE");
 //                exoPlayerBinding.progress.setVisibility(View.VISIBLE);

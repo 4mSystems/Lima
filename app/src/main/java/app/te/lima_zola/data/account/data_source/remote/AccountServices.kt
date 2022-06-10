@@ -11,6 +11,6 @@ interface AccountServices {
   @PUT("v1/firebase_token")
   suspend fun sendFirebaseToken(@Body request: SendFirebaseTokenRequest): BaseResponse<*>
 
-  @POST("v1/auth/logout")
+  @POST("v1/user/logout")
   suspend fun logOut(): BaseResponse<*>
 }

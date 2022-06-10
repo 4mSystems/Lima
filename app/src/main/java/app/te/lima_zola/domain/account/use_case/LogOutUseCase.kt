@@ -11,14 +11,9 @@ import javax.inject.Inject
 
 class LogOutUseCase @Inject constructor(private val accountRepository: AccountRepository) {
 
-  operator fun invoke(): Flow<Resource<BaseResponse<*>>> = flow {
-    emit(Resource.Loading)
-
-    val result = accountRepository.logOut()
-    if (result is Resource.Success) {
-      accountRepository.clearPreferences()
-    }
-
-    emit(result)
-  }.flowOn(Dispatchers.IO)
+    operator fun invoke(): Flow<Resource<BaseResponse<*>>> = flow {
+        accountRepository.clearPreferences()
+        val result = accountRepository.logOut()
+        emit(result)
+    }.flowOn(Dispatchers.IO)
 }

@@ -41,9 +41,7 @@
 -keep public class com.google.android.material.bottomnavigation.* { *; }
 
 # To prevent obfusticating model classes
-# TODO : Make sure you do this for each feature module in your app
--keep class com.structure.base_mvvm.data.* { *; }
--keep class com.structure.base_mvvm.domain.* { *; }
+-keep class app.te.lima_zola.domain.videos_articles.entity.request.* { *; }
 
 ## Localization Helper
 -keep class com.zeugmasolutions.localehelper.* { *; }

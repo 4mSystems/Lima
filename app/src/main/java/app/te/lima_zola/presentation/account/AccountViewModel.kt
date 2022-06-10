@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AccountViewModel @Inject constructor(
   private val accountUseCases: AccountUseCases,
-  private val userLocalUseCase: UserLocalUseCase
+   val userLocalUseCase: UserLocalUseCase
 ) : BaseViewModel() {
 
   private val _logOuResponse = MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)

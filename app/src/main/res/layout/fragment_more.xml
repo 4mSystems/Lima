@@ -42,7 +42,7 @@
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openAbout80Fekra()}"
         android:text="@string/about_80"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo" />
@@ -67,7 +67,7 @@
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openAbout()}"
         android:text="@string/about"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_about_80" />
@@ -92,7 +92,7 @@
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openTeam()}"
         android:text="@string/team"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_about" />
@@ -112,12 +112,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_15sdp"
-        android:drawableStart="@drawable/ic_team"
+        android:drawableStart="@drawable/ic_more_contact"
         android:drawablePadding="@dimen/_6sdp"
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openContact()}"
         android:text="@string/contact_us"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_team" />
@@ -142,7 +142,7 @@
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openTerms()}"
         android:text="@string/terms"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_contact" />
@@ -167,7 +167,7 @@
         android:drawableTint="@color/colorPrimaryDark"
         android:onClick="@{()-> eventListener.openPrivacyPolicy()}"
         android:text="@string/privacy"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_terms" />
