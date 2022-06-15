@@ -60,6 +60,24 @@ class UseCaseModule {
 
     @Provides
     @Singleton
+    fun provideGetSubscriptionTypesUseCase(
+        authRepository: AuthRepository
+    ): GetSubscriptionTypesUseCase = GetSubscriptionTypesUseCase(authRepository)
+
+    @Provides
+    @Singleton
+    fun provideGetPaymentMethodsUseCase(
+        authRepository: AuthRepository
+    ): GetPaymentMethodsUseCase = GetPaymentMethodsUseCase(authRepository)
+
+    @Provides
+    @Singleton
+    fun provideGetPaymentResultUseCase(
+        authRepository: AuthRepository
+    ): GetPaymentResultUseCase = GetPaymentResultUseCase(authRepository)
+
+    @Provides
+    @Singleton
     fun provideChangePasswordUseCase(
         authRepository: AuthRepository,
     ): ChangePasswordUseCase = ChangePasswordUseCase(authRepository)

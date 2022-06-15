@@ -187,6 +187,8 @@ dependencies {
 
     //Pin code
     implementation(Libraries.pin_code)
+    //AdvancedWebView
+    implementation(Libraries.AdvancedWebView)
 
     // Project Modules
     implementation(project(Config.Modules.prettyPopUp))

@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
@@ -25,6 +26,7 @@ import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.RenderersFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil;
@@ -42,6 +44,7 @@ import com.google.android.exoplayer2.util.Util;
 
 import app.te.lima_zola.R;
 import app.te.lima_zola.databinding.ActivityExoPlayerBinding;
+import app.te.lima_zola.presentation.documents.viewModels.DocumentDetailsViewModel;
 
 public class PlayerActivity extends AppCompatActivity {
     private static final String KEY_VIDEO_URI = "video_uri";
@@ -61,6 +64,7 @@ public class PlayerActivity extends AppCompatActivity {
     private boolean startAutoPlay;
     private int startWindow;
     private long startPosition;
+//    private DocumentDetailsViewModel viewModel;
 
     public static Intent getStartIntent(Context context, String videoUri) {
         Intent intent = new Intent(context, PlayerActivity.class);
@@ -75,6 +79,7 @@ public class PlayerActivity extends AppCompatActivity {
         if (getIntent().hasExtra(KEY_VIDEO_URI)) {
             videoUri = getIntent().getStringExtra(KEY_VIDEO_URI);
         }
+//        viewModel = new ViewModelProvider(this).get(DocumentDetailsViewModel.class);
         exoPlayerBinding.playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
         exoPlayerBinding.playerView.requestFocus();
         if (savedInstanceState != null) {
@@ -225,7 +230,6 @@ public class PlayerActivity extends AppCompatActivity {
         player.setMediaItem(MediaItem.fromUri(videoUri), /* resetPosition= */ !haveStartPosition);
         player.prepare();
         player.play();
-
     }
 
     protected void releasePlayer() {
@@ -263,11 +267,12 @@ public class PlayerActivity extends AppCompatActivity {
 
         @Override
         public void onPlaybackStateChanged(@Player.State int playbackState) {
-            if (playbackState == Player.STATE_ENDED) {
-//                showControls();
-                Log.e(TAG, "onPlaybackStateChanged: ");
+//            if (playbackState == Player.STATE_ENDED) {
+////                showControls();
+//                Log.e(TAG, "onPlaybackStateChanged: ");
+//
+//            }
 
-            }
 //            if (playbackState == Player.STATE_IDLE) {
 //                Log.e(TAG, "onPlaybackStateChanged: IDLE");
 //                exoPlayerBinding.progress.setVisibility(View.VISIBLE);
@@ -276,6 +281,7 @@ public class PlayerActivity extends AppCompatActivity {
 //                Log.e(TAG, "onPlaybackStateChanged: buffering");
 //
 //            }
+
         }
 
         @Override
@@ -286,6 +292,7 @@ public class PlayerActivity extends AppCompatActivity {
             else
                 exoPlayerBinding.progress.setVisibility(View.GONE);
         }
+
 
         @Override
         public void onPlayerError(@NonNull PlaybackException error) {

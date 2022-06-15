@@ -45,6 +45,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(), ProfileEventList
                     }
                     is Resource.Success -> {
                         hideLoading()
+                        showSuccessAlert(requireActivity(),it.value.message)
                         openHome(it.value.message)
                     }
                     is Resource.Failure -> {

@@ -10,7 +10,7 @@
     <string name="some_error">Some error occurred, try again later</string>
 
     <!-- Home -->
-    <string name="childern">Home</string>
+    <string name="childern">Kids</string>
     <string name="account">Account</string>
 
     <!-- Tutorial -->
@@ -20,7 +20,6 @@
 
     <!-- Log In -->
     <string name="login">Login</string>
-    <string name="login_body">Please login to your account</string>
     <string name="phone_hint">Phone</string>
     <string name="password">Password</string>
     <string name="login_as_guest">Visitor</string>
@@ -33,90 +32,54 @@
     <string name="skip">Skip</string>
     <!--  <string name="google_api_key">Continue as Guest</string>-->
 
-    <string name="privacy">Freeze and Cancellation Policy</string>
+    <string name="privacy">Privacy policy</string>
     <string name="confirm_header_text">Confirm account</string>
-    <string name="packages">Packages</string>
     <string name="profile">Profile</string>
-    <string name="mom">My meals</string>
+    <string name="mom">Mom</string>
     <string name="menu_more">More</string>
-    <string name="notifications">Notifications</string>
-    <string name="change_password">Change password</string>
     <string name="not_match_password">The two passwords do not match</string>
-    <string name="yes">Yes</string>
     <string name="active">Activate the account</string>
     <string name="open_app">Start app</string>
-    <string name="choose_lang_toolbar">Select Language</string>
-    <string name="my_locations">My addresses</string>
-    <string name="promo_codes">My coupons</string>
-    <string name="add_location">Add address</string>
-    <string name="not_all_permission_accepted">Please accept the permissions</string>
-    <string name="location_is_off">Location off</string>
-    <string name="location_off_body_message">please open your location</string>
-    <string name="detect_location">locate me</string>
-    <string name="snaks">Snacks</string>
-    <string name="order_location">Select the address</string>
     <string name="confirm">Confirm</string>
-    <string name="order_details">Order details</string>
-    <string name="facebook_app_id" translatable="false">1027486111200196</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb1234</string>
-    <string name="facebook_client_token" translatable="false">21f5f6133b920f45f10e6e6aa82b87b3</string>
     <!--  Side Menu-->
     <string name="about">About the app</string>
-    <string name="suggest">Complaints and suggestions</string>
-    <string name="share">Share the app</string>
-    <string name="rate">Rate app</string>
-    <string name="members">Clients</string>
-    <string name="agents">Agents</string>
     <string name="terms">Terms and Conditions</string>
-    <string name="customer_service">Customer support</string>
-    <string name="center_data_update">Edit my center</string>
     <string name="contact_us">Contact us</string>
     <string name="language">Change language</string>
     <!--  Suggestions-->
-    <string name="suggest_title">We are pleased to receive your suggestions and complaints and we strive to resolve them</string>
     <string name="client_name">Name</string>
-    <string name="client_phone">Phone number</string>
-    <string name="client_address">Write your address in details</string>
-    <string name="client_notes">"Write your notes "</string>
-    <string name="send">Send</string>
     <!--Contact Us-->
-    <string name="contact_title">Contact us to answer your questions</string>
     <!--Countries-->
     <string name="country_hint">Choose the country</string>
-    <string name="city_hint">Choose the city</string>
-    <string name="gov_hint">Choose the governorate</string>
-    <string name="login_btn">تسجيل</string>
-    <string name="new_account">إنشاء حساب جديد</string>
-    <string name="subscribe_header_text">اختر نوع الاشتراك</string>
-    <string name="annual">سنوي</string>
-    <string name="half_annual">نصف سنوي</string>
-    <string name="subscribe_payment_header_text">اختر نوع الدفع</string>
-    <string name="paymob">paymob</string>
-    <string name="pay_by_delegate">مندوب عن طريق منزلك</string>
+    <string name="login_btn">Login</string>
+    <string name="new_account">Register</string>
+    <string name="subscribe_header_text">Choose subscription</string>
+    <string name="annual">Annual</string>
+    <string name="half_annual">Half annual</string>
+    <string name="subscribe_payment_header_text">Choose the type of payment</string>
+    <string name="paymob">Online</string>
+    <string name="pay_by_delegate">From your home</string>
 
     <string name="log_out_hint">Are you sure you want to log out?</string>
-    <string name="favorite">المفضلة</string>
-    <string name="subscribe_account">اشترك الآن</string>
-    <string name="change_language">تغيير اللغة</string>
-    <string name="about_80">عن 80 فكرة</string>
-    <string name="team">فريق العمل</string>
-    <string name="version_name">النسخه</string>
+    <string name="favorite">Favorite</string>
+    <string name="subscribe_account">Subscribe now</string>
+    <string name="change_language">Change language</string>
+    <string name="about_80">About 80 Fekra</string>
+    <string name="team">Team</string>
+    <string name="version_name">Version</string>
     <string name="ar">اللغة العربية</string>
-    <string name="en">اللغة الإنجليزية</string>
-    <string name="save">حفظ</string>
-    <string name="forget_password">تغيير كلمة المرور</string>
-    <string name="password_hint_confirm">تأكيد كلمة المرور</string>
-    <string name="old_password">كلمة المرور القديمة</string>
-    <string name="no_content_avail">"عفوا لا توجد بيانات متاحه "</string>
-    <string name="all_cat">الكل</string>
-    <string name="track_selection_title">Select tracks</string>
+    <string name="en">English</string>
+    <string name="save">Save</string>
+    <string name="forget_password">Change password</string>
+    <string name="password_hint_confirm">Confirm password</string>
+    <string name="old_password">Old password</string>
+    <string name="no_content_avail">Sorry, no data is available</string>
+    <string name="all_cat">All</string>
     <string name="storage_permission_denied" translatable="false">Storage pernission denied</string>
     <string name="error_generic" translatable="false">Playback failed</string>
     <string name="error_no_secure_decoder" translatable="false">This device does not provide a secure decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
     <string name="error_no_decoder" translatable="false">This device does not provide a decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
     <string name="error_querying_decoders" translatable="false">Unable to query device decoders</string>
     <string name="error_instantiating_decoder" translatable="false">Unable to instantiate decoder <xliff:g id="decoder_name">%1$s</xliff:g></string>
-    <string name="error_drm_unsupported_scheme" translatable="false">This device does not support the required DRM scheme</string>
-    <string name="error_cleartext_not_permitted" translatable="false">Cleartext HTTP traffic not permitted. See https://exoplayer.dev/issues/cleartext-not-permitted</string>
 
 </resources>

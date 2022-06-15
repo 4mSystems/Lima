@@ -12,7 +12,6 @@ import app.te.lima_zola.presentation.base.BaseUiState
 import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 import app.te.lima_zola.presentation.base.extensions.toStringMatch
 import app.te.lima_zola.presentation.base.utils.Constants
-import app.te.lima_zola.presentation.base.utils.openBrowser
 import app.te.lima_zola.presentation.videos.eventListener.VideosEventListener
 
 class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainContentUiState {

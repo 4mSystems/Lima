@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="model"
+            type="app.te.lima_zola.domain.auth.entity.model.payments.PaymentItem" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/payment_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp">
+
+        <RadioButton
+            android:id="@+id/radio_name"
+            style="@style/TextRegularFont"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:buttonTint="@color/colorPrimaryDark"
+            android:checked="@{model.selected}"
+            android:text="@{model.paymentName}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/payment_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/payment_image"
+            tools:text="@string/annual" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/payment_image"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_6sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{model.logo}" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/br"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="payment_image,radio_name" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:background="@color/line_color_op"
+            app:layout_constraintTop_toBottomOf="@id/br" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

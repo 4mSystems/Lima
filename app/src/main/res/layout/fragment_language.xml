@@ -50,12 +50,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_26sdp"
-        android:checkedButton="@id/radio_annual"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/register">
 
         <RadioButton
-          android:id="@+id/radio_annual"
+          android:id="@+id/radio_ar"
           style="@style/TextRegularFont"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -71,7 +70,7 @@
           android:background="@color/line_color" />
 
         <RadioButton
-          android:id="@+id/radio_half_annual"
+          android:id="@+id/radio_en"
           style="@style/TextRegularFont"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -84,7 +83,7 @@
 
 
       <com.google.android.material.button.MaterialButton
-        android:id="@+id/appCompatButtonNext"
+        android:id="@+id/confirm_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_80sdp"

@@ -2,35 +2,22 @@
 <resources>
   <color name="colorPrimaryDark">#8BDED6</color>
   <color name="colorPrimary">#FDD72C</color>
-  <color name="colorPrimaryHolo">#72A6CB</color>
-  <color name="colorAccent">#4A9188</color>
+    <color name="colorAccent">#4A9188</color>
   <color name="colorLight">#F2F2F2</color>
   <color name="bottom_background">#8BDED6</color>
   <color name="colordark">#313131</color>
-  <color name="app_background">#FBFBFB</color>
-  <color name="overlayBackground">#7f989c9f</color>
+    <color name="overlayBackground">#7f989c9f</color>
   <color name="white">#FFFFFF</color>
   <color name="black">#000000</color>
   <color name="black_light">#B3000000</color>
   <color name="dark_grey">#848484</color>
-  <color name="zxing_transparent">#00000000</color>
-  <color name="bg_grand_call">#fff8701a</color>
-  <color name="bg_grand_what">#ffc85711</color>
-  <color name="bottom_menu_normal">#8A98A3</color>
-  <color name="medium_color">#7E7E7E</color>
+    <color name="medium_color">#7E7E7E</color>
   <color name="line_color">#707070</color>
   <color name="line_color_op">#1A707070</color>
-  <color name="circle_shadow">#DAD4D4</color>
-  <color name="driver_color">#F2F7F7F7</color>
-  <color name="colorYellow">#F79826</color>
-  <color name="background_gray">#F2F2F2</color>
-  <color name="account">#717171</color>
-  <color name="left_chat">#F6F5F5</color>
-  <color name="home_status_bar">#CDEEEB</color>
+    <color name="home_status_bar">#CDEEEB</color>
   <color name="account_status_bar">#F9F9F9</color>
   <color name="details_status_bar">#FCE063</color>
   <color name="red">#AE0E0E</color>
   <color name="green">#158119</color>
-  <color name="warningColor">#FFA900</color>
 
 </resources>

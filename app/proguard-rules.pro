@@ -42,6 +42,10 @@
 
 # To prevent obfusticating model classes
 -keep class app.te.lima_zola.domain.videos_articles.entity.request.* { *; }
+-keep class app.te.lima_zola.domain.auth.entity.model.* { *; }
+-keep class app.te.lima_zola.domain.auth.entity.model.subscriptions.* { *; }
+-keep class app.te.lima_zola.domain.auth.entity.model.payments.* { *; }
+-keep class app.te.lima_zola.domain.auth.entity.model.payments.payment_result.* { *; }
 
 ## Localization Helper
 -keep class com.zeugmasolutions.localehelper.* { *; }
