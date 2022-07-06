@@ -49,7 +49,7 @@
             android:background="@drawable/corner_view_loading"
             android:onClick="@{()-> uiState.makeWishList()}"
             android:padding="@dimen/_8sdp"
-            android:src="@drawable/ic_icon_heart"
+            android:src="@drawable/ic_favorite_star"
             android:visibility="@{uiState.videoLikeVisibility}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

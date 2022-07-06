@@ -26,8 +26,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), SplashEventListene
     override
     fun getLayoutId() = R.layout.fragment_splash
 
-    override
-    fun setUpViews() {
+
+    override fun onResume() {
+        super.onResume()
         binding.video.requestLayout()
         binding.video.setOnPreparedListener {
             it.isLooping = false
@@ -50,7 +51,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), SplashEventListene
             }
         }
     }
-
 
     override fun openHome() {
 

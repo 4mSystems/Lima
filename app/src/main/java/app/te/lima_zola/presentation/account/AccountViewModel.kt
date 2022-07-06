@@ -17,37 +17,31 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AccountViewModel @Inject constructor(
-  private val accountUseCases: AccountUseCases,
-   val userLocalUseCase: UserLocalUseCase
+    private val accountUseCases: AccountUseCases,
+    val userLocalUseCase: UserLocalUseCase
 ) : BaseViewModel() {
 
-  private val _logOuResponse = MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
-  val logOutResponse = _logOuResponse
+    private val _logOuResponse = MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
 
-  private val _userData = MutableStateFlow<User>(User.getDefaultInstance())
-  val userData = _userData
+    private val _userData = MutableStateFlow(AccountUiState())
+    val userData = _userData
 
-  lateinit var user: User
-
-  init {
-    viewModelScope.launch {
-      userLocalUseCase.invoke().collect {
-        _userData.value = it
-      }
+    fun getUserFromLocal() {
+        viewModelScope.launch {
+            userLocalUseCase.invoke().collect {
+                val uiState = AccountUiState()
+                uiState.updateUi(it)
+                _userData.value = uiState
+            }
+        }
     }
-  }
 
-  fun logOut() {
-    accountUseCases.logOutUseCase()
-      .onEach { result ->
-        _logOuResponse.value = result
-      }
-      .launchIn(viewModelScope)
-  }
-
-  fun clearStorage() {
-    viewModelScope.launch {
-      userLocalUseCase.logOut()
+    fun logOut() {
+        accountUseCases.logOutUseCase()
+            .onEach { result ->
+                _logOuResponse.value = result
+            }
+            .launchIn(viewModelScope)
     }
-  }
+
 }

@@ -1,5 +1,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" translatable="false">Lima&amp;Zola</string>
+    <string name="app_name" translatable="false">Lima Zola</string>
     <string name="empty_warning">This field is required</string>
 
     <!-- General Strings -->

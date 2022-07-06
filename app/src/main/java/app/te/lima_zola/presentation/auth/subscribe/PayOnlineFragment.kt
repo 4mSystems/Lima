@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentPayOnlineBinding
@@ -15,6 +16,7 @@ import app.te.lima_zola.presentation.base.utils.showSuccessAlert
 import app.te.lima_zola.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import im.delight.android.webview.AdvancedWebView
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class PayOnlineFragment : BaseFragment<FragmentPayOnlineBinding>(), AdvancedWebView.Listener {
@@ -60,7 +62,10 @@ class PayOnlineFragment : BaseFragment<FragmentPayOnlineBinding>(), AdvancedWebV
 
     private fun showSuccessDialog() {
         showSuccessAlert(requireActivity(), getString(R.string.payment_success_visa))
-        openActivityAndClearStack(HomeActivity::class.java)
+        lifecycleScope.launchWhenStarted {
+            delay(1000)
+            openActivityAndClearStack(HomeActivity::class.java)
+        }
     }
 
     override fun onPageFinished(url: String) {

@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentAccountBinding
-import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.auth.AuthActivity
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
@@ -17,21 +16,20 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventListener {
     private val accountViewModel: AccountViewModel by viewModels()
-    lateinit var uiState: AccountUiState
 
     override
     fun getLayoutId() = R.layout.fragment_account
     override fun setBindingVariables() {
         binding.eventListener = this
+        accountViewModel.getUserFromLocal()
     }
 
     override
     fun setupObservers() {
         lifecycleScope.launchWhenResumed {
             accountViewModel.userData.collect {
-                uiState = AccountUiState(it)
-                binding.uiState = uiState
-                uiState.updateUi()
+                binding.uiState = it
+
             }
         }
     }
@@ -84,7 +82,7 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventList
     }
 
     override fun logout() {
-        if (uiState.user.name.isNotEmpty())
+        if (binding.uiState?.user?.name?.isNotEmpty() == true)
             showLogOutPopUp()
         else {
             openIntentActivity(AuthActivity::class.java, R.id.logInFragment)

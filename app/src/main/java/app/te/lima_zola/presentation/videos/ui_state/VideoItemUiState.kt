@@ -40,7 +40,7 @@ class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainCo
     var likeIcon: Int = R.drawable.ic_like
 
     @Bindable
-    var favoriteIcon: Int = R.drawable.ic_icon_heart
+    var favoriteIcon: Int = R.drawable.ic_favorite_star
 
     val videoImage: String = videoData.image
     val videoTitle: String = videoData.name
@@ -53,9 +53,9 @@ class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainCo
 
     private fun updateFavorite() {
         favoriteIcon = if (videoData.fav)
-            R.drawable.ic_favorite
+            R.drawable.ic_favorite_star_filled
         else
-            R.drawable.ic_icon_heart
+            R.drawable.ic_favorite_star
         notifyPropertyChanged(BR.favoriteIcon)
     }
 

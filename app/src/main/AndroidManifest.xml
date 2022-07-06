@@ -54,7 +54,6 @@
         <activity
             android:name="app.te.lima_zola.presentation.home.HomeActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppTheme"
             android:windowSoftInputMode="adjustResize|stateHidden" />
