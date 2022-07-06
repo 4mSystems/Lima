@@ -15,6 +15,7 @@ object Versions {
   const val lifecycle = "2.4.0-alpha03"
   const val paging_version = "3.1.1"
   const val roomVersion = "2.4.0"
+  const val startup = "1.1.1"
 
   // Kotlin Coroutines
   const val kotlinCoroutines = "1.4.1"
@@ -41,6 +42,7 @@ object Versions {
   const val ssp = "1.0.6"
   const val shimmer = "0.5.0"
   const val exoplayer = "2.15.1"
+  const val splash_screen = "1.0.0-rc01"
 
   // Utils
   const val playServices = "19.2.0"

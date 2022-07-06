@@ -9,64 +9,93 @@ import app.te.lima_zola.databinding.FragmentConfirmCodeBinding
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
+import app.te.lima_zola.presentation.base.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ConfirmCodeFragment : BaseFragment<FragmentConfirmCodeBinding>(), ConfirmCodeEventListener {
 
-  private val viewModel: ConfirmViewModel by viewModels()
+    private val viewModel: ConfirmViewModel by viewModels()
 
-  override
-  fun getLayoutId() = R.layout.fragment_confirm_code
+    override
+    fun getLayoutId() = R.layout.fragment_confirm_code
 
-  override
-  fun setBindingVariables() {
-    binding.request = viewModel.request
-    binding.eventListener = this
-  }
-
-  override
-  fun setupObservers() {
-    lifecycleScope.launchWhenResumed {
-      viewModel.verifyResponse.collect {
-        when (it) {
-          Resource.Loading -> {
-            hideKeyboard()
-            showLoading()
-          }
-          is Resource.Success -> {
-            hideLoading()
-            openHome()
-          }
-          is Resource.Failure -> {
-            hideLoading()
-            handleApiError(it, retryAction = { viewModel.verifyAccount() })
-          }
-          Resource.Default -> {
-          }
-        }
-      }
+    override
+    fun setBindingVariables() {
+        binding.request = viewModel.request
+        binding.eventListener = this
     }
 
-  }
+    override
+    fun setupObservers() {
+        lifecycleScope.launchWhenResumed {
+            viewModel.verifyResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        hideKeyboard()
+                        showLoading()
+                    }
+                    is Resource.Success -> {
+                        hideLoading()
+                        openHome()
+                    }
+                    is Resource.Failure -> {
+                        hideLoading()
+                        handleApiError(it, retryAction = { viewModel.verifyAccount() })
+                    }
+                    Resource.Default -> {
+                    }
+                }
+            }
+        }
+        lifecycleScope.launchWhenResumed {
+            viewModel.verifyForgetResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        hideKeyboard()
+                        showLoading()
+                    }
+                    is Resource.Success -> {
+                        hideLoading()
+                        changePassword()
+                    }
+                    is Resource.Failure -> {
+                        hideLoading()
+                        handleApiError(it, retryAction = { viewModel.verifyAccount() })
+                    }
+                    Resource.Default -> {
+                    }
+                }
+            }
+        }
 
-  private fun openHome() {
-    navigateSafe(ConfirmCodeFragmentDirections.actionConfirmCodeFragmentToNavSubscribe())
-  }
+    }
+
+    private fun changePassword() {
+        navigateSafe(
+            ConfirmCodeFragmentDirections.actionConfirmCodeFragmentToChangePasswordFragment2(
+                viewModel.forgetRequest.phone
+            )
+        )
+    }
+
+    private fun openHome() {
+        navigateSafe(ConfirmCodeFragmentDirections.actionConfirmCodeFragmentToNavSubscribe())
+    }
 
 
-  override fun checkCode() {
-    viewModel.verifyAccount()
-  }
+    override fun checkCode() {
+        viewModel.verifyAccount()
+    }
 
-  override fun back() {
-    backToPreviousScreen()
-  }
+    override fun back() {
+        backToPreviousScreen()
+    }
 
-  override fun setupStatusBar() {
-    val window: Window = requireActivity().window
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-    window.statusBarColor = getMyColor(R.color.colorPrimary)
-  }
+    override fun setupStatusBar() {
+        val window: Window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = getMyColor(R.color.colorPrimary)
+    }
 }

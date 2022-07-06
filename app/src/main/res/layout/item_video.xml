@@ -20,30 +20,35 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/cat_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_height="@dimen/_230sdp"
+            android:adjustViewBounds="true"
             android:onClick="@{()-> uiState.openVideo()}"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:src="@color/overlayBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:loadImage="@{uiState.videoImage}"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/corner_view_loading"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_lock"
             android:visibility="@{uiState.videoLocked}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/corner_view_loading"
             android:onClick="@{()-> uiState.makeWishList()}"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_icon_heart"
             android:visibility="@{uiState.videoLikeVisibility}"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,12 +85,13 @@
             app:layout_constraintTop_toBottomOf="@id/cat_image"
             tools:text="الدرس الأول .. مهارات الإتصال" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/ic_like"
             style="@style/TextRegularFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_6sdp"
+            android:background="?selectableItemBackground"
             android:onClick="@{()->uiState.makeLike()}"
             android:src="@drawable/ic_like"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_4sdp"
+            android:background="?selectableItemBackground"
             android:onClick="@{()->uiState.makeLike()}"
             android:text="@{uiState.videoLikes}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"

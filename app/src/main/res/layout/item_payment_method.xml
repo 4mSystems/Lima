@@ -5,6 +5,7 @@
 
     <data>
 
+        <import type="app.te.lima_zola.R" />
 
         <variable
             name="model"
@@ -40,6 +41,7 @@
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_margin="@dimen/_6sdp"
+            app:defaultImage="@{R.drawable.courier}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

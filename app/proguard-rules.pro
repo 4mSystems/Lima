@@ -24,6 +24,9 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 -dontwarn javax.annotation.**
+-dontwarn org.apache.commons.**
+-keep class org.apache.http.** { *; }
+-dontwarn org.apache.http.**
 # A resource is loaded with a relative path so the package of this class must be preserved.
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 
@@ -50,8 +53,6 @@
 ## Localization Helper
 -keep class com.zeugmasolutions.localehelper.* { *; }
 
-## Country Code Picker
--keep class com.rilixtech.widget.countrycodepicker.* { *; }
 ## Keep proto data store
 -keep class androidx.datastore.*.** {*;}
 -keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite* {
@@ -64,4 +65,37 @@
  -keepclassmembers class androidx.datastore.preferences.PreferencesProto$Value {
       private java.lang.Object value_;
       private int valueCase_;
+ }
+
+ # for removing android logging
+ -assumenosideeffects class android.util.Log {
+     public static boolean isLoggable(java.lang.String, int);
+     public static int v(...);
+     public static int i(...);
+     public static int w(...);
+     public static int d(...);
+     public static int e(...);
+ }
+ -assumenosideeffects class
+                   android.util.Log {
+     public static int v(...);
+     public static int i(...);
+     public static int w(...);
+     public static int d(...);
+     public static int e(...);
+ }
+ -assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+     public static void checkNotNull(...);
+     public static void checkExpressionValueIsNotNull(...);
+         public static void checkNotNullExpressionValue(...);
+         public static void checkParameterIsNotNull(...);
+         public static void checkNotNullParameter(...);
+         public static void checkReturnedValueIsNotNull(...);
+         public static void checkFieldIsNotNull(...);
+         public static void throwUninitializedPropertyAccessException(...);
+         public static void throwNpe(...);
+         public static void throwJavaNpe(...);
+         public static void throwAssert(...);
+         public static void throwIllegalArgument(...);
+         public static void throwIllegalState(...);
  }

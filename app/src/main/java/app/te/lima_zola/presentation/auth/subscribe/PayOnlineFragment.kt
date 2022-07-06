@@ -8,13 +8,17 @@ import androidx.navigation.fragment.navArgs
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentPayOnlineBinding
 import app.te.lima_zola.presentation.base.BaseFragment
+import app.te.lima_zola.presentation.base.extensions.openActivityAndClearStack
 import app.te.lima_zola.presentation.base.extensions.showError
+import app.te.lima_zola.presentation.base.utils.Constants
+import app.te.lima_zola.presentation.base.utils.showSuccessAlert
+import app.te.lima_zola.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import im.delight.android.webview.AdvancedWebView
 
 @AndroidEntryPoint
 class PayOnlineFragment : BaseFragment<FragmentPayOnlineBinding>(), AdvancedWebView.Listener {
-    val args: PayOnlineFragmentArgs by navArgs()
+    private val args: PayOnlineFragmentArgs by navArgs()
 
     override
     fun getLayoutId() = R.layout.fragment_pay_online
@@ -55,28 +59,12 @@ class PayOnlineFragment : BaseFragment<FragmentPayOnlineBinding>(), AdvancedWebV
     }
 
     private fun showSuccessDialog() {
-//        val dialog = Dialog(requireActivity(), R.style.PauseDialog)
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        Objects.requireNonNull(dialog.window).attributes.windowAnimations =
-//            R.style.PauseDialogAnimation
-//        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//        val binding: SuccessDialogBinding = DataBindingUtil.inflate(
-//            LayoutInflater.from(dialog.context),
-//            R.layout.success_dialog,
-//            null,
-//            false
-//        )
-//        dialog.setContentView(binding.getRoot())
-//        dialog.setOnDismissListener { dialog1: DialogInterface? ->
-//            dialog.dismiss()
-//            finish()
-//        }
-//        dialog.show()
+        showSuccessAlert(requireActivity(), getString(R.string.payment_success_visa))
+        openActivityAndClearStack(HomeActivity::class.java)
     }
 
     override fun onPageFinished(url: String) {
-//        https://aljoud-edu.com/api/pay/error?invoice_id=1340340
-        if (url.startsWith("https://fawaterkstage.com/nbe/success")) {
+        if (url.startsWith(Constants.PAYMENT_SUCCESS)) {
             showSuccessDialog()
         }
         binding.webProgress.visibility = View.GONE

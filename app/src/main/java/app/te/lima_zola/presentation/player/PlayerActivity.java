@@ -3,6 +3,7 @@ package app.te.lima_zola.presentation.player;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -36,18 +37,24 @@ import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.MappingTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.ErrorMessageProvider;
 import com.google.android.exoplayer2.util.EventLogger;
 import com.google.android.exoplayer2.util.Util;
 
+import javax.inject.Inject;
+
 import app.te.lima_zola.R;
 import app.te.lima_zola.databinding.ActivityExoPlayerBinding;
 import app.te.lima_zola.presentation.documents.viewModels.DocumentDetailsViewModel;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class PlayerActivity extends AppCompatActivity {
     private static final String KEY_VIDEO_URI = "video_uri";
+    private static final String KEY_VIDEO_ID = "video_id";
     private ActivityExoPlayerBinding exoPlayerBinding;
     //    String videoUri = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4";
     String videoUri;
@@ -64,11 +71,11 @@ public class PlayerActivity extends AppCompatActivity {
     private boolean startAutoPlay;
     private int startWindow;
     private long startPosition;
-//    private DocumentDetailsViewModel viewModel;
 
-    public static Intent getStartIntent(Context context, String videoUri) {
+    public static Intent getStartIntent(Context context, String videoUri, int videoId) {
         Intent intent = new Intent(context, PlayerActivity.class);
         intent.putExtra(KEY_VIDEO_URI, videoUri);
+        intent.putExtra(KEY_VIDEO_ID, videoId);
         return intent;
     }
 
@@ -76,10 +83,11 @@ public class PlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         exoPlayerBinding = DataBindingUtil.setContentView(this, R.layout.activity_exo_player);
+        DocumentDetailsViewModel viewModel = new ViewModelProvider(this).get(DocumentDetailsViewModel.class);
         if (getIntent().hasExtra(KEY_VIDEO_URI)) {
             videoUri = getIntent().getStringExtra(KEY_VIDEO_URI);
+            viewModel.getArticleDetails(getIntent().getIntExtra(KEY_VIDEO_ID, 0));
         }
-//        viewModel = new ViewModelProvider(this).get(DocumentDetailsViewModel.class);
         exoPlayerBinding.playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
         exoPlayerBinding.playerView.requestFocus();
         if (savedInstanceState != null) {
@@ -261,7 +269,21 @@ public class PlayerActivity extends AppCompatActivity {
         startWindow = C.INDEX_UNSET;
         startPosition = C.TIME_UNSET;
     }
-//
+
+    //https://console.firebase.google.com/u/7/project/limazola-c3654/settings/integrations/playlink
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        int newOrientation = newConfig.orientation;
+
+        if (newOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Do certain things when the user has switched to landscape.
+            exoPlayerBinding.playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
+        } else {
+            exoPlayerBinding.playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+        }
+    }
 
     private class PlayerEventListener implements Player.Listener {
 
@@ -275,22 +297,24 @@ public class PlayerActivity extends AppCompatActivity {
 
 //            if (playbackState == Player.STATE_IDLE) {
 //                Log.e(TAG, "onPlaybackStateChanged: IDLE");
-//                exoPlayerBinding.progress.setVisibility(View.VISIBLE);
+//                exoPlayerBinding.progress.setVisibility(View.GONE);
 //            }
-//            if (playbackState == Player.STATE_BUFFERING) {
-//                Log.e(TAG, "onPlaybackStateChanged: buffering");
-//
-//            }
+            Log.e(TAG, "onPlaybackStateChanged: " + playbackState);
+            if (player.isPlaying()) {
+                Log.e(TAG, "onPlaybackStateChanged: buffering");
+                exoPlayerBinding.progress.setVisibility(View.GONE);
+            }
 
         }
 
         @Override
         public void onIsLoadingChanged(boolean isLoading) {
             Player.Listener.super.onIsLoadingChanged(isLoading);
-            if (isLoading)
+            Log.e(TAG, "onIsLoadingChanged: " + isLoading);
+            if (!isLoading)
                 exoPlayerBinding.progress.setVisibility(View.VISIBLE);
-            else
-                exoPlayerBinding.progress.setVisibility(View.GONE);
+//            else
+//                exoPlayerBinding.progress.setVisibility(View.VISIBLE);
         }
 
 

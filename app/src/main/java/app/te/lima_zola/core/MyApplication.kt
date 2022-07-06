@@ -31,7 +31,7 @@ class MyApplication : LocaleAwareApplication() {
     // javax.net.ssl.SSLHandshakeException: SSL handshake aborted: ssl=0x7edfc49e08: I/O error during system call, Connection reset by peer
     try {
       ProviderInstaller.installIfNeeded(applicationContext)
-      val sslContext: SSLContext = SSLContext.getInstance("TLSv1.2")
+      val sslContext: SSLContext = SSLContext.getInstance("TLSv1.3")
       sslContext.init(null, null, null)
       sslContext.createSSLEngine()
     } catch (e: GooglePlayServicesRepairableException) {

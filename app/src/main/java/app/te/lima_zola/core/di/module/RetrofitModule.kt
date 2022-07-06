@@ -6,9 +6,9 @@ import app.te.lima_zola.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import app.te.lima_zola.data.local.preferences.AppPreferences
+import app.te.lima_zola.data.remote.Keys
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegate
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,7 +48,10 @@ object RetrofitModule {
         }
 
         Interceptor { chain ->
-            Log.e("provideHeadersInterceptor", "provideHeadersInterceptor: $userToken ")
+            Log.e(
+                "provideHeadersInterceptor",
+                "provideHeadersInterceptor: $userToken  "
+            )
             chain.proceed(
                 chain.request().newBuilder()
                     .addHeader("Authorization", "Bearer $userToken")
@@ -93,7 +96,6 @@ object RetrofitModule {
                 .readTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
                 .connectTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
                 .addInterceptor(headersInterceptor)
-                .addNetworkInterceptor(logging)
                 .build()
         }
     }
@@ -112,6 +114,6 @@ object RetrofitModule {
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .baseUrl(BuildConfig.API_BASE_URL)
+        .baseUrl(if (BuildConfig.DEBUG) Keys.debugBaseUrl() else Keys.releaseBaseUrl())
         .build()
 }

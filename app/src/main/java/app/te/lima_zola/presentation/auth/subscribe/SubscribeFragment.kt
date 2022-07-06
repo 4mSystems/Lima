@@ -6,6 +6,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentSubscribeBinding
+import app.te.lima_zola.domain.auth.entity.model.payments.PaymentItem
+import app.te.lima_zola.domain.auth.entity.model.payments.payment_result.PaymentData
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.auth.subscribe.adapters.PaymentMethodsAdapter
 import app.te.lima_zola.presentation.auth.subscribe.adapters.SubscriptionTypesAdapter
@@ -43,9 +45,7 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
                         hideShimmer()
                         subscriptionTypesAdapter.differ.submitList(it.value.data.subscriptionTypes)
                         binding.subscribePeriod.adapter = subscriptionTypesAdapter
-
-                        paymentAdapter.differ.submitList(it.value.data.paymentMethods.paymentItem)
-                        binding.subscribePayment.adapter = paymentAdapter
+                        updatePaymentMethods(it.value.data.paymentMethods.paymentItem)
 
                     }
                     is Resource.Failure -> {
@@ -64,11 +64,11 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
                     }
                     is Resource.Success -> {
                         hideLoading()
-                        navigateSafe(
-                            SubscribeFragmentDirections.actionSubscribeFragmentToPayOnlineFragment(
-                                it.value.data.paymentResultData.paymentData.redirectTo
-                            )
-                        )
+                        val data = it.value.data.paymentResultData.paymentData
+                        if (data.redirectTo.isNotEmpty())
+                            openVisaFragment(data.redirectTo)
+                        else
+                            openPaymentSuccess(data)
                     }
                     is Resource.Failure -> {
                         hideLoading()
@@ -78,6 +78,58 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
                 }
             }
         }
+        lifecycleScope.launchWhenResumed {
+            viewModel.payDelegateResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        showLoading()
+                    }
+                    is Resource.Success -> {
+                        hideLoading()
+                        openPayDelegateSuccess()
+                    }
+                    is Resource.Failure -> {
+                        hideLoading()
+                        handleApiError(it, retryAction = { viewModel.getSubscriptionTypes() })
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun openPayDelegateSuccess() {
+        navigateSafe(SubscribeFragmentDirections.actionSubscribeFragmentToDelegateSuccessDialogFragment())
+    }
+
+    private fun openPaymentSuccess(data: PaymentData) {
+        navigateSafe(
+            SubscribeFragmentDirections.actionSubscribeFragmentToPaymentSuccessFragment(
+                data
+            )
+        )
+    }
+
+    private fun openVisaFragment(redirectTo: String) {
+        navigateSafe(
+            SubscribeFragmentDirections.actionSubscribeFragmentToPayOnlineFragment(redirectTo)
+        )
+    }
+
+    private fun updatePaymentMethods(paymentMethods: List<PaymentItem>) {
+        // add mandoup item to payment list
+
+//        val paymentList: MutableList<PaymentItem> = mutableListOf()
+//        paymentList.add(
+//            PaymentItem(
+//                "",
+//                getString(R.string.pay_by_delegate),
+//                getString(R.string.pay_by_delegate)
+//            )
+//        )
+//        paymentList.addAll(paymentMethods)
+        paymentAdapter.differ.submitList(paymentMethods)
+        binding.subscribePayment.adapter = paymentAdapter
     }
 
     private fun showShimmer() {
@@ -91,10 +143,13 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
     }
 
     override fun subscribe() {
-        viewModel.getPaymentResult(
-            subscriptionTypesAdapter.differ.currentList[subscriptionTypesAdapter.lastPosition].id,
-            paymentAdapter.differ.currentList[paymentAdapter.lastPosition].paymentId
-        )
+        if (paymentAdapter.differ.currentList[paymentAdapter.lastPosition].paymentId != 0)
+            viewModel.getPaymentResult(
+                subscriptionTypesAdapter.differ.currentList[subscriptionTypesAdapter.lastPosition].id,
+                paymentAdapter.differ.currentList[paymentAdapter.lastPosition].paymentId
+            )
+        else
+            viewModel.callDelegatePayment(subscriptionTypesAdapter.differ.currentList[subscriptionTypesAdapter.lastPosition].id)
     }
 
     override fun back() {

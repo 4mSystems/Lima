@@ -21,8 +21,16 @@ class AuthRemoteDataSource @Inject constructor(private val apiService: AuthServi
         apiService.verifyAccount(request)
     }
 
+    suspend fun verifyPasswordAccount(request: ForgetPasswordRequest) = safeApiCall {
+        apiService.verifyPasswordAccount(request)
+    }
+
     suspend fun changePassword(request: UpdatePassword) = safeApiCall {
         apiService.changePassword(request)
+    }
+
+    suspend fun authChangePassword(request: UpdatePassword) = safeApiCall {
+        apiService.authChangePassword(request)
     }
 
     suspend fun register(request: RegisterRequest) = safeApiCall {
@@ -37,8 +45,17 @@ class AuthRemoteDataSource @Inject constructor(private val apiService: AuthServi
         apiService.getPaymentMethods()
     }
 
-    suspend fun getPaymentResult(subscribe_id: Int, payment_id: Int) = safeApiCall {
-        apiService.getPaymentMethodsResult(subscribe_id, payment_id)
+    suspend fun getPaymentResult(
+        payment_id: Int,
+        subscribe_id: Int
+    ) = safeApiCall {
+        apiService.getPaymentMethodsResult(payment_id, subscribe_id)
+    }
+
+    suspend fun payWithDelegate(
+        subscribe_id: Int
+    ) = safeApiCall {
+        apiService.payWithDelegate(subscribe_id)
     }
 
 

@@ -16,14 +16,34 @@
             app:exitAnim="@anim/anim_slide_out_left"
             app:popEnterAnim="@anim/anim_slide_in_left"
             app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_subscribeFragment_to_paymentSuccessFragment"
+            app:destination="@id/paymentSuccessFragment" />
+
+        <action
+            android:id="@+id/action_subscribeFragment_to_delegateSuccessDialogFragment"
+            app:destination="@id/delegateSuccessDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/payOnlineFragment"
         android:name="app.te.lima_zola.presentation.auth.subscribe.PayOnlineFragment"
-        tools:layout="@layout/fragment_pay_online" >
+        tools:layout="@layout/fragment_pay_online">
         <argument
             android:name="payment_url"
             app:argType="string" />
     </fragment>
+    <dialog
+        android:id="@+id/paymentSuccessFragment"
+        android:name="app.te.lima_zola.presentation.auth.subscribe.dialogs.PaymentSuccessFragment"
+        tools:layout="@layout/payment_succes_dialog">
+
+        <argument
+            android:name="payment_item"
+            app:argType="app.te.lima_zola.domain.auth.entity.model.payments.payment_result.PaymentData" />
+    </dialog>
+    <dialog
+        android:id="@+id/delegateSuccessDialogFragment"
+        android:name="app.te.lima_zola.presentation.auth.subscribe.dialogs.DelegateSuccessDialogFragment"
+        tools:layout="@layout/delegate_succes_dialog" />
 
 </navigation>

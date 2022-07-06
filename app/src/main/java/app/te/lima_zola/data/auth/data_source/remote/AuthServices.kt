@@ -14,14 +14,20 @@ interface AuthServices {
     @POST("v1/auth/login")
     suspend fun logIn(@Body request: LogInRequest): BaseResponse<UserResponse>
 
-    @POST("V1/auth/forget-password")
+    @POST("v1/auth/forget-password")
     suspend fun forgetPassword(@Body request: ForgetPasswordRequest): BaseResponse<*>
 
     @POST("v1/auth/verify_phone")
     suspend fun verifyAccount(@Body request: RegisterRequest): BaseResponse<UserResponse>
 
+    @POST("v1/auth/verify")
+    suspend fun verifyPasswordAccount(@Body request: ForgetPasswordRequest): BaseResponse<*>
+
     @POST("v1/user/profile/update_password")
     suspend fun changePassword(@Body request: UpdatePassword): BaseResponse<*>
+
+    @POST("v1/auth/change-password")
+    suspend fun authChangePassword(@Body request: UpdatePassword): BaseResponse<*>
 
     @POST("v1/auth/register")
     suspend fun register(@Body request: RegisterRequest): BaseResponse<*>
@@ -33,10 +39,17 @@ interface AuthServices {
     @GET("v1/user/subscription/payment_step_one")
     suspend fun getPaymentMethods(): BaseResponse<PaymentMethods>
 
-    @GET("v1/user/subscription/payment_step_two/{subscribe_id}/{payment_id}")
+    @GET("v1/user/subscription/payment_step_two")
     suspend fun getPaymentMethodsResult(
-        @Path("subscribe_id") subscribe_id: Int,
-        @Path("payment_id") payment_id: Int
+        @Query("payment_method_id") payment_id: Int,
+        @Query("subscribe_type_id") subscribe_id: Int
     ): BaseResponse<PaymentResult>
+
+    @POST("v1/user/subscription/store")
+    suspend fun payWithDelegate(
+        @Query("subscribe_type_id") subscribe_id: Int,
+        @Query("type") type: String = "cash"
+    ): BaseResponse<*>
+    
 
 }

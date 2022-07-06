@@ -69,14 +69,6 @@ class AccountRepositoryImpl @Inject constructor(
     return appPreferences.getLang()
   }
 
-  override suspend fun saveWhatsAppValue(value: String) {
-    appPreferences.saveWhatsAppValue(value)
-  }
-
-  override suspend fun getWhatsAppValue(): Flow<String> {
-    return appPreferences.getWhatsAppValue()
-  }
-
   override suspend fun saveSplash(value: String) {
     appPreferences.saveSplash(value)
   }

@@ -1,9 +1,7 @@
 package app.te.lima_zola.presentation.videos.viewModels
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import app.te.lima_zola.domain.account.use_case.UserLocalUseCase
 import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.domain.videos_articles.entity.SubCategory
@@ -23,85 +21,77 @@ import javax.inject.Inject
 
 @HiltViewModel
 class VideosViewModel @Inject constructor(
-  private val videosUseCase: VideosUseCase,
-  private val subCategoryUseCase: SubCategoryUseCase,
-  private val addToWishListUseCase: AddToWishListUseCase,
-  private val likeContentUseCase: LikeContentUseCase,
-  val userLocalUseCase: UserLocalUseCase,
-  val savedStateHandle: SavedStateHandle
+    private val videosUseCase: VideosUseCase,
+    private val subCategoryUseCase: SubCategoryUseCase,
+    private val addToWishListUseCase: AddToWishListUseCase,
+    private val likeContentUseCase: LikeContentUseCase
 ) : BaseViewModel() {
 
-  private val _subCategoryResponse =
-    MutableStateFlow<Resource<BaseResponse<List<SubCategory>>>>(Resource.Default)
-  val subCategoryResponse = _subCategoryResponse
+    private val _subCategoryResponse =
+        MutableStateFlow<Resource<BaseResponse<List<SubCategory>>>>(Resource.Default)
+    val subCategoryResponse = _subCategoryResponse
 
-  private val _actionsResponse =
-    MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
-  val actionsResponse = _actionsResponse
+    private val _actionsResponse =
+        MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
+    val actionsResponse = _actionsResponse
 
-  private val _videoArticlesResponse =
-    MutableStateFlow<PagingData<MainContentUiState>>(PagingData.empty())
-  val videoArticlesResponse = _videoArticlesResponse
+    private val _videoArticlesResponse =
+        MutableStateFlow<PagingData<MainContentUiState>>(PagingData.empty())
+    val videoArticlesResponse = _videoArticlesResponse
 
-  init {
-    savedStateHandle.get<Int>("cat_id")?.let { catId ->
-      getData(catId)
+     fun getData(cat_id: Int) {
+        viewModelScope.launch {
+            _subCategoryResponse.emit(Resource.Loading)
+            val subCategories =
+                withContext(Dispatchers.IO) { async { subCategoryUseCase.invoke(cat_id) } }
+
+            val videosArticlesData =
+                withContext(Dispatchers.IO) { async { videosUseCase.invoke(cat_id) } }
+
+            videosArticlesData.await().collect { result ->
+                _videoArticlesResponse.value = result
+                _subCategoryResponse.value = subCategories.await()
+            }
+        }
     }
-  }
 
-  private fun getData(cat_id: Int) {
-    viewModelScope.launch {
-      _subCategoryResponse.emit(Resource.Loading)
-      val subCategories =
-        withContext(Dispatchers.IO) { async { subCategoryUseCase.invoke(cat_id) } }
-
-      val videosArticlesData =
-        withContext(Dispatchers.IO) { async { videosUseCase.invoke(cat_id) } }
-
-      videosArticlesData.await().collect { result ->
-        _videoArticlesResponse.value = result
-        _subCategoryResponse.value = subCategories.await()
-      }
+    fun getVideosArticles(cat_id: Int) {
+        viewModelScope.launch {
+            videosUseCase.invoke(cat_id).collect { result ->
+                _videoArticlesResponse.value = result
+            }
+        }
     }
-  }
 
-  fun getVideosArticles(cat_id: Int) {
-    viewModelScope.launch {
-      videosUseCase.invoke(cat_id).collect { result ->
-        _videoArticlesResponse.value = result
-      }
+    fun addToWishList(addToWishListRequest: AddToWishListRequest) {
+        viewModelScope.launch {
+            addToWishListUseCase(addToWishListRequest).collect { result ->
+                _actionsResponse.value = result
+            }
+        }
     }
-  }
 
-  fun addToWishList(addToWishListRequest: AddToWishListRequest) {
-    viewModelScope.launch {
-      addToWishListUseCase(addToWishListRequest).collect { result ->
-        _actionsResponse.value = result
-      }
+    fun likeContent(likeRequest: LikeRequest) {
+        viewModelScope.launch {
+            likeContentUseCase(likeRequest).collect { result ->
+                _actionsResponse.value = result
+            }
+        }
     }
-  }
 
-  fun likeContent(likeRequest: LikeRequest) {
-    viewModelScope.launch {
-      likeContentUseCase(likeRequest).collect { result ->
-        _actionsResponse.value = result
-      }
+    // mapping section
+    fun setupSubCategory(
+        data: List<SubCategory>,
+        all: String
+    ): MutableList<SubCategoryItemUiState> {
+        val subCategory = SubCategory(id = 0, name = all, selected = true)
+        val dataList = mutableListOf<SubCategoryItemUiState>()
+        dataList.add(SubCategoryItemUiState(subCategory))
+        dataList.addAll(data.map { catItem ->
+            SubCategoryItemUiState(
+                catItem
+            )
+        })
+        return dataList
     }
-  }
-
-  // mapping section
-   fun setupSubCategory(
-    data: List<SubCategory>,
-    all: String
-  ): MutableList<SubCategoryItemUiState> {
-    val subCategory = SubCategory(id = 0, name = all, selected = true)
-    val dataList = mutableListOf<SubCategoryItemUiState>()
-    dataList.add(SubCategoryItemUiState(subCategory))
-    dataList.addAll(data.map { catItem ->
-      SubCategoryItemUiState(
-        catItem
-      )
-    })
-    return dataList
-  }
 }

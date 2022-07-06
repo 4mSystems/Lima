@@ -8,13 +8,13 @@ import javax.inject.Inject
 
 class UserLocalUseCase @Inject constructor(private val accountRepository: AccountRepository) {
 
-  suspend operator fun invoke(user: UserResponse) = accountRepository.saveUserToLocal(user)
+    suspend operator fun invoke(user: UserResponse) = accountRepository.saveUserToLocal(user)
 
-  suspend operator fun invoke(): Flow<User> = accountRepository.getUserToLocal()
+    suspend operator fun invoke(): Flow<User> = accountRepository.getUserToLocal()
 
-  suspend fun saveUserToken(value: String) =
-    accountRepository.saveUserToken(value)
+    suspend fun saveUserToken(value: String) =
+        accountRepository.saveUserToken(value)
 
-  suspend fun logOut() = accountRepository.clearPreferences()
+    suspend fun logOut() = accountRepository.clearPreferences()
 
 }

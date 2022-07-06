@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="eventListener"
+            type="app.te.lima_zola.presentation.auth.subscribe.listeners.PaymentSuccessListener" />
+
+        <variable
+            name="uiState"
+            type="app.te.lima_zola.presentation.auth.subscribe.ui_state.PaymentSuccessUiState" />
+    </data>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:onClick="@{()-> eventListener.makeCopy(uiState.paymentCode())}"
+                android:src="@drawable/ic_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_success"
+                style="@style/TextMediumFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="@string/success"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/ic_close" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/payment_done_sub_title"
+                style="@style/TextMediumFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@string/payment_done_sub_title"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/medium_color"
+                app:layout_constraintTop_toBottomOf="@id/tv_success" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_22sdp"
+                android:src="@drawable/ic_success"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/payment_done_sub_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/payment_body"
+                style="@style/TextMediumFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@{uiState.successMessage(context)}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/medium_color"
+                app:layout_constraintTop_toBottomOf="@id/ic_success" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/payment_code"
+                style="@style/TextMediumFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@{uiState.paymentCode()}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/payment_body" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/payment_body2"
+                style="@style/TextMediumFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@string/payment_fawary_validation"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/medium_color"
+                android:visibility="@{uiState.expireAtVisibility()}"
+                app:layout_constraintTop_toBottomOf="@id/payment_code" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/payment_validation"
+                style="@style/TextMediumFont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@{uiState.paymentItem.expireDate}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/payment_body2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:onClick="@{()-> eventListener.makeCopy(uiState.paymentCode())}"
+                android:padding="@dimen/_8sdp"
+                android:text="@string/copy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/colorPrimaryDark"
+                app:cornerRadius="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

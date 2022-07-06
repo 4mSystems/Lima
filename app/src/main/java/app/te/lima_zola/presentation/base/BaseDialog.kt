@@ -21,10 +21,10 @@ abstract class BaseDialog<VB : ViewDataBinding> : DialogFragment() {
   private var mRootView: View? = null
   private var hasInitializedRootView = false
 
-  override
-  fun getTheme(): Int {
-    return style.CustomDialogAnimation
-  }
+//  override
+//  fun getTheme(): Int {
+//    return style.CustomDialogAnimation
+//  }
 
   override
   fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,9 +32,9 @@ abstract class BaseDialog<VB : ViewDataBinding> : DialogFragment() {
       initViewBinding(inflater, container)
     }
 
-    val params = dialog!!.window!!.attributes
-    params.gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
-    dialog!!.window!!.attributes = params
+//    val params = dialog!!.window!!.attributes
+//    params.gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
+//    dialog!!.window!!.attributes = params
     dialog!!.window!!.requestFeature(Window.FEATURE_NO_TITLE)
     dialog!!.setCanceledOnTouchOutside(true)
     dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

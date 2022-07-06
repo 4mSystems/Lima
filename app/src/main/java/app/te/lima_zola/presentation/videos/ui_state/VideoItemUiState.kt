@@ -44,6 +44,8 @@ class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainCo
 
     val videoImage: String = videoData.image
     val videoTitle: String = videoData.name
+
+    @Bindable
     var videoLikes: String = videoData.likes.toStringMatch()
     var videoViews: String = videoData.views.toStringMatch()
     var videoLocked: Int = if (videoData.free == Constants.FREE) View.VISIBLE else View.GONE
@@ -58,31 +60,57 @@ class VideoItemUiState(private val videoData: VideoData) : BaseUiState(), MainCo
     }
 
     private fun updateLike() {
-        likeIcon = if (videoData.is_liked)
+        likeIcon = if (videoData.is_liked) {
             R.drawable.ic_liked
-        else
+        } else {
             R.drawable.ic_like
+        }
         notifyPropertyChanged(BR.likeIcon)
     }
 
     fun makeLike() {
-        if (videoLocked == View.GONE) {
+        if (videoLocked == View.GONE && videoData.userLogged) {
             videoData.is_liked = !videoData.is_liked
             updateLike()
+            updateLikeCount()
             videosEventListener.makeLike(getId())
+        } else
+            checkUserDirection()
+    }
+
+    private fun updateLikeCount() {
+        if (videoData.is_liked) {
+            videoData.likes += 1
+        } else {
+            videoData.likes -= 1
         }
+        videoLikes = videoData.likes.toStringMatch()
+        notifyPropertyChanged(BR.videoLikes)
     }
 
     fun makeWishList() {
-        videoData.fav = !videoData.fav
-        updateFavorite()
-        videosEventListener.makeWishList(getId())
+        if (videoData.userLogged && videoData.subscribed) {
+            videoData.fav = !videoData.fav
+            updateFavorite()
+            videosEventListener.makeWishList(getId())
+        } else {
+            checkUserDirection()
+        }
     }
 
     fun openVideo() {
         if (videoLocked == View.GONE)
             videosEventListener.openContent(getId(), videoData.video)
         else
-            videosEventListener.openContent(Constants.FREE, videoData.video)
+            checkUserDirection()
     }
+
+    private fun checkUserDirection() {
+        if (!videoData.userLogged) {
+            videosEventListener.showSubscribeDialog(Constants.LOGIN)
+        } else {
+            videosEventListener.showSubscribeDialog(Constants.FREE)
+        }
+    }
+
 }

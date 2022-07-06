@@ -22,6 +22,9 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun changePassword(request: UpdatePassword): Resource<BaseResponse<*>> =
         remoteDataSource.changePassword(request)
 
+    override suspend fun authChangePassword(request: UpdatePassword): Resource<BaseResponse<*>> =
+        remoteDataSource.authChangePassword(request)
+
     override suspend fun forgetPassword(request: ForgetPasswordRequest) =
         remoteDataSource.forgetPassword(request)
 
@@ -30,6 +33,8 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun verifyAccount(request: RegisterRequest): Resource<BaseResponse<UserResponse>> =
         remoteDataSource.verifyAccount(request)
+ override suspend fun verifyPasswordAccount(request: ForgetPasswordRequest): Resource<BaseResponse<*>> =
+        remoteDataSource.verifyPasswordAccount(request)
 
     override suspend fun getSubscriptionsTypes(): Resource<BaseResponse<SubscriptionPaymentData>> =
         remoteDataSource.getSubscriptionsTypes()
@@ -38,9 +43,14 @@ class AuthRepositoryImpl @Inject constructor(
         remoteDataSource.getPaymentMethods()
 
     override suspend fun getPaymentResult(
-        subscribe_id: Int,
-        payment_id: Int
+        payment_id: Int,
+        subscribe_id: Int
     ): Resource<BaseResponse<PaymentResult>> =
-        remoteDataSource.getPaymentResult(subscribe_id, payment_id)
+        remoteDataSource.getPaymentResult(payment_id, subscribe_id)
+
+    override suspend fun payWithDelegate(
+        subscribe_id: Int
+    ): Resource<BaseResponse<*>> =
+        remoteDataSource.payWithDelegate(subscribe_id)
 
 }

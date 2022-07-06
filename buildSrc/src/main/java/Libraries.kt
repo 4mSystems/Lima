@@ -20,6 +20,7 @@ object Libraries {
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val roomktx = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomCommon = "androidx.room:room-common:${Versions.roomVersion}"
+    const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
 
     // Kotlin Coroutines
     const val coroutinesCore =
@@ -52,6 +53,7 @@ object Libraries {
     const val ssp = "com.intuit.ssp:ssp-android:${Versions.ssp}"
     const val ssdp = "com.intuit.sdp:sdp-android:${Versions.ssp}"
     const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
+    const val splash_screen = "androidx.core:core-splashscreen:${Versions.splash_screen}"
 
     // EXO PLAYER
     const val exoplayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
@@ -88,5 +90,5 @@ object Libraries {
     const val AdvancedWebView =
         "com.github.delight-im:Android-AdvancedWebView:${Versions.AdvancedWebView}"
 
-
+    const val appsweep_key = "gs_appsweep_IDv9AgD_JEkqGn8O46tmbwExhDdTZLCJlBYj1kaq"
 }

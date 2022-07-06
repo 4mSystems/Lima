@@ -34,11 +34,20 @@ class DocumentItemUiState(private val videoData: VideoData) : BaseUiState(), Mai
 
     val documentImage: String = videoData.image
     val documentTitle: String = videoData.name
+    val documentBody: String = videoData.body
     var documentLocked: Int = if (videoData.free == Constants.FREE) View.VISIBLE else View.GONE
+
     fun openDocument() {
         if (documentLocked == View.GONE)
             baseContentEventListener.openContent(getId(), "")
         else
-            baseContentEventListener.openContent(Constants.FREE, "")
+            checkUserDirection()
+    }
+    private fun checkUserDirection() {
+        if (!videoData.userLogged) {
+            baseContentEventListener.showSubscribeDialog(Constants.LOGIN)
+        } else {
+            baseContentEventListener.showSubscribeDialog(Constants.FREE)
+        }
     }
 }

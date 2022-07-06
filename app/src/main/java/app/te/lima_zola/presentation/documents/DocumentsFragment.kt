@@ -11,11 +11,9 @@ import androidx.paging.PagingData
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentDocumentsBinding
 import app.te.lima_zola.domain.utils.Resource
-import app.te.lima_zola.presentation.auth.AuthActivity
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.events.BaseContentEventListener
 import app.te.lima_zola.presentation.base.extensions.*
-import app.te.lima_zola.presentation.base.utils.Constants
 import app.te.lima_zola.presentation.documents.adapters.DocumentsAdapter
 import app.te.lima_zola.presentation.documents.viewModels.DocumentsViewModel
 import app.te.lima_zola.presentation.videos.adapters.SubCategoriesAdapter
@@ -69,7 +67,6 @@ class DocumentsFragment : BaseFragment<FragmentDocumentsBinding>(), BaseContentE
                 }
             }
         }
-
         lifecycleScope.launchWhenStarted {
             viewModel.articlesResponse.collect {
                 adapter.submitData(it)
@@ -126,26 +123,20 @@ class DocumentsFragment : BaseFragment<FragmentDocumentsBinding>(), BaseContentE
 
 
     override fun openContent(itemId: Int, content: String) {
-        if (itemId != Constants.FREE) {
-            navigateSafe(
-                DocumentsFragmentDirections.actionDocumentsFragmentToDocumentDetailsFragment(
-                    itemId
-                )
+        navigateSafe(
+            DocumentsFragmentDirections.actionDocumentsFragmentToDocumentDetailsFragment(
+                itemId
             )
-        } else
-            checkIsSubscribed()
+        )
+
     }
 
-    private fun checkIsSubscribed() {
-        lifecycleScope.launch {
-            viewModel.userLocalUseCase.invoke().collect { user ->
-                if (user.name.isNotEmpty() && user.subscriber == Constants.FREE)
-                    navigateSafe(DocumentsFragmentDirections.actionDocumentsFragmentToNavSubscribe())
-                else
-                    openIntentActivity(AuthActivity::class.java, R.id.logInFragment)
-
-            }
-        }
+    override fun showSubscribeDialog(direction: Int) {
+        navigateSafe(
+            DocumentsFragmentDirections.actionDocumentsFragmentToSubscribeWarningDialog(
+                direction
+            )
+        )
     }
 
     override fun back() {

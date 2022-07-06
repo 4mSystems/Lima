@@ -14,20 +14,31 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChangePasswordViewModel @Inject constructor(
-  private val changePasswordUseCase: ChangePasswordUseCase,
-  val userLocalUseCase: UserLocalUseCase
+    private val changePasswordUseCase: ChangePasswordUseCase,
+    val userLocalUseCase: UserLocalUseCase
 ) : BaseViewModel() {
-  var request = UpdatePassword()
-  private val _changePasswordResponse =
-    MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
-  val changePasswordResponse = _changePasswordResponse
-  fun changePassword() {
-    changePasswordUseCase.invoke(request)
-      .catch { exception -> Log.e("changePassword", "changePassword: " + exception.message) }
-      .onEach { result ->
-        _changePasswordResponse.value = result
-      }
-      .launchIn(viewModelScope)
-  }
+    var request = UpdatePassword()
+    private val _changePasswordResponse =
+        MutableStateFlow<Resource<BaseResponse<*>>>(Resource.Default)
+    val changePasswordResponse = _changePasswordResponse
+
+    fun updatePassword() {
+        changePasswordUseCase.invoke(request)
+            .catch { exception -> Log.e("changePassword", "changePassword: " + exception.message) }
+            .onEach { result ->
+                _changePasswordResponse.value = result
+            }
+            .launchIn(viewModelScope)
+    }
+
+    fun changePassword(phone: String) {
+        request.phone = phone
+        changePasswordUseCase.authChangePassword(request)
+            .catch { exception -> Log.e("changePassword", "changePassword: " + exception.message) }
+            .onEach { result ->
+                _changePasswordResponse.value = result
+            }
+            .launchIn(viewModelScope)
+    }
 
 }

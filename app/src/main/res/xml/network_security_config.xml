@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config xmlns:tools="http://schemas.android.com/tools">
-  <base-config
-      cleartextTrafficPermitted="true"
-      tools:ignore="InsecureBaseConfiguration">
-    <trust-anchors>
-      <certificates src="system" />
-    </trust-anchors>
-  </base-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+
+    </base-config>
+    <domain-config>
+        <domain includeSubdomains="true">limazola.com</domain>
+        <pin-set>
+            <pin digest="SHA-256">zo2JpS6GHw63BnoyjTnSj40omg30Sru7kdz/HTDd4yw=</pin>
+            <pin digest="SHA-256">hOF1upiO+xevnDEQ13g3aY3M3Uqa44RN5rVlwvU2WC8=</pin>
+        </pin-set>
+    </domain-config>
 </network-security-config>

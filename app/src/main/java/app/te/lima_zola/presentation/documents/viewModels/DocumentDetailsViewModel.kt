@@ -28,7 +28,7 @@ class DocumentDetailsViewModel @Inject constructor(
         }
     }
 
-    private fun getArticleDetails(cat_id: Int) {
+    fun getArticleDetails(cat_id: Int) {
         viewModelScope.launch {
             articleDetailsUseCase.invoke(cat_id).collect { result ->
                 _articleDetailsResponse.value = result

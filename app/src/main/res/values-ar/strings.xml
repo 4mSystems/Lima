@@ -1,8 +1,8 @@
 <resources>
     <string name="empty_warning">هذا الحقل مطلوب </string>
     <!-- General Strings -->
-    <string name="connection_error">خطأ فى الاتصال</string>
-    <string name="no_internet">لا يوجد اتصال بالانترنت، برجاء المحاولة فى وقت لاحق</string>
+    <string name="connection_error">خطأ في الاتصال</string>
+    <string name="no_internet">لا يوجد اتصال بالإنترنت، برجاء المحاولة فى وقت لاحق</string>
     <string name="retry">إعادة المحاولة</string>
     <string name="cancel">إلغاء</string>
     <string name="some_error">حدث خطأ ما، برجاء المحاولة فى وقت لاحق</string>
@@ -12,7 +12,7 @@
     <string name="account">حسابى</string>
 
     <!-- Tutorial -->
-    <string name="next">التالى</string>
+    <string name="next">التالي</string>
     <!-- Intro -->
 
     <!-- Log In -->
@@ -20,6 +20,8 @@
     <string name="phone_hint">رقم الهاتف</string>
     <string name="password">كلمة المرور</string>
     <string name="login_as_guest">تسجيل كزائر؟</string>
+    <string name="forgot_your_password">نسيت كلمة المرور؟</string>
+    <string name="forgot_header">أدخل رقم هاتفك, تستطيع تلقي كود التأكيد عليه</string>
 
     <!-- Sign Up -->
     <string name="sign_up">إنشاء حساب</string>
@@ -36,38 +38,54 @@
     <string name="not_match_password">كلمتا المرور غير متطابقتان</string>
     <string name="active">تفعيل الحساب</string>
     <string name="open_app">ابدأ التطبيق</string>
-    <string name="confirm">تاكيد</string>
+    <string name="confirm">تأكيد</string>
     <!--  Side Menu-->
     <string name="about">عن التطبيق</string>
-    <string name="terms">الشروط والاحكام</string>
+    <string name="terms">الشروط والأحكام</string>
     <string name="contact_us">إتصل بنا</string>
     <string name="language">اختر اللغة</string>
     <!--  Suggestions-->
-    <string name="client_name">الاسم</string>
+    <string name="client_name">الإسم</string>
     <!--Countries-->
     <string name="country_hint">اختر الدولة</string>
     <string name="login_btn">تسجيل</string>
     <string name="new_account">إنشاء حساب جديد</string>
     <string name="subscribe_header_text">اختر نوع الاشتراك</string>
     <string name="annual">سنوي</string>
-    <string name="half_annual">نصف سنوي</string>
+    <string name="coin">ج.م</string>
     <string name="subscribe_payment_header_text">اختر نوع الدفع</string>
-    <string name="paymob">paymob</string>
-    <string name="pay_by_delegate">مندوب عن طريق منزلك</string>
-    <string name="log_out_hint">هل انت متأكد من انك تريد تسجيل الخروج؟</string>
+    <string name="log_out_hint">هل انت متأكد من أنك تريد تسجيل الخروج؟</string>
     <string name="favorite">المفضلة</string>
     <string name="subscribe_account">اشترك الآن</string>
     <string name="change_language">تغيير اللغة</string>
     <string name="about_80">عن 80 فكرة</string>
     <string name="team">فريق العمل</string>
-    <string name="version_name">النسخه</string>
+    <string name="version_name">النسخة</string>
     <string name="ar">اللغة العربية</string>
     <string name="en">اللغة الإنجليزية</string>
     <string name="save">حفظ</string>
-    <string name="forget_password">تغيير كلمة المرور</string>
+    <string name="change_password">تغيير كلمة المرور</string>
     <string name="password_hint_confirm">تأكيد كلمة المرور</string>
     <string name="old_password">كلمة المرور القديمة</string>
-    <string name="no_content_avail">"عفوا لا توجد بيانات متاحه "</string>
+    <string name="no_content_avail">"عفوًا لا توجد بيانات متاحه "</string>
     <string name="all_cat">الكل</string>
+    <string name="success">نجاح</string>
+    <string name="payment_done_sub_title">تم إنشاء الدفع الخاص بك</string>
+    <string name="payment_fawary_code">برجاء التوجه لأقرب جهاز فورى بهذا الكود</string>
+    <string name="payment_aman_code">برجاء التوجه لأقرب جهاز أمان بهذا الكود</string>
+    <string name="payment_wallet">تم تفعيل عمليه الدفع بنجاح وتم إرسال رسالة نصيه إلى رقم الهاتف لتأكيد عمليه الدفع</string>
+    <string name="payment_fawary_validation">هذا الرمز صالح حتى</string>
+    <string name="copy">نسخ الرمز</string>
+    <string name="copied">تم النسخ</string>
+    <string name="delegate_success_payment">تم إرسال طلبك بنجاح وسيتم التواصل معك في أقرب وقت</string>
+    <string name="continue_browsing">استمرار التصفح</string>
+    <string name="payment_success_visa">تمت عمليه الدفع بنجاح وسيتم تأكيد وتفعيل الحساب خلال لحظات</string>
+    <string name="forget_password">نسيت كلمه المرور؟</string>
+    <string name="send">إرسال</string>
+    <string name="subscribe_dialog">هل تود الاستفادة والاستمتاع بمحتوى التطبيق كاملًا</string>
+    <string name="subscribe_now">اشترك الآن</string>
+    <string name="back">رجوع</string>
+    <string name="non_parent_content">هذا القسم للأطفال والأمهات فقط</string>
+    <string name="continue_open">استمرار</string>
 
 </resources>

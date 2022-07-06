@@ -2,15 +2,12 @@ package app.te.lima_zola.presentation.auth.log_in
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import app.te.lima_zola.domain.account.use_case.ConfigUseCase
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
 import app.te.lima_zola.domain.auth.entity.request.LogInRequest
 import app.te.lima_zola.domain.auth.use_case.LogInUseCase
 import app.te.lima_zola.domain.utils.BaseResponse
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.base.BaseViewModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject

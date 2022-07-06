@@ -65,7 +65,7 @@
         android:cursorVisible="true"
         android:gravity="center_horizontal"
         android:inputType="number"
-        android:itemBackground="@drawable/corner_view_primary"
+        android:itemBackground="@drawable/corner_view_loading"
         android:padding="8dp"
         android:text="@={request.otp}"
         android:textColor="@color/white"

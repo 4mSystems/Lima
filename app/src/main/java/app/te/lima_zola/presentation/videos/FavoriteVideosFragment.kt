@@ -108,6 +108,10 @@ class FavoriteVideosFragment : BaseFragment<FragmentFavoriteVideosBinding>(), Vi
         viewModel.addToWishList(AddToWishListRequest(itemId))
     }
 
+    override fun showSubscribeDialog(direction: Int) {
+
+    }
+
     override fun changeSubCategoryItem(itemId: Int, currentPosition: Int) {
 
     }

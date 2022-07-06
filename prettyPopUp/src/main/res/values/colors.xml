@@ -5,6 +5,6 @@
   <color name="colorGray">#BCBCBC</color>
   <color name="colorDarkGray">#040707</color>
   <color name="colorPrimaryDark">#FE7D2F</color>
-  <color name="transparent">#00FFFFFF</color>
+  <color name="transparent">#00000000</color>
 
 </resources>

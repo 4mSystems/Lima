@@ -1,49 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <data>
+    <data>
 
-    <variable
-      name="eventListener"
-      type="app.te.lima_zola.presentation.home.eventListener.HomeEventListener" />
+        <variable
+            name="eventListener"
+            type="app.te.lima_zola.presentation.home.eventListener.HomeEventListener" />
 
-    <variable
-      name="uiState"
-      type="app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState" />
+        <variable
+            name="uiState"
+            type="app.te.lima_zola.presentation.home.ui_state.CategoriesUiItemState" />
 
-  </data>
+    </data>
 
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_4sdp"
-    android:onClick="@{()-> eventListener.openVideos(uiState.id,uiState.contentType)}">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:onClick="@{()-> eventListener.openVideos(uiState.id,uiState.contentType)}">
 
-    <androidx.appcompat.widget.AppCompatImageView
-      android:id="@+id/cat_image"
-      android:layout_width="@dimen/_100sdp"
-      android:layout_height="@dimen/_100sdp"
-      android:scaleType="centerCrop"
-      android:src="@color/overlayBackground"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:loadImage="@{uiState.categoryImage()}" />
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/cat_image"
+            app:layout_constraintEnd_toEndOf="@+id/cat_image"
+            app:layout_constraintStart_toStartOf="@id/cat_image"
+            app:layout_constraintTop_toTopOf="@+id/cat_image" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-      style="@style/TextMediumFont"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/_3sdp"
-      android:text="@{uiState.categoryName()}"
-      android:textAlignment="center"
-      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-      android:textColor="@color/black"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="@id/cat_image"
-      app:layout_constraintStart_toStartOf="@+id/cat_image"
-      app:layout_constraintTop_toBottomOf="@id/cat_image" />
-  </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cat_image"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{uiState.categoryImage()}"
+            app:progressBar="@{loadingProgress}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextMediumFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_3sdp"
+            android:text="@{uiState.categoryName()}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/cat_image"
+            app:layout_constraintStart_toStartOf="@+id/cat_image"
+            app:layout_constraintTop_toBottomOf="@id/cat_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

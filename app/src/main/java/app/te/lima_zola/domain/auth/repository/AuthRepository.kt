@@ -13,10 +13,16 @@ interface AuthRepository {
 
     suspend fun logIn(request: LogInRequest): Resource<BaseResponse<UserResponse>>
     suspend fun changePassword(request: UpdatePassword): Resource<BaseResponse<*>>
+    suspend fun authChangePassword(request: UpdatePassword): Resource<BaseResponse<*>>
     suspend fun forgetPassword(request: ForgetPasswordRequest): Resource<BaseResponse<*>>
     suspend fun register(request: RegisterRequest): Resource<BaseResponse<*>>
     suspend fun verifyAccount(request: RegisterRequest): Resource<BaseResponse<UserResponse>>
+    suspend fun verifyPasswordAccount(request: ForgetPasswordRequest): Resource<BaseResponse<*>>
     suspend fun getSubscriptionsTypes(): Resource<BaseResponse<SubscriptionPaymentData>>
     suspend fun getPaymentMethods(): Resource<BaseResponse<PaymentMethods>>
-    suspend fun getPaymentResult(subscribe_id: Int, payment_id: Int): Resource<BaseResponse<PaymentResult>>
+    suspend fun payWithDelegate(subscribe_id: Int): Resource<BaseResponse<*>>
+    suspend fun getPaymentResult(
+        payment_id: Int,
+        subscribe_id: Int
+    ): Resource<BaseResponse<PaymentResult>>
 }

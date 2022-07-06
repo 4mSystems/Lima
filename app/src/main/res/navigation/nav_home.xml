@@ -24,6 +24,11 @@
             app:exitAnim="@anim/anim_slide_out_left"
             app:popEnterAnim="@anim/anim_slide_in_left"
             app:popExitAnim="@anim/anim_slide_out_right" />
+
+        <action
+            android:id="@+id/action_home_fragment_to_limaWarningDialog"
+            app:destination="@id/limaWarningDialog" />
+
     </fragment>
 
     <fragment
@@ -199,13 +204,11 @@
         <argument
             android:name="cat_id"
             app:argType="integer" />
+
         <action
-            android:id="@+id/action_videosFragment_to_nav_subscribe"
-            app:destination="@id/nav_subscribe"
-            app:enterAnim="@anim/anim_slide_in_right"
-            app:exitAnim="@anim/anim_slide_out_left"
-            app:popEnterAnim="@anim/anim_slide_in_left"
-            app:popExitAnim="@anim/anim_slide_out_right" />
+            android:id="@+id/action_videosFragment_to_subscribeWarningDialog"
+            app:destination="@id/subscribeWarningDialog" />
+
     </fragment>
     <fragment
         android:id="@+id/favoriteVideosFragment"
@@ -218,13 +221,7 @@
         <argument
             android:name="cat_id"
             app:argType="integer" />
-        <action
-            android:id="@+id/action_documentsFragment_to_nav_subscribe"
-            app:destination="@id/nav_subscribe"
-            app:enterAnim="@anim/anim_slide_in_right"
-            app:exitAnim="@anim/anim_slide_out_left"
-            app:popEnterAnim="@anim/anim_slide_in_left"
-            app:popExitAnim="@anim/anim_slide_out_right" />
+
         <action
             android:id="@+id/action_documentsFragment_to_documentDetailsFragment"
             app:destination="@id/documentDetailsFragment"
@@ -232,6 +229,10 @@
             app:exitAnim="@anim/anim_slide_out_left"
             app:popEnterAnim="@anim/anim_slide_in_left"
             app:popExitAnim="@anim/anim_slide_out_right" />
+
+        <action
+            android:id="@+id/action_documentsFragment_to_subscribeWarningDialog"
+            app:destination="@id/subscribeWarningDialog" />
 
     </fragment>
     <fragment
@@ -242,5 +243,36 @@
             android:name="doc_id"
             app:argType="integer" />
     </fragment>
+    <dialog
+        android:id="@+id/subscribeWarningDialog"
+        android:name="app.te.lima_zola.presentation.auth.subscribe.dialogs.SubscribeWarningDialog"
+        tools:layout="@layout/subscribe_warning_dialog">
+
+        <action
+            android:id="@+id/action_videosFragment_to_nav_subscribe"
+            app:destination="@id/nav_subscribe"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+        <argument
+            android:name="direction"
+            app:argType="integer" />
+    </dialog>
+    <dialog
+        android:id="@+id/limaWarningDialog"
+        android:name="app.te.lima_zola.presentation.base.custom_views.LimaWarningDialog"
+        tools:layout="@layout/lima_warning_dialog">
+        <argument
+            android:name="param"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_limaWarningDialog_to_videosFragment"
+            app:destination="@id/videosFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right" />
+    </dialog>
 
 </navigation>

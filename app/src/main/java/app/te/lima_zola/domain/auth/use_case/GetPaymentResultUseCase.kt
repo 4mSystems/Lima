@@ -20,7 +20,7 @@ class GetPaymentResultUseCase @Inject constructor(
     ): Flow<Resource<BaseResponse<PaymentResult>>> =
         flow {
             emit(Resource.Loading)
-            val result = authRepository.getPaymentResult(subscribe_id, payment_id)
+            val result = authRepository.getPaymentResult(payment_id, subscribe_id)
             emit(result)
         }.flowOn(Dispatchers.IO)
 }

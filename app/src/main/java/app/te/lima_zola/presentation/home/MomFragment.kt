@@ -43,7 +43,7 @@ class MomFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
           }
           is Resource.Success -> {
             hideLoading()
-            categoriesAdapter.differ.submitList(it.value.data.map { catItem ->
+            categoriesAdapter.differ.submitList(it.value.data.categories.map { catItem ->
               CategoriesUiItemState(
                 catItem
               )
@@ -72,9 +72,6 @@ class MomFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
       navigateSafe(MomFragmentDirections.actionMotherFragmentToVideosFragment(cat_id))
     else
       navigateSafe(MomFragmentDirections.actionMotherFragmentToDocumentsFragment(cat_id))
-  }
-
-  override fun openDocs() {
   }
 
 }

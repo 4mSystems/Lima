@@ -78,6 +78,12 @@ class UseCaseModule {
 
     @Provides
     @Singleton
+    fun providePayWithDelegateUseCase(
+        authRepository: AuthRepository
+    ): PayWithDelegateUseCase = PayWithDelegateUseCase(authRepository)
+
+    @Provides
+    @Singleton
     fun provideChangePasswordUseCase(
         authRepository: AuthRepository,
     ): ChangePasswordUseCase = ChangePasswordUseCase(authRepository)
@@ -136,14 +142,16 @@ class UseCaseModule {
     @Provides
     @Singleton
     fun provideVideosUseCase(
-        videosArticlesRepository: VideosArticlesRepository
-    ): VideosUseCase = VideosUseCase(videosArticlesRepository)
+        videosArticlesRepository: VideosArticlesRepository,
+        userLocalUseCase: UserLocalUseCase
+    ): VideosUseCase = VideosUseCase(videosArticlesRepository, userLocalUseCase)
 
     @Provides
     @Singleton
     fun provideArticleUseCase(
-        videosArticlesRepository: VideosArticlesRepository
-    ): ArticleUseCase = ArticleUseCase(videosArticlesRepository)
+        videosArticlesRepository: VideosArticlesRepository,
+        userLocalUseCase: UserLocalUseCase
+    ): ArticleUseCase = ArticleUseCase(videosArticlesRepository,userLocalUseCase)
 
     @Provides
     @Singleton

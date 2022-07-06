@@ -5,5 +5,6 @@ import app.te.lima_zola.domain.videos_articles.entity.VideoData
 class DocumentDetailsUiState(val videoData: VideoData) {
     val documentImage: String = videoData.image
     val documentTitle: String = videoData.name
+    val documentBody: String = videoData.body
 
 }

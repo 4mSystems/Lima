@@ -10,6 +10,7 @@ plugins {
     id(Config.Plugins.hilt)
     id(Config.Plugins.proto_buf)
     id(Config.Plugins.google_secrets)
+//    id(Config.Plugins.appsweep) version "latest.release"
 }
 protobuf {
     protoc {
@@ -37,7 +38,7 @@ android {
         applicationId = Config.AppConfig.appId
         minSdk = Config.AppConfig.minSdkVersion
         targetSdk = Config.AppConfig.compileSdkVersion
-        versionCode = Config.AppConfig.versionCode
+        versionCode = Config.AppConfig.versionCodeTest
         versionName = Config.AppConfig.versionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
@@ -51,8 +52,6 @@ android {
             manifestPlaceholders["appName"] = "@string/app_name"
             manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher_release"
             manifestPlaceholders["appRoundIcon"] = "@mipmap/ic_launcher_release_round"
-            buildConfigField("String", "API_BASE_URL", Config.Environments.debugBaseUrl)
-            buildConfigField("String", "ROOM_DB", Config.Environments.roomDb)
         }
 
         signingConfigs {
@@ -69,17 +68,12 @@ android {
 
             isMinifyEnabled = true
             isShrinkResources = true
-            isDebuggable = true
             manifestPlaceholders["appName"] = "@string/app_name"
             manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher_release"
             manifestPlaceholders["appRoundIcon"] = "@mipmap/ic_launcher_release_round"
-
-            buildConfigField("String", "API_BASE_URL", Config.Environments.releaseBaseUrl)
-            buildConfigField("String", "ROOM_DB", Config.Environments.roomDb)
-        }
-        buildTypes.all {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
+
     }
 
     compileOptions {
@@ -104,15 +98,14 @@ android {
     buildFeatures {
         viewBinding = true
     }
-//    sourceSets.main.jniLibs.srcDirs = ["./jni/"]
-//    sourceSets {
-//        getByName("main").jniLibs.srcDirs("./jni/")
+//    appsweep {
+//        apiKey = Libraries.appsweep_key
 //    }
-//    externalNativeBuild {
-//        cmake {
-//            path = file(Config.AppConfig.cmakePath)
-//        }
-//    }
+    externalNativeBuild {
+        cmake {
+            path = file("CMakeLists.txt")
+        }
+    }
 }
 
 dependencies {
@@ -122,6 +115,7 @@ dependencies {
     kapt(Libraries.roomCompiler)
     implementation(Libraries.roomktx)
     implementation(Libraries.roomCommon)
+    implementation(Libraries.startup)
 
     // Networking
     implementation(Libraries.retrofit)
@@ -136,7 +130,6 @@ dependencies {
     implementation(Libraries.multidex)
     implementation(Libraries.permissions)
     implementation(Libraries.gson)
-//  implementation("com.google.crypto.tink:tink-android:HEAD-SNAPSHOT")
 
 // paging
     implementation(Libraries.paging_version)
@@ -178,6 +171,7 @@ dependencies {
     implementation(Libraries.ssp)
     implementation(Libraries.ssdp)
     implementation(Libraries.shimmer)
+    implementation(Libraries.splash_screen)
     //EXO PLAYER
     implementation(Libraries.exoplayer)
     implementation(Libraries.exoplayer_core)

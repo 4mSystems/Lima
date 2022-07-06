@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="amrk.app.moon.views.fragments.SplashFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,10 +15,10 @@
         android:layout_height="match_parent"
         android:background="@drawable/details_background">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ic_arrow_back"
@@ -47,12 +46,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/ic_arrow_back" />
 
             <include
+                android:id="@+id/subscription_shimmer"
                 layout="@layout/subscription_loading_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/subscription_shimmer"
                 android:layout_margin="@dimen/_15sdp"
-                app:layout_constraintTop_toBottomOf="@id/register" />
+                app:layout_constraintTop_toBottomOf="@id/subscribe_period" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/subscribe_period"
@@ -77,15 +76,15 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/subscribe_period" />
+                app:layout_constraintTop_toBottomOf="@+id/subscription_shimmer" />
 
             <include
+                android:id="@+id/payment_shimmer"
                 layout="@layout/subscription_loading_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_15sdp"
-                android:id="@+id/payment_shimmer"
-                app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment" />
+                app:layout_constraintTop_toBottomOf="@id/subscribe_payment" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/subscribe_payment"
@@ -97,7 +96,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_payment_method" />
-
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/appCompatButtonNext"
@@ -116,8 +114,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/subscribe_payment" />
+                app:layout_constraintTop_toBottomOf="@+id/payment_shimmer" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

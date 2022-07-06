@@ -15,12 +15,15 @@ class LogInRequest {
       validation.passwordError.set(null)
       field = value
     }
+  @Transient
   var validation: LogInValidationException = LogInValidationException()
 }
 
 @Keep
 class LogInValidationException {
+  @Transient
   var emailError: ObservableField<String> = ObservableField<String>()
+  @Transient
   var passwordError: ObservableField<String> = ObservableField<String>()
 
 }

@@ -20,8 +20,7 @@
         android:id="@+id/sub_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_4sdp"
-        >
+        android:layout_margin="@dimen/_4sdp">
 
         <RadioButton
             android:id="@+id/radio_annual"
@@ -30,8 +29,8 @@
             android:layout_height="wrap_content"
             android:buttonTint="@color/colorPrimaryDark"
             android:checked="@{model.selected}"
-            android:text="@{model.name}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@{model.name.concat(` ( `).concat(model.cost).concat(@string/coin).concat(` )`)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/annual" />

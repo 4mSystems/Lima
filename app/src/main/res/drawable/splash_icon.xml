@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="fill">
+        <color android:color="?attr/windowSplashScreenBackground" />
+    </item>
+    <item
+        android:drawable="@drawable/logo"
+        android:gravity="center"
+        android:width="@dimen/_80sdp"
+        android:height="@dimen/_80sdp" />
+
+    <!-- We mask the outer bounds of the icon like we do on Android 12 -->
+    <item
+        android:gravity="center"
+        android:width="@dimen/_80sdp"
+        android:height="@dimen/_80sdp">
+        <shape android:shape="oval">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="@dimen/_80sdp"
+                android:color="?windowSplashScreenBackground" />
+        </shape>
+    </item>
+</layer-list>

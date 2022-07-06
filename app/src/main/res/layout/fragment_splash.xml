@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <variable
-      name="viewModel"
-      type="app.te.lima_zola.presentation.splash.SplashViewModel" />
-  </data>
+        <app.te.lima_zola.presentation.splash.FullScreenVideoView
+            android:id="@+id/video"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-  <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:src="@drawable/tes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-      android:layout_width="@dimen/_120sdp"
-      android:layout_height="@dimen/_120sdp"
-      android:layout_centerInParent="true"
-      android:src="@drawable/logo"
-      android:visibility="@{viewModel.logoVisibility}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatImageView
-      android:layout_width="@dimen/_120sdp"
-      android:layout_height="@dimen/_20sdp"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="@dimen/_8sdp"
-      android:src="@drawable/tes" />
-
-  </RelativeLayout>
 
 </layout>

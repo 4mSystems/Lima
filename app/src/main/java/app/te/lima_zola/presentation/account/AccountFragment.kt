@@ -27,26 +27,6 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(), AccountEventList
 
     override
     fun setupObservers() {
-
-//    lifecycleScope.launchWhenResumed {
-//      accountViewModel.logOutResponse.collect {
-//        when (it) {
-//          Resource.Loading -> {
-//            hideKeyboard()
-//            showLoading()
-//          }
-//          is Resource.Success -> {
-//            hideLoading()
-//            accountViewModel.clearStorage()
-//
-//          }
-//          is Resource.Failure -> {
-//            hideLoading()
-//            handleApiError(it)
-//          }
-//        }
-//      }
-//    }
         lifecycleScope.launchWhenResumed {
             accountViewModel.userData.collect {
                 uiState = AccountUiState(it)

@@ -47,7 +47,7 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>(),
                     }
                     is Resource.Failure -> {
                         hideLoading()
-                        handleApiError(it, retryAction = { viewModel.changePassword() })
+                        handleApiError(it, retryAction = { viewModel.updatePassword() })
                     }
                     Resource.Default -> {
                     }
@@ -57,7 +57,7 @@ class ChangePasswordFragment : BaseFragment<FragmentChangePasswordBinding>(),
     }
 
     override fun changePassword() {
-        viewModel.changePassword()
+        viewModel.updatePassword()
     }
 
     override fun setupStatusBar() {

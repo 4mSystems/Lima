@@ -6,6 +6,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import app.te.lima_zola.R
@@ -13,10 +14,8 @@ import app.te.lima_zola.databinding.FragmentVideosBinding
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.domain.videos_articles.entity.request.AddToWishListRequest
 import app.te.lima_zola.domain.videos_articles.entity.request.LikeRequest
-import app.te.lima_zola.presentation.auth.AuthActivity
 import app.te.lima_zola.presentation.base.BaseFragment
 import app.te.lima_zola.presentation.base.extensions.*
-import app.te.lima_zola.presentation.base.utils.Constants
 import app.te.lima_zola.presentation.player.PlayerActivity
 import app.te.lima_zola.presentation.videos.adapters.VideosAdapter
 import app.te.lima_zola.presentation.videos.adapters.SubCategoriesAdapter
@@ -31,20 +30,23 @@ import kotlinx.coroutines.launch
 class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListener {
     private val viewModel: VideosViewModel by viewModels()
     private lateinit var subCategoriesAdapter: SubCategoriesAdapter
-    private var adapter = VideosAdapter(this)
+    private lateinit var adapter: VideosAdapter
+    private val args: VideosFragmentArgs by navArgs()
 
     override
     fun getLayoutId() = R.layout.fragment_videos
 
+
     override
     fun setBindingVariables() {
+        adapter = VideosAdapter(this)
+        viewModel.getData(args.catId)
         subCategoriesAdapter = SubCategoriesAdapter(this)
         binding.eventListener = this
     }
 
     override
     fun setupObservers() {
-
         adapter.addLoadStateListener { loadState ->
 
             if (loadState.refresh is LoadState.Loading && !isDetached)
@@ -136,29 +138,15 @@ class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListene
         lifecycleScope.launch {
             adapter.submitData(PagingData.empty())
             viewModel.getVideosArticles(itemId.takeIf { it != 0 }
-                ?: VideosFragmentArgs.fromSavedStateHandle(viewModel.savedStateHandle).catId) // all videos
+                ?: args.catId) // all videos
         }
         subCategoriesAdapter.onItemChange(currentPosition = currentPosition)
+
     }
 
     override fun openContent(itemId: Int, content: String) {
-        if (itemId != Constants.FREE) {
-            val intent = PlayerActivity.getStartIntent(requireActivity(), content)
-            requireActivity().startActivity(intent)
-        } else
-            checkIsSubscribed()
-    }
-
-    private fun checkIsSubscribed() {
-        lifecycleScope.launch {
-            viewModel.userLocalUseCase.invoke().collect { user ->
-                if (user.name.isNotEmpty() && user.subscriber == Constants.FREE)
-                    navigateSafe(VideosFragmentDirections.actionVideosFragmentToNavSubscribe())
-                else
-                    openIntentActivity(AuthActivity::class.java, R.id.logInFragment)
-
-            }
-        }
+        val intent = PlayerActivity.getStartIntent(requireActivity(), content, itemId)
+        requireActivity().startActivity(intent)
     }
 
     override fun makeLike(itemId: Int) {
@@ -167,6 +155,10 @@ class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListene
 
     override fun makeWishList(itemId: Int) {
         viewModel.addToWishList(AddToWishListRequest(itemId))
+    }
+
+    override fun showSubscribeDialog(direction: Int) {
+        navigateSafe(VideosFragmentDirections.actionVideosFragmentToSubscribeWarningDialog(direction))
     }
 
     override fun back() {

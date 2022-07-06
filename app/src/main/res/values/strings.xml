@@ -7,7 +7,7 @@
     <string name="no_internet">No internet connection please try again later</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
-    <string name="some_error">Some error occurred, try again later</string>
+    <string name="some_error">Some error occurred, Please try again later</string>
 
     <!-- Home -->
     <string name="childern">Kids</string>
@@ -23,19 +23,21 @@
     <string name="phone_hint">Phone</string>
     <string name="password">Password</string>
     <string name="login_as_guest">Visitor</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="forgot_header">Enter the phone number you will receive code</string>
 
     <!-- Sign Up -->
-    <string name="sign_up">Sign Up</string>
+    <string name="sign_up">Sign up</string>
 
     <!-- Account -->
-    <string name="log_out">Log Out</string>
+    <string name="log_out">Log out</string>
     <string name="skip">Skip</string>
-    <!--  <string name="google_api_key">Continue as Guest</string>-->
+    <!--  <string name="google_api_key">Continue as a guest</string>-->
 
     <string name="privacy">Privacy policy</string>
     <string name="confirm_header_text">Confirm account</string>
     <string name="profile">Profile</string>
-    <string name="mom">Mom</string>
+    <string name="mom">Moms</string>
     <string name="menu_more">More</string>
     <string name="not_match_password">The two passwords do not match</string>
     <string name="active">Activate the account</string>
@@ -55,10 +57,8 @@
     <string name="new_account">Register</string>
     <string name="subscribe_header_text">Choose subscription</string>
     <string name="annual">Annual</string>
-    <string name="half_annual">Half annual</string>
-    <string name="subscribe_payment_header_text">Choose the type of payment</string>
-    <string name="paymob">Online</string>
-    <string name="pay_by_delegate">From your home</string>
+    <string name="coin">Eg</string>
+    <string name="subscribe_payment_header_text">Select  payment method</string>
 
     <string name="log_out_hint">Are you sure you want to log out?</string>
     <string name="favorite">Favorite</string>
@@ -70,16 +70,34 @@
     <string name="ar">اللغة العربية</string>
     <string name="en">English</string>
     <string name="save">Save</string>
-    <string name="forget_password">Change password</string>
+    <string name="change_password">Change password</string>
     <string name="password_hint_confirm">Confirm password</string>
     <string name="old_password">Old password</string>
-    <string name="no_content_avail">Sorry, no data is available</string>
+    <string name="no_content_avail">Sorry, No data is available</string>
     <string name="all_cat">All</string>
-    <string name="storage_permission_denied" translatable="false">Storage pernission denied</string>
+    <string name="storage_permission_denied" translatable="false">Storage permission denied</string>
     <string name="error_generic" translatable="false">Playback failed</string>
     <string name="error_no_secure_decoder" translatable="false">This device does not provide a secure decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
     <string name="error_no_decoder" translatable="false">This device does not provide a decoder for <xliff:g id="mime_type">%1$s</xliff:g></string>
     <string name="error_querying_decoders" translatable="false">Unable to query device decoders</string>
     <string name="error_instantiating_decoder" translatable="false">Unable to instantiate decoder <xliff:g id="decoder_name">%1$s</xliff:g></string>
+    <string name="success">Success</string>
+    <string name="payment_done_sub_title">Your payment has been created</string>
+    <string name="payment_fawary_code">Please find the nearest Fawry pay with this code</string>
+    <string name="payment_aman_code">Please find the nearest AMAN machine with this code</string>
+    <string name="payment_wallet">The payment process has been successfully activated and a text message has been sent to the phone number to confirm the payment process</string>
+    <string name="payment_fawary_validation">This code is valid until</string>
+    <string name="copy">Copy code</string>
+    <string name="copied">Copied</string>
+    <string name="delegate_success_payment">تم إرسال طلبك بنجاح وسيتم التواصل معك في أقرب وقت</string>
+    <string name="continue_browsing">continue browsing</string>
+    <string name="payment_success_visa">تمت عمليه الدفع بنجاح وستم تاكيد وتفعيل الحساب خلال لحظات</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="send">Send</string>
+    <string name="subscribe_dialog">Do you want to take advantage and enjoy the entire content of the application</string>
+    <string name="subscribe_now">subscribe now</string>
+    <string name="back">Back</string>
+    <string name="non_parent_content">This section is for children and mothers only</string>
+    <string name="continue_open">Continue</string>
 
 </resources>

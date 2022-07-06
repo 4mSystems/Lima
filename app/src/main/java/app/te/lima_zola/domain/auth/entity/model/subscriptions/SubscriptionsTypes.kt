@@ -13,4 +13,6 @@ data class SubscriptionsTypes(
     @SerializedName("name")
     val name: String = "",
     var isSelected: Boolean = false
-)
+) {
+    fun title(): String = name.plus(" ( ").plus(cost).plus(" )")
+}

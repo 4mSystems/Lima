@@ -17,58 +17,66 @@ import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
 class LogInFragment : BaseFragment<FragmentLogInBinding>(), LoginEventListener {
 
-  private val viewModel: LogInViewModel by viewModels()
+    private val viewModel: LogInViewModel by viewModels()
 
-  override
-  fun getLayoutId() = R.layout.fragment_log_in
+    override
+    fun getLayoutId() = R.layout.fragment_log_in
 
-  override
-  fun setBindingVariables() {
-    binding.request = viewModel.request
-    binding.eventListener = this
-  }
-
-
-  override
-  fun setupObservers() {
-    lifecycleScope.launchWhenResumed {
-      viewModel.logInResponse.collect {
-        when (it) {
-          Resource.Loading -> {
-            hideKeyboard()
-            showLoading()
-          }
-          is Resource.Success -> {
-            hideLoading()
-            openHome()
-          }
-          is Resource.Failure -> {
-            hideLoading()
-            handleApiError(
-              it,
-              retryAction = { viewModel.onLogInClicked() })
-          }
-        }
-      }
+    override
+    fun setBindingVariables() {
+        binding.request = viewModel.request
+        binding.eventListener = this
     }
-  }
 
 
-  override fun openHome() {
-    requireActivity().openActivityAndClearStack(HomeActivity::class.java)
-  }
+    override
+    fun setupObservers() {
+        lifecycleScope.launchWhenResumed {
+            viewModel.logInResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        hideKeyboard()
+                        showLoading()
+                    }
+                    is Resource.Success -> {
+                        hideLoading()
+                        openHome()
+                    }
+                    is Resource.Failure -> {
+                        hideLoading()
+                        handleApiError(
+                            it,
+                            retryAction = { viewModel.onLogInClicked() })
+                    }
+                }
+            }
+        }
+    }
 
-  override fun login() {
-    viewModel.onLogInClicked()
-  }
 
-  override fun toRegister() {
-    navigateSafe(LogInFragmentDirections.actionLogInFragmentToSignUpFragment())
-  }
+    override fun openHome() {
+        requireActivity().openActivityAndClearStack(HomeActivity::class.java)
+    }
 
-  override fun setupStatusBar() {
-    val window: Window = requireActivity().window
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-    window.statusBarColor = getMyColor(R.color.colorPrimaryDark)
-  }
+    override fun login() {
+        viewModel.onLogInClicked()
+    }
+
+    override fun toRegister() {
+        navigateSafe(LogInFragmentDirections.actionLogInFragmentToSignUpFragment())
+    }
+
+    override fun forgetPassword() {
+        navigateSafe(LogInFragmentDirections.actionLogInFragmentToForgotPasswordFragment())
+    }
+
+    override fun back() {
+        requireActivity().finish()
+    }
+
+    override fun setupStatusBar() {
+        val window: Window = requireActivity().window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = getMyColor(R.color.colorPrimaryDark)
+    }
 }

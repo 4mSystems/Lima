@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(private val generalUseCases: GeneralUseCases) :
+class SplashViewModel @Inject constructor( val generalUseCases: GeneralUseCases) :
   BaseViewModel() {
   lateinit var eventListener: SplashEventListener
 
@@ -28,23 +28,23 @@ class SplashViewModel @Inject constructor(private val generalUseCases: GeneralUs
   var logoVisibility: Int = View.GONE
 
   init {
-    viewModelScope.launch {
-      generalUseCases.configUseCase.getSplash().collectLatest { splash ->
-        updateSplashScreen(splash)
-        if (splash.isNotEmpty()) {
-          delay(6000)
-        } else
-          delay(3000)
-        generalUseCases.checkFirstTimeUseCase().collect { isFirst ->
-          if (isFirst) {
-            eventListener.openOnBoarding()
-          } else {
-            eventListener.openHome()
-          }
-        }
-      }
-
-    }
+//    viewModelScope.launch {
+//      generalUseCases.configUseCase.getSplash().collectLatest { splash ->
+//        updateSplashScreen(splash)
+//        if (splash.isNotEmpty()) {
+//          delay(6000)
+//        } else
+//          delay(3000)
+//        generalUseCases.checkFirstTimeUseCase().collect { isFirst ->
+//          if (isFirst) {
+//            eventListener.openOnBoarding()
+//          } else {
+//            eventListener.openHome()
+//          }
+//        }
+//      }
+//
+//    }
   }
 
   private fun updateSplashScreen(adImage: String) {

@@ -25,22 +25,36 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ic_arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:background="?selectableItemBackground"
+                android:onClick="@{()-> eventListener.back()}"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ic_logo"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_marginTop="@dimen/_80sdp"
-                android:src="@drawable/logo"
+                android:src="@drawable/login_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:strokeColor="@color/overlayBackground"
+                app:strokeWidth="1dp" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/login"
-                style="@style/TextMediumFont"
+                style="@style/TextBoldFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:text="@string/login"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/colordark"
@@ -57,7 +71,6 @@
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
-                android:hint="@string/phone_hint"
                 android:textColorHint="@color/medium_color"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
@@ -68,6 +81,7 @@
                 app:error="@{request.validation.emailError.equals(Constants.EMPTY)?@string/empty_warning:``}"
                 app:errorEnabled="@{request.validation.emailError==null?false:true}"
                 app:helperTextTextColor="@color/black"
+                app:hintEnabled="false"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,8 +92,10 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/phone_hint"
                     android:inputType="phone"
                     android:text="@={request.phone}"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/black"
                     android:textColorHint="@color/overlayBackground"
@@ -94,8 +110,6 @@
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
-                android:hint="@string/password"
-                android:inputType="textPassword"
                 android:textColorHint="@color/medium_color"
                 app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
@@ -106,6 +120,7 @@
                 app:error="@{request.validation.passwordError.equals(Constants.EMPTY)?@string/empty_warning:``}"
                 app:errorEnabled="@{request.validation.passwordError==null?false:true}"
                 app:helperTextTextColor="@color/black"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_name"
@@ -116,8 +131,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:text="@={request.password}"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/black"
                     android:textColorHint="@color/overlayBackground" />
@@ -128,10 +145,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_12sdp"
+                android:onClick="@{()-> eventListener.forgetPassword()}"
+                android:text="@string/forget_password"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/colordark"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/input_register_password"
                 app:layout_constraintTop_toBottomOf="@+id/input_register_password" />
 
             <androidx.appcompat.widget.AppCompatButton

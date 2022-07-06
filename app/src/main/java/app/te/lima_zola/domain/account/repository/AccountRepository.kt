@@ -9,42 +9,38 @@ import kotlinx.coroutines.flow.Flow
 
 interface AccountRepository {
 
-  suspend fun sendFirebaseToken(request: SendFirebaseTokenRequest): Resource<BaseResponse<*>>
+    suspend fun sendFirebaseToken(request: SendFirebaseTokenRequest): Resource<BaseResponse<*>>
 
-  suspend fun logOut(): Resource<BaseResponse<*>>
+    suspend fun logOut(): Resource<BaseResponse<*>>
 
-  suspend fun isLoggedIn(isLoggedIn: Boolean)
+    suspend fun isLoggedIn(isLoggedIn: Boolean)
 
-  suspend fun getIsLoggedIn(): Flow<Boolean>
+    suspend fun getIsLoggedIn(): Flow<Boolean>
 
-  suspend fun saveFirebaseTokenToLocal(firebaseToken: String)
+    suspend fun saveFirebaseTokenToLocal(firebaseToken: String)
 
-  suspend fun getFirebaseTokenToLocal(): Flow<String>
+    suspend fun getFirebaseTokenToLocal(): Flow<String>
 
-  suspend fun setFirstTime(isFirstTime: Boolean)
+    suspend fun setFirstTime(isFirstTime: Boolean)
 
-  suspend fun isFirstTime(): Flow<Boolean>
+    suspend fun isFirstTime(): Flow<Boolean>
 
-  suspend fun saveUserToLocal(user: UserResponse)
+    suspend fun saveUserToLocal(user: UserResponse)
 
-  suspend fun getUserToLocal(): Flow<User>
+    suspend fun getUserToLocal(): Flow<User>
 
-  suspend fun saveUserToken(userToken: String)
+    suspend fun saveUserToken(userToken: String)
 
-  suspend fun getUserToken(): Flow<String>
+    suspend fun getUserToken(): Flow<String>
 
-  suspend fun setLang(lang: String)
+    suspend fun setLang(lang: String)
 
-  suspend fun getLang(): Flow<String>
+    suspend fun getLang(): Flow<String>
 
-  suspend fun saveWhatsAppValue(value: String)
+    suspend fun saveSplash(value: String)
 
-  suspend fun getWhatsAppValue(): Flow<String>
+    suspend fun getSplash(): Flow<String>
 
-  suspend fun saveSplash(value: String)
-
-  suspend fun getSplash(): Flow<String>
-
-  suspend fun clearPreferences()
+    suspend fun clearPreferences()
 
 }
