@@ -58,5 +58,11 @@ class AuthRemoteDataSource @Inject constructor(private val apiService: AuthServi
         apiService.payWithDelegate(subscribe_id)
     }
 
+    suspend fun activatePromoCode(
+        activatePromoCodeRequest: ActivatePromoCodeRequest
+    ) = safeApiCall {
+        apiService.activatePromoCode(activatePromoCodeRequest)
+    }
+
 
 }

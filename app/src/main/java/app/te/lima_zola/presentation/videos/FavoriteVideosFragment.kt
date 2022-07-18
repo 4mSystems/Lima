@@ -79,7 +79,7 @@ class FavoriteVideosFragment : BaseFragment<FragmentFavoriteVideosBinding>(), Vi
                         hideKeyboard()
                     }
                     is Resource.Success -> {
-                        makeActionSound(requireContext())
+//                        makeActionSound(requireContext())
                     }
                     is Resource.Failure -> {
                         handleApiError(it)

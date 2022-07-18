@@ -94,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/phone_hint"
                     android:inputType="phone"
+                    android:digits="0123456789"
                     android:text="@={request.phone}"
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"

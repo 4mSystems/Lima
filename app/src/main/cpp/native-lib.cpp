@@ -72,3 +72,10 @@ Java_app_te_lima_1zola_data_remote_Keys_splash(JNIEnv *env, jobject thiz) {
     std::string splash = "splash";
     return env->NewStringUTF(splash.c_str());
 }
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_app_te_lima_1zola_data_remote_Keys_platForm(JNIEnv *env, jobject thiz) {
+    std::string platform = "android";
+    return env->NewStringUTF(platform.c_str());
+}

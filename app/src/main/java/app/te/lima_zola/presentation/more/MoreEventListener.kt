@@ -7,4 +7,5 @@ interface MoreEventListener {
   fun openPrivacyPolicy()
   fun openTerms()
   fun openContact()
+  fun openTesDialog()
 }

@@ -67,7 +67,6 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_video_title"
-                    style="@style/TextMediumFont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_6sdp"
@@ -75,26 +74,30 @@
                     android:maxLines="2"
                     android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
+                    android:visibility="gone"
                     app:fromHtml="@{uiState.documentTitle}"
                     app:layout_constraintEnd_toEndOf="@id/cat_image"
                     app:layout_constraintStart_toStartOf="@+id/cat_image"
                     app:layout_constraintTop_toBottomOf="@id/cat_image"
                     tools:text="الدرس الأول .. مهارات الإتصال" />
 
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_doc_desc"
-                    style="@style/TextMediumFont"
+                <!--                app:fromHtml="@{uiState.documentBody}"-->
+                <im.delight.android.webview.AdvancedWebView
+                    android:id="@+id/webview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_6sdp"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black_light"
-                    app:fromHtml="@{uiState.documentBody}"
-                    app:layout_constraintTop_toBottomOf="@id/tv_video_title"
-                    tools:text="لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال" />
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_video_title" />
+
+<!--                <org.sufficientlysecure.htmltextview.HtmlTextView-->
+<!--                    android:id="@+id/tv_doc_desc"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/_6sdp"-->
+<!--                    android:textAlignment="viewStart"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/tv_video_title"-->
+<!--                    tools:text="لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه … بروشور او فلاير على سبيل المثال" />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

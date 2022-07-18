@@ -2,6 +2,7 @@ package app.te.lima_zola.domain.auth.repository
 
 import app.te.lima_zola.domain.auth.entity.model.SubscriptionPaymentData
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
+import app.te.lima_zola.domain.auth.entity.model.disounts.PromoCodeData
 import app.te.lima_zola.domain.auth.entity.model.payments.PaymentMethods
 import app.te.lima_zola.domain.auth.entity.model.payments.payment_result.PaymentResult
 import app.te.lima_zola.domain.auth.entity.request.*
@@ -25,4 +26,6 @@ interface AuthRepository {
         payment_id: Int,
         subscribe_id: Int
     ): Resource<BaseResponse<PaymentResult>>
+
+    suspend fun activatePromoCode(activatePromoCodeRequest: ActivatePromoCodeRequest): Resource<BaseResponse<PromoCodeData>>
 }

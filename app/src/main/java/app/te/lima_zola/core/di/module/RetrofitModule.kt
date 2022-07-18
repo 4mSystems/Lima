@@ -57,6 +57,8 @@ object RetrofitModule {
                     .addHeader("Authorization", "Bearer $userToken")
                     .addHeader("Accept", "application/json")
                     .addHeader("lang", Locale.getDefault().language)
+                    .addHeader("version", BuildConfig.VERSION_CODE.toString())
+                    .addHeader("platform", Keys.platForm())
                     .build()
             )
         }

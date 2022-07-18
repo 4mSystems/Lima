@@ -8,6 +8,7 @@ import app.te.lima_zola.R
 import app.te.lima_zola.databinding.FragmentSubscribeBinding
 import app.te.lima_zola.domain.auth.entity.model.payments.PaymentItem
 import app.te.lima_zola.domain.auth.entity.model.payments.payment_result.PaymentData
+import app.te.lima_zola.domain.auth.entity.model.subscriptions.SubscriptionsTypes
 import app.te.lima_zola.domain.utils.Resource
 import app.te.lima_zola.presentation.auth.subscribe.adapters.PaymentMethodsAdapter
 import app.te.lima_zola.presentation.auth.subscribe.adapters.SubscriptionTypesAdapter
@@ -22,7 +23,7 @@ import kotlinx.coroutines.flow.collect
 class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEventListener {
 
     private val viewModel: SubscribeViewModel by viewModels()
-    private val subscriptionTypesAdapter = SubscriptionTypesAdapter()
+    private val subscriptionTypesAdapter = SubscriptionTypesAdapter(this)
     private val paymentAdapter = PaymentMethodsAdapter()
 
     override
@@ -31,6 +32,7 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
     override
     fun setBindingVariables() {
         binding.eventListener = this
+        binding.uiState = viewModel.uiState
     }
 
     override
@@ -46,7 +48,8 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
                         subscriptionTypesAdapter.differ.submitList(it.value.data.subscriptionTypes)
                         binding.subscribePeriod.adapter = subscriptionTypesAdapter
                         updatePaymentMethods(it.value.data.paymentMethods.paymentItem)
-
+                        // For update Invoice
+                        viewModel.uiState.updateUI(subscriptionTypesAdapter.differ.currentList[0])
                     }
                     is Resource.Failure -> {
                         hideShimmer()
@@ -96,6 +99,25 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
                 }
             }
         }
+        lifecycleScope.launchWhenResumed {
+            viewModel.activatePromoCodeResponse.collect {
+                when (it) {
+                    Resource.Loading -> {
+                        showLoading()
+                    }
+                    is Resource.Success -> {
+                        hideLoading()
+                        viewModel.uiState.updateDiscountValue(it.value.data.discount)
+                    }
+                    is Resource.Failure -> {
+                        hideLoading()
+                        handleApiError(it, retryAction = { viewModel.activatePromoCode() })
+                    }
+
+                }
+            }
+        }
+
     }
 
     private fun openPayDelegateSuccess() {
@@ -150,6 +172,14 @@ class SubscribeFragment : BaseFragment<FragmentSubscribeBinding>(), SubscribeEve
             )
         else
             viewModel.callDelegatePayment(subscriptionTypesAdapter.differ.currentList[subscriptionTypesAdapter.lastPosition].id)
+    }
+
+    override fun activateCode() {
+        viewModel.activatePromoCode()
+    }
+
+    override fun onSubscriptionType(subscriptionsTypes: SubscriptionsTypes) {
+        viewModel.uiState.updateUI(subscriptionsTypes)
     }
 
     override fun back() {

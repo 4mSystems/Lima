@@ -16,4 +16,5 @@ object Keys {
   external fun isLoggedIn(): String
   external fun lang(): String
   external fun splash(): String
+  external fun platForm(): String
 }

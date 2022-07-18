@@ -89,9 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:background="?selectableItemBackground"
                 android:drawableStart="@drawable/ic_team"
                 android:drawablePadding="@dimen/_6sdp"
-                android:background="?selectableItemBackground"
                 android:drawableTint="@color/colorPrimaryDark"
                 android:onClick="@{()-> eventListener.openTeam()}"
                 android:text="@string/team"
@@ -167,12 +167,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:background="?selectableItemBackground"
                 android:drawableStart="@drawable/ic_privacy"
                 android:drawablePadding="@dimen/_6sdp"
                 android:drawableTint="@color/colorPrimaryDark"
                 android:onClick="@{()-> eventListener.openPrivacyPolicy()}"
                 android:text="@string/privacy"
-                android:background="?selectableItemBackground"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,12 +184,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25sdp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_privacy" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_12sdp"
+                android:onClick="@{()-> eventListener.openTesDialog()}"
+                android:src="@drawable/tes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/version_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

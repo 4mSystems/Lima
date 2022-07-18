@@ -96,7 +96,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
 
     open fun setupObservers() {}
     open fun setupStatusBar() {}
-    open fun limaWarningDialog(param: Int?) {}
+    open fun limaWarningDialog(param: Int) {}
 
     fun showLoading() {
         hideLoading()

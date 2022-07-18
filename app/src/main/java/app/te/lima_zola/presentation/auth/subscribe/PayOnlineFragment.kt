@@ -30,6 +30,7 @@ class PayOnlineFragment : BaseFragment<FragmentPayOnlineBinding>(), AdvancedWebV
         binding.webview.setListener(requireActivity(), this)
         binding.webview.setMixedContentAllowed(false)
         binding.webview.setDesktopMode(true)
+        binding.webview.settings.setSupportMultipleWindows(true)
         binding.webview.loadUrl(args.paymentUrl)
     }
 

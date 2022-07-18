@@ -8,6 +8,10 @@
         <variable
             name="eventListener"
             type="app.te.lima_zola.presentation.auth.subscribe.listeners.SubscribeEventListener" />
+
+        <variable
+            name="uiState"
+            type="app.te.lima_zola.presentation.auth.subscribe.ui_state.SubscribeUiState" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -78,14 +82,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subscription_shimmer" />
 
-            <include
-                android:id="@+id/payment_shimmer"
-                layout="@layout/subscription_loading_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_15sdp"
-                app:layout_constraintTop_toBottomOf="@id/subscribe_payment" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/subscribe_payment"
                 android:layout_width="match_parent"
@@ -97,6 +93,196 @@
                 tools:itemCount="4"
                 tools:listitem="@layout/item_payment_method" />
 
+            <include
+                android:id="@+id/payment_shimmer"
+                layout="@layout/subscription_loading_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                app:layout_constraintTop_toBottomOf="@id/subscribe_payment" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_discount"
+                style="@style/TextBoldFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/get_discount"
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payment_shimmer" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_code"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:textColorHint="@color/medium_color"
+                app:boxBackgroundColor="@color/colorLight"
+                app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_30sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_30sdp"
+                app:boxCornerRadiusTopStart="@dimen/_30sdp"
+                app:boxStrokeColor="@color/white"
+                app:helperTextTextColor="@color/black"
+                app:hintEnabled="false"                 android:visibility="gone"
+
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toStartOf="@+id/btn_confirm_promo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_discount">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/discount_code"
+                    android:inputType="text"
+                    android:text="@={uiState.activatePromoCodeRequest.code}"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/overlayBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_confirm_promo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:onClick="@{()->eventListener.activateCode()}"
+                android:text="@string/apply"                 android:visibility="gone"
+
+                android:textColor="@color/white"
+                app:backgroundTint="@color/colorAccent"
+                app:cornerRadius="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/input_code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/input_code" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subscribe_cost"
+                style="@style/TextMediumFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/subscribe_cost"                 android:visibility="gone"
+
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/tv_subscribe_cost_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_code" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subscribe_cost_value"
+                style="@style/TextMediumFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@{String.valueOf(uiState.subscriptionsTypeValue).concat(` `).concat(@string/coin)}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black"                 android:visibility="gone"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_code"
+                tools:text="200 ح.م" />
+
+            <View
+                android:id="@+id/v_subscribe_cost"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"                 android:visibility="gone"
+
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@color/line_color_op"
+                app:layout_constraintTop_toBottomOf="@id/tv_subscribe_cost" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_discount_cost"
+                style="@style/TextMediumFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/discount_cost"                 android:visibility="gone"
+
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/tv_subscribe_cost_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_subscribe_cost" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_discount_cost_value"
+                style="@style/TextMediumFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"                 android:visibility="gone"
+
+                android:text="@{String.valueOf(uiState.discountValue).concat(` `).concat(@string/coin)}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_subscribe_cost"
+                tools:text="200 ح.م" />
+
+            <View
+                android:id="@+id/v_discount_cost"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"                 android:visibility="gone"
+
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@color/line_color_op"
+                app:layout_constraintTop_toBottomOf="@id/tv_discount_cost" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_total_cost"
+                style="@style/TextBoldFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/total_cost"
+                android:textAlignment="viewStart"                 android:visibility="gone"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/tv_subscribe_cost_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_discount_cost" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_total_cost_value"
+                style="@style/TextMediumFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"                 android:visibility="gone"
+
+                android:text="@{String.valueOf(uiState.totalValue).concat(` `).concat(@string/coin)}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_discount_cost"
+                tools:text="200 ح.م" />
+
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/appCompatButtonNext"
                 android:layout_width="match_parent"
@@ -106,7 +292,7 @@
                 android:layout_marginEnd="@dimen/_80sdp"
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:onClick="@{()->eventListener.subscribe()}"
-                android:text="@string/confirm"
+                android:text="@string/confirm_subscribe"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/colorPrimaryDark"
@@ -114,7 +300,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/payment_shimmer" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_total_cost" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

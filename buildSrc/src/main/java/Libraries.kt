@@ -21,6 +21,7 @@ object Libraries {
     const val roomktx = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomCommon = "androidx.room:room-common:${Versions.roomVersion}"
     const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
+    const val store_update = "com.google.android.play:core:${Versions.store_update}"
 
     // Kotlin Coroutines
     const val coroutinesCore =
@@ -54,6 +55,7 @@ object Libraries {
     const val ssdp = "com.intuit.sdp:sdp-android:${Versions.ssp}"
     const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
     const val splash_screen = "androidx.core:core-splashscreen:${Versions.splash_screen}"
+    const val html_text_view = "org.sufficientlysecure:html-textview:${Versions.html_text_view}"
 
     // EXO PLAYER
     const val exoplayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"

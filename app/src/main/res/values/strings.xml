@@ -17,6 +17,7 @@
     <string name="dot" translatable="false">•</string>
     <string name="next">Next</string>
     <!-- Intro -->
+    <string name="design_program">Design and program</string>
 
     <!-- Log In -->
     <string name="login">Login</string>
@@ -99,5 +100,12 @@
     <string name="back">Back</string>
     <string name="non_parent_content">This section is for children and mothers only</string>
     <string name="continue_open">Continue</string>
+    <string name="get_discount">"احصل على خصم "</string>
+    <string name="discount_code">كود الخصم</string>
+    <string name="apply">تفعيل</string>
+    <string name="subscribe_cost">تكلفة الاشتراك</string>
+    <string name="confirm_subscribe">تأكيد الاشتراك</string>
+    <string name="discount_cost">الخصم</string>
+    <string name="total_cost">الإجمالي بعد الخصم</string>
 
 </resources>

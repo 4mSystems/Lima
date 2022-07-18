@@ -102,20 +102,21 @@
                 android:onClick="@{()-> eventListener.openSubscribe()}"
                 android:text="@string/subscribe_account"
                 android:textAlignment="viewStart"
+                android:visibility="@{uiState.updateSubscribeVisibility}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
-                android:visibility="@{uiState.updateSubscribeVisibility}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/v_favorite" />
+
 
             <View
                 android:id="@+id/v_subscribe_payment"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:background="@color/line_color_op"
                 android:visibility="@{uiState.updateSubscribeVisibility}"
+                android:background="@color/line_color_op"
                 app:layout_constraintTop_toBottomOf="@id/tv_subscribe_payment" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -163,7 +164,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/v_change_language" />
-            <!--      app:fromResources="@{uiState.logUser}"-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

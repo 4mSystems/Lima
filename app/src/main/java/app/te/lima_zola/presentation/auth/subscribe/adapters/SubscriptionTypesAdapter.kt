@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import app.te.lima_zola.R
 import app.te.lima_zola.databinding.ItemSubscriptionBinding
 import app.te.lima_zola.domain.auth.entity.model.subscriptions.SubscriptionsTypes
+import app.te.lima_zola.presentation.auth.subscribe.listeners.SubscribeEventListener
 
-class SubscriptionTypesAdapter :
+class SubscriptionTypesAdapter(val eventListener: SubscribeEventListener) :
     RecyclerView.Adapter<SubscriptionTypesAdapter.ViewHolder>() {
     var lastPosition: Int = 0
     private val differCallback = object : DiffUtil.ItemCallback<SubscriptionsTypes>() {
@@ -42,9 +43,9 @@ class SubscriptionTypesAdapter :
             notifyItemChanged(lastPosition)
             lastPosition = position
             notifyItemChanged(lastPosition)
+            eventListener.onSubscriptionType(data)
         }
         data.isSelected = position == lastPosition
-
         holder.setModel(data)
     }
 

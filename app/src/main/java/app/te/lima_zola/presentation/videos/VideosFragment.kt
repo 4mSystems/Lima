@@ -118,7 +118,7 @@ class VideosFragment : BaseFragment<FragmentVideosBinding>(), VideosEventListene
                         hideKeyboard()
                     }
                     is Resource.Success -> {
-                        makeActionSound(requireContext())
+//                        makeActionSound(requireContext())
                     }
                     is Resource.Failure -> {
                         handleApiError(it)

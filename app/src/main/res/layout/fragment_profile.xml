@@ -112,6 +112,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="0123456789"
                     android:inputType="phone"
                     android:text="@={request.phone}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"

@@ -65,8 +65,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeEventListener {
 //        navigateSafe(HomeFragmentDirections.actionHomeFragmentToSubscribeWarningDialog(Constants.FREE))
     }
 
-    override fun limaWarningDialog(param: Int?) {
-        navigateSafe(HomeFragmentDirections.actionHomeFragmentToLimaWarningDialog(param ?: 0))
+    override fun limaWarningDialog(param: Int) {
+        navigateSafe(HomeFragmentDirections.actionHomeFragmentToLimaWarningDialog(param))
     }
 
     override fun setupStatusBar() {

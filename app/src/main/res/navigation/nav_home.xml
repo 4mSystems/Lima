@@ -144,6 +144,9 @@
             app:exitAnim="@anim/anim_slide_out_left"
             app:popEnterAnim="@anim/anim_slide_in_left"
             app:popExitAnim="@anim/anim_slide_out_right" />
+        <action
+            android:id="@+id/action_moreFragment_to_nav_tes"
+            app:destination="@id/nav_tes" />
 
     </fragment>
 
@@ -274,5 +277,6 @@
             app:popEnterAnim="@anim/anim_slide_in_left"
             app:popExitAnim="@anim/anim_slide_out_right" />
     </dialog>
+    <include app:graph="@navigation/nav_tes" />
 
 </navigation>

@@ -1,8 +1,13 @@
 package app.te.lima_zola.presentation.documents
 
+import android.annotation.SuppressLint
+import android.content.res.ColorStateList
+import android.graphics.Typeface
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.webkit.WebSettings
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import app.te.lima_zola.R
@@ -15,6 +20,8 @@ import app.te.lima_zola.presentation.documents.ui_state.DocumentDetailsUiState
 import app.te.lima_zola.presentation.documents.viewModels.DocumentDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter
+
 
 @AndroidEntryPoint
 class DocumentDetailsFragment : BaseFragment<FragmentDocumentDetailsBinding>(), BaseEventListener {
@@ -24,6 +31,11 @@ class DocumentDetailsFragment : BaseFragment<FragmentDocumentDetailsBinding>(), 
     fun getLayoutId() = R.layout.fragment_document_details
     override fun setBindingVariables() {
         binding.eventListener = this
+        binding.webview.setMixedContentAllowed(false)
+        binding.webview.setDesktopMode(false)
+//        binding.webview.setBackgroundColor(R.color.transparent)
+//        binding.webview.settings.loadWithOverviewMode = true
+//        binding.webview.settings.useWideViewPort = true
     }
 
     override
@@ -33,7 +45,6 @@ class DocumentDetailsFragment : BaseFragment<FragmentDocumentDetailsBinding>(), 
             viewModel.articleDetailsResponse.collect {
                 when (it) {
                     Resource.Loading -> {
-                        hideKeyboard()
                         binding.contentLoading.shimmerFrameLayout.visibility =
                             View.VISIBLE
                     }
@@ -41,6 +52,11 @@ class DocumentDetailsFragment : BaseFragment<FragmentDocumentDetailsBinding>(), 
                         binding.contentLoading.shimmerFrameLayout.visibility =
                             View.GONE
                         val uiStat = DocumentDetailsUiState(it.value.data)
+                        binding.webview.loadDataWithBaseURL(
+                            "",
+                            uiStat.documentBody, "text/html", "utf-8", ""
+                        )
+
                         binding.uiState = uiStat
                     }
                     is Resource.Failure -> {
@@ -63,5 +79,21 @@ class DocumentDetailsFragment : BaseFragment<FragmentDocumentDetailsBinding>(), 
         backToPreviousScreen()
     }
 
+    @SuppressLint("NewApi")
+    override fun onResume() {
+        super.onResume()
+        binding.webview.onResume()
+    }
+
+    @SuppressLint("NewApi")
+    override fun onPause() {
+        binding.webview.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        binding.webview.onDestroy()
+        super.onDestroy()
+    }
 
 }

@@ -116,6 +116,7 @@ dependencies {
     implementation(Libraries.roomktx)
     implementation(Libraries.roomCommon)
     implementation(Libraries.startup)
+    implementation(Libraries.store_update)
 
     // Networking
     implementation(Libraries.retrofit)
@@ -172,6 +173,7 @@ dependencies {
     implementation(Libraries.ssdp)
     implementation(Libraries.shimmer)
     implementation(Libraries.splash_screen)
+    implementation(Libraries.html_text_view)
     //EXO PLAYER
     implementation(Libraries.exoplayer)
     implementation(Libraries.exoplayer_core)

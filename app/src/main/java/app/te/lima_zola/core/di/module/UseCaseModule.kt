@@ -84,6 +84,12 @@ class UseCaseModule {
 
     @Provides
     @Singleton
+    fun provideActivatePromoCodeUseCase(
+        authRepository: AuthRepository
+    ): ActivatePromCodeUseCase = ActivatePromCodeUseCase(authRepository)
+
+    @Provides
+    @Singleton
     fun provideChangePasswordUseCase(
         authRepository: AuthRepository,
     ): ChangePasswordUseCase = ChangePasswordUseCase(authRepository)
@@ -151,7 +157,7 @@ class UseCaseModule {
     fun provideArticleUseCase(
         videosArticlesRepository: VideosArticlesRepository,
         userLocalUseCase: UserLocalUseCase
-    ): ArticleUseCase = ArticleUseCase(videosArticlesRepository,userLocalUseCase)
+    ): ArticleUseCase = ArticleUseCase(videosArticlesRepository, userLocalUseCase)
 
     @Provides
     @Singleton

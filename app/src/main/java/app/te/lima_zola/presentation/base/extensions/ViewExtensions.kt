@@ -2,25 +2,18 @@ package app.te.lima_zola.presentation.base.extensions
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import android.view.View
 import android.webkit.URLUtil
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.Group
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,7 +66,7 @@ fun TextView.fromHtml(text: String?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             setText(Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT))
         } else {
-            setText(Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY))
+            setText(Html.fromHtml(text))
         }
 
     }
@@ -250,9 +243,14 @@ fun ImageView.loadRoundImage(imageUrl: String?, progressBar: ProgressBar?) {
     }
 }
 
-@BindingAdapter("load_drawable")
-fun loadDrawable(imageView: ImageView, drawable: Drawable?) {
-    imageView.setImageDrawable(drawable)
+@BindingAdapter("app:load_round_drawable")
+fun ImageView.loadRoundDrawable(drawable: Drawable?) {
+    load(drawable) {
+        crossfade(false)
+        transformations(
+            CircleCropTransformation()
+        )
+    }
 }
 
 @BindingAdapter("load_drawable")

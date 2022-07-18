@@ -14,6 +14,7 @@
     <!-- Tutorial -->
     <string name="next">التالي</string>
     <!-- Intro -->
+    <string name="design_program">تصميم وبرمجة</string>
 
     <!-- Log In -->
     <string name="login">تسجيل الدخول </string>
@@ -87,5 +88,12 @@
     <string name="back">رجوع</string>
     <string name="non_parent_content">هذا القسم للأطفال والأمهات فقط</string>
     <string name="continue_open">استمرار</string>
+    <string name="get_discount">"احصل على خصم "</string>
+    <string name="discount_code">كود الخصم</string>
+    <string name="apply">تفعيل</string>
+    <string name="subscribe_cost">تكلفة الاشتراك</string>
+    <string name="confirm_subscribe">تأكيد الاشتراك</string>
+    <string name="discount_cost">الخصم</string>
+    <string name="total_cost">الإجمالي بعد الخصم</string>
 
 </resources>

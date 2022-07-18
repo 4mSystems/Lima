@@ -3,6 +3,7 @@ package app.te.lima_zola.data.auth.repository
 import app.te.lima_zola.data.auth.data_source.remote.AuthRemoteDataSource
 import app.te.lima_zola.domain.auth.entity.model.SubscriptionPaymentData
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
+import app.te.lima_zola.domain.auth.entity.model.disounts.PromoCodeData
 import app.te.lima_zola.domain.auth.entity.model.payments.PaymentMethods
 import app.te.lima_zola.domain.auth.entity.model.payments.payment_result.PaymentResult
 import app.te.lima_zola.domain.auth.entity.request.*
@@ -33,7 +34,8 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun verifyAccount(request: RegisterRequest): Resource<BaseResponse<UserResponse>> =
         remoteDataSource.verifyAccount(request)
- override suspend fun verifyPasswordAccount(request: ForgetPasswordRequest): Resource<BaseResponse<*>> =
+
+    override suspend fun verifyPasswordAccount(request: ForgetPasswordRequest): Resource<BaseResponse<*>> =
         remoteDataSource.verifyPasswordAccount(request)
 
     override suspend fun getSubscriptionsTypes(): Resource<BaseResponse<SubscriptionPaymentData>> =
@@ -47,6 +49,9 @@ class AuthRepositoryImpl @Inject constructor(
         subscribe_id: Int
     ): Resource<BaseResponse<PaymentResult>> =
         remoteDataSource.getPaymentResult(payment_id, subscribe_id)
+
+    override suspend fun activatePromoCode(activatePromoCodeRequest: ActivatePromoCodeRequest): Resource<BaseResponse<PromoCodeData>> =
+        remoteDataSource.activatePromoCode(activatePromoCodeRequest)
 
     override suspend fun payWithDelegate(
         subscribe_id: Int

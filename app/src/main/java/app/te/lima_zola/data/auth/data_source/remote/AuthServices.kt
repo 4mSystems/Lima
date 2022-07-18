@@ -2,6 +2,7 @@ package app.te.lima_zola.data.auth.data_source.remote
 
 import app.te.lima_zola.domain.auth.entity.model.SubscriptionPaymentData
 import app.te.lima_zola.domain.auth.entity.model.UserResponse
+import app.te.lima_zola.domain.auth.entity.model.disounts.PromoCodeData
 import app.te.lima_zola.domain.auth.entity.model.payments.PaymentMethods
 import app.te.lima_zola.domain.auth.entity.model.payments.payment_result.PaymentResult
 import app.te.lima_zola.domain.auth.entity.request.*
@@ -50,6 +51,11 @@ interface AuthServices {
         @Query("subscribe_type_id") subscribe_id: Int,
         @Query("type") type: String = "cash"
     ): BaseResponse<*>
-    
+
+    @POST("v1/user/coupon/apply")
+    suspend fun activatePromoCode(
+        @Body activatePromoCodeRequest: ActivatePromoCodeRequest
+    ): BaseResponse<PromoCodeData>
+
 
 }
