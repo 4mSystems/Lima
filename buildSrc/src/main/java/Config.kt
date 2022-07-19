@@ -3,9 +3,9 @@ object Config {
         const val appId = "app.te.lima_zola"
         const val compileSdkVersion = 32
         const val minSdkVersion = 23
-        const val versionCode = 2
+        const val versionCode = 4
         const val versionCodeTest = 10
-        const val versionName = "10-07-2022 (1.1)"
+        const val versionName = "19-07-2022 (1.2)"
         const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
         const val cmakePath = "jni/CMakeLists.txt"
     }

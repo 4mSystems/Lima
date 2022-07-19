@@ -48,7 +48,7 @@ object Versions {
 
   // Utils
   const val playServices = "19.2.0"
-  const val localization = "1.1.4"
+  const val localization = "1.5.1"
   const val multidex = "2.0.1"
   const val permissions = "3.0.0-RC4"
 

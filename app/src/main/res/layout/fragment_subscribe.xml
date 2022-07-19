@@ -109,7 +109,6 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/get_discount"
-                android:visibility="gone"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="parent"
@@ -131,8 +130,7 @@
                 app:boxCornerRadiusTopStart="@dimen/_30sdp"
                 app:boxStrokeColor="@color/white"
                 app:helperTextTextColor="@color/black"
-                app:hintEnabled="false"                 android:visibility="gone"
-
+                app:hintEnabled="false"
                 app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintEnd_toStartOf="@+id/btn_confirm_promo"
                 app:layout_constraintStart_toStartOf="parent"
@@ -156,8 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:onClick="@{()->eventListener.activateCode()}"
-                android:text="@string/apply"                 android:visibility="gone"
-
+                android:text="@string/apply"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/colorAccent"
                 app:cornerRadius="@dimen/_20sdp"
@@ -173,8 +170,7 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:text="@string/subscribe_cost"                 android:visibility="gone"
-
+                android:text="@string/subscribe_cost"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
@@ -192,8 +188,7 @@
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:text="@{String.valueOf(uiState.subscriptionsTypeValue).concat(` `).concat(@string/coin)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/black"                 android:visibility="gone"
-
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_code"
                 tools:text="200 ح.م" />
@@ -201,8 +196,7 @@
             <View
                 android:id="@+id/v_subscribe_cost"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"                 android:visibility="gone"
-
+                android:layout_height="1dp"
                 android:layout_margin="@dimen/_15sdp"
                 android:background="@color/line_color_op"
                 app:layout_constraintTop_toBottomOf="@id/tv_subscribe_cost" />
@@ -215,8 +209,7 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:text="@string/discount_cost"                 android:visibility="gone"
-
+                android:text="@string/discount_cost"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
@@ -231,8 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_8sdp"                 android:visibility="gone"
-
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:text="@{String.valueOf(uiState.discountValue).concat(` `).concat(@string/coin)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
@@ -243,8 +235,7 @@
             <View
                 android:id="@+id/v_discount_cost"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"                 android:visibility="gone"
-
+                android:layout_height="1dp"
                 android:layout_margin="@dimen/_15sdp"
                 android:background="@color/line_color_op"
                 app:layout_constraintTop_toBottomOf="@id/tv_discount_cost" />
@@ -258,8 +249,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:text="@string/total_cost"
-                android:textAlignment="viewStart"                 android:visibility="gone"
-
+                android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/tv_subscribe_cost_value"
@@ -273,8 +263,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_8sdp"                 android:visibility="gone"
-
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:text="@{String.valueOf(uiState.totalValue).concat(` `).concat(@string/coin)}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/black"

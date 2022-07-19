@@ -58,7 +58,11 @@ class SubscribeViewModel @Inject constructor(
         subscribe_id: Int,
         payment_id: Int
     ) {
-        paymentResultUseCase(subscribe_id, payment_id)
+        paymentResultUseCase(
+            subscribe_id,
+            payment_id,
+            if (uiState.discountValue != 0F) uiState.activatePromoCodeRequest.code else null
+        )
             .onEach { result ->
                 _paymentResponse.value = result
             }
@@ -76,10 +80,10 @@ class SubscribeViewModel @Inject constructor(
     }
 
     fun activatePromoCode() {
-            activatePromCodeUseCase(uiState.activatePromoCodeRequest)
-                .onEach { result ->
-                    _activatePromoCodeResponse.value = result
-                }
-                .launchIn(viewModelScope)
+        activatePromCodeUseCase(uiState.activatePromoCodeRequest)
+            .onEach { result ->
+                _activatePromoCodeResponse.value = result
+            }
+            .launchIn(viewModelScope)
     }
 }

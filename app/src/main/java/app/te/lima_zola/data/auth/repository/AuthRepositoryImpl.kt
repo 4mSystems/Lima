@@ -46,9 +46,10 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun getPaymentResult(
         payment_id: Int,
-        subscribe_id: Int
+        subscribe_id: Int,
+        code: String?
     ): Resource<BaseResponse<PaymentResult>> =
-        remoteDataSource.getPaymentResult(payment_id, subscribe_id)
+        remoteDataSource.getPaymentResult(payment_id, subscribe_id,code)
 
     override suspend fun activatePromoCode(activatePromoCodeRequest: ActivatePromoCodeRequest): Resource<BaseResponse<PromoCodeData>> =
         remoteDataSource.activatePromoCode(activatePromoCodeRequest)

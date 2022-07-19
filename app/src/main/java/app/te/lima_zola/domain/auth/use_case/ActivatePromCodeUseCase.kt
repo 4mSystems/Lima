@@ -19,7 +19,7 @@ class ActivatePromCodeUseCase @Inject constructor(
         activatePromoCodeRequest: ActivatePromoCodeRequest
     ): Flow<Resource<BaseResponse<PromoCodeData>>> =
         flow {
-            if (activatePromoCodeRequest.code.isNotEmpty()) {
+            if (!activatePromoCodeRequest.code.isNullOrEmpty()) {
                 emit(Resource.Loading)
                 val result = authRepository.activatePromoCode(activatePromoCodeRequest)
                 emit(result)

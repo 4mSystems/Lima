@@ -16,11 +16,12 @@ class GetPaymentResultUseCase @Inject constructor(
 
     operator fun invoke(
         subscribe_id: Int,
-        payment_id: Int
+        payment_id: Int,
+        code: String?
     ): Flow<Resource<BaseResponse<PaymentResult>>> =
         flow {
             emit(Resource.Loading)
-            val result = authRepository.getPaymentResult(payment_id, subscribe_id)
+            val result = authRepository.getPaymentResult(payment_id, subscribe_id,code)
             emit(result)
         }.flowOn(Dispatchers.IO)
 }

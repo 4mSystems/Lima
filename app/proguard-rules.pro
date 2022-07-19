@@ -49,6 +49,8 @@
 -keep class app.te.lima_zola.domain.auth.entity.model.subscriptions.* { *; }
 -keep class app.te.lima_zola.domain.auth.entity.model.payments.* { *; }
 -keep class app.te.lima_zola.domain.auth.entity.model.payments.payment_result.* { *; }
+-keep class app.te.lima_zola.domain.auth.entity.model.disounts.* { *; }
+-keep class app.te.lima_zola.domain.auth.entity.request.* { *; }
 
 ## Localization Helper
 -keep class com.zeugmasolutions.localehelper.* { *; }

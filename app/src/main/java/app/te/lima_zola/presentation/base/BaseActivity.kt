@@ -26,6 +26,10 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     lateinit var navController: LiveData<NavController>
     lateinit var immediateUpdateActivity: ImmediateUpdateActivity
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(localeDelegate.attachBaseContext(newBase))
+    }
+
     override
     fun createConfigurationContext(overrideConfiguration: Configuration): Context {
         val context = super.createConfigurationContext(overrideConfiguration)
@@ -52,6 +56,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     override
     fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        localeDelegate.onCreate(this)
         adjustFontScale()
         initViewBinding()
         setContentView(binding.root)

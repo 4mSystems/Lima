@@ -24,7 +24,8 @@ interface AuthRepository {
     suspend fun payWithDelegate(subscribe_id: Int): Resource<BaseResponse<*>>
     suspend fun getPaymentResult(
         payment_id: Int,
-        subscribe_id: Int
+        subscribe_id: Int,
+        code: String?
     ): Resource<BaseResponse<PaymentResult>>
 
     suspend fun activatePromoCode(activatePromoCodeRequest: ActivatePromoCodeRequest): Resource<BaseResponse<PromoCodeData>>

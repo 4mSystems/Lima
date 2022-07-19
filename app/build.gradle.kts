@@ -1,4 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.google.protobuf.gradle.*
 
 plugins {
@@ -38,7 +37,7 @@ android {
         applicationId = Config.AppConfig.appId
         minSdk = Config.AppConfig.minSdkVersion
         targetSdk = Config.AppConfig.compileSdkVersion
-        versionCode = Config.AppConfig.versionCodeTest
+        versionCode = Config.AppConfig.versionCode
         versionName = Config.AppConfig.versionName
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
@@ -131,7 +130,6 @@ dependencies {
     implementation(Libraries.multidex)
     implementation(Libraries.permissions)
     implementation(Libraries.gson)
-
 // paging
     implementation(Libraries.paging_version)
     implementation(Libraries.paging_version_ktx)

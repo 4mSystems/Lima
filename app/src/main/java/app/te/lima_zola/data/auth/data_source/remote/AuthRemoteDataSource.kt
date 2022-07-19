@@ -47,9 +47,10 @@ class AuthRemoteDataSource @Inject constructor(private val apiService: AuthServi
 
     suspend fun getPaymentResult(
         payment_id: Int,
-        subscribe_id: Int
+        subscribe_id: Int,
+        code: String?
     ) = safeApiCall {
-        apiService.getPaymentMethodsResult(payment_id, subscribe_id)
+        apiService.getPaymentMethodsResult(payment_id, subscribe_id,code)
     }
 
     suspend fun payWithDelegate(

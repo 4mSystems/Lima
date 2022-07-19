@@ -33,7 +33,6 @@ interface AuthServices {
     @POST("v1/auth/register")
     suspend fun register(@Body request: RegisterRequest): BaseResponse<*>
 
-    //    @GET("v1/app/subscription/types")
     @GET("v1/user/subscription/payment_step_one")
     suspend fun getSubscriptionsTypes(): BaseResponse<SubscriptionPaymentData>
 
@@ -43,7 +42,8 @@ interface AuthServices {
     @GET("v1/user/subscription/payment_step_two")
     suspend fun getPaymentMethodsResult(
         @Query("payment_method_id") payment_id: Int,
-        @Query("subscribe_type_id") subscribe_id: Int
+        @Query("subscribe_type_id") subscribe_id: Int,
+        @Query("code") code: String?
     ): BaseResponse<PaymentResult>
 
     @POST("v1/user/subscription/store")
